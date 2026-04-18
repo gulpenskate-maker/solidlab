@@ -105,7 +105,7 @@ function Header({ current, onNav }) {
   const items = [
     { k: "work", label: "/ work" },
     { k: "about", label: "/ about" },
-    { k: "writing", label: "/ writing" },
+    { k: "investors", label: "/ investors" },
     { k: "contact", label: "/ contact" },
   ];
   return (

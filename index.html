@@ -35,7 +35,7 @@
 const { useState } = React;
 
 function App() {
-  const [view, setView] = useState("home"); // home | work | about | contact | detail
+  const [view, setView] = useState("home"); // home | work | about | contact | investors | case | detail
   const [detail, setDetail] = useState(null);
   const [heroVariant, setHeroVariant] = useState("inline"); // "inline" | "stacked"
 
@@ -44,6 +44,7 @@ function App() {
     else if (k === "work") { setView("work"); setDetail(null); }
     else if (k === "about") { setView("about"); setDetail(null); }
     else if (k === "contact") { setView("contact"); setDetail(null); }
+    else if (k === "investors") { setView("investors"); setDetail(null); }
     else if (k === "writing") { setView("home"); }
     window.scrollTo({top:0, behavior:"smooth"});
   };
@@ -78,6 +79,9 @@ function App() {
       )}
       {view === "contact" && (
         <ContactPage/>
+      )}
+      {view === "investors" && (
+        <InvestorsPage/>
       )}
       {view === "case" && (
         <CaseStudy data={SAMPLE_CASE} onBack={() => { setView("work"); window.scrollTo({top:0}); }} onNext={() => { window.scrollTo({top:0}); }}/>

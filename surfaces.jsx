@@ -273,4 +273,192 @@ const SAMPLE_CASE = {
   nextKicker: "AI scheduling assistant for clinical operations.",
 };
 
-Object.assign(window, { ContactPage, AboutPage, CaseStudy, SAMPLE_CASE });
+
+/* ============ INVESTORS PAGE ============ */
+function InvestorsPage() {
+  return (
+    <>
+      {/* HERO */}
+      <section className="sl-hero sl-investors-hero">
+        <div className="shell">
+          <div className="sl-hero__eyebrow sl-slash">/ for investors</div>
+          <h1 className="sl-hero__title sl-hero__title--stacked">
+            Funding Nordic ventures<br/>
+            <span className="sl-investors-hero__accent">we build from the inside.</span>
+          </h1>
+          <p className="sl-hero__sub sl-investors-hero__sub">
+            Solidlab is a venture studio. We identify real problems, build products with care,
+            and invite capital in at the right stage — per project, not per fund.
+          </p>
+          <div className="sl-hero__cta">
+            <a className="sl-btn sl-btn--primary"
+               href="mailto:hello@solidlab.ai?subject=Investor%20inquiry"
+               target="_blank" rel="noopener">Request project brief →</a>
+          </div>
+        </div>
+      </section>
+
+      {/* THE MODEL */}
+      <section className="sl-sect">
+        <div className="shell">
+          <div className="sl-sect__eyebrow">/ 01 — the model</div>
+          <h2 className="sl-sect__title">A venture studio, not a pitch deck.</h2>
+          <p className="sl-sect__sub">
+            We operate. We ship. We invite capital in when a project is ready to move — not before.
+            Each venture stands on its own: its own cap table, its own trajectory, its own investors.
+          </p>
+
+          <div className="sl-investors-model">
+            <div className="sl-investors-model__item">
+              <div className="sl-investors-model__num">/ 01</div>
+              <div className="sl-investors-model__title">We operate</div>
+              <div className="sl-investors-model__desc">
+                Not consulting, not roadmaps, not pitch decks in search of funding.
+                We build the product, run the business, own the outcome.
+              </div>
+            </div>
+            <div className="sl-investors-model__item">
+              <div className="sl-investors-model__num">/ 02</div>
+              <div className="sl-investors-model__title">We ship</div>
+              <div className="sl-investors-model__desc">
+                AI has compressed build timelines. A team that could once build one SaaS a year
+                can now run several in parallel — if the operators know what they're doing.
+              </div>
+            </div>
+            <div className="sl-investors-model__item">
+              <div className="sl-investors-model__num">/ 03</div>
+              <div className="sl-investors-model__title">We invite capital per project</div>
+              <div className="sl-investors-model__desc">
+                Each venture raises on its own merits. Investors back the specific bet,
+                not a pooled vehicle. Direct equity, transparent terms.
+              </div>
+            </div>
+            <div className="sl-investors-model__item">
+              <div className="sl-investors-model__num">/ 04</div>
+              <div className="sl-investors-model__title">We stay Nordic</div>
+              <div className="sl-investors-model__desc">
+                Built from Stavanger. Operating globally. Craft discipline from the
+                Nordic tradition applied to AI-era software.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRACK RECORD */}
+      <section className="sl-sect sl-sect--alt">
+        <div className="shell">
+          <div className="sl-sect__eyebrow">/ 02 — track record</div>
+          <h2 className="sl-sect__title">A decade of building, shipping, scaling.</h2>
+          <p className="sl-sect__sub">
+            The founders have over ten years in product, tech, and go-to-market across
+            multiple ventures — with real exits and products still running in production today.
+          </p>
+
+          <div className="sl-investors-record">
+            <div className="sl-investors-record__item">
+              <div className="sl-investors-record__num">10+</div>
+              <div className="sl-investors-record__label">years building tech ventures</div>
+            </div>
+            <div className="sl-investors-record__item">
+              <div className="sl-investors-record__num">Multiple</div>
+              <div className="sl-investors-record__label">founder-exits</div>
+            </div>
+            <div className="sl-investors-record__item">
+              <div className="sl-investors-record__num">Products</div>
+              <div className="sl-investors-record__label">shipped, scaled, still live</div>
+            </div>
+            <div className="sl-investors-record__item">
+              <div className="sl-investors-record__num">Operator</div>
+              <div className="sl-investors-record__label">roles: founder, CEO, growth lead</div>
+            </div>
+          </div>
+
+          <p className="sl-investors-record__note">
+            Prior ventures named on request under NDA. Track record documentation
+            available in initial conversations.
+          </p>
+        </div>
+      </section>
+
+      {/* WHY NOW */}
+      <section className="sl-sect">
+        <div className="shell">
+          <div className="sl-sect__eyebrow">/ 03 — why now</div>
+          <h2 className="sl-sect__title">AI changed the economics of building.</h2>
+          <p className="sl-sect__sub sl-investors-why__sub">
+            The cost and time-to-market for production software dropped an order of magnitude.
+            Seasoned operators can now run portfolios where solo ventures used to be the norm.
+          </p>
+          <p className="sl-sect__sub sl-investors-why__sub">
+            Solidlab is the vehicle for doing this with discipline: pick problems carefully,
+            build with craft, bring in capital when it genuinely accelerates outcomes.
+          </p>
+        </div>
+      </section>
+
+      {/* WHAT WE'RE LOOKING FOR */}
+      <section className="sl-sect sl-sect--alt">
+        <div className="shell">
+          <div className="sl-sect__eyebrow">/ 04 — thesis fit</div>
+          <h2 className="sl-sect__title">Who we'd like to hear from.</h2>
+
+          <div className="sl-investors-fit">
+            <div className="sl-investors-fit__item">
+              <div className="sl-investors-fit__label">/ geography</div>
+              <div className="sl-investors-fit__text">
+                Nordic and global angels, seed funds with Nordic exposure,
+                and strategic operators.
+              </div>
+            </div>
+            <div className="sl-investors-fit__item">
+              <div className="sl-investors-fit__label">/ thesis</div>
+              <div className="sl-investors-fit__text">
+                AI-era vertical SaaS, Norwegian infrastructure, operator-led
+                venture studios, B2B products with recurring revenue.
+              </div>
+            </div>
+            <div className="sl-investors-fit__item">
+              <div className="sl-investors-fit__label">/ style</div>
+              <div className="sl-investors-fit__text">
+                Investors who back operators and stay out of the weeds.
+                Long time horizons. Honest cap tables.
+              </div>
+            </div>
+            <div className="sl-investors-fit__item">
+              <div className="sl-investors-fit__label">/ stage</div>
+              <div className="sl-investors-fit__text">
+                Early. We bring you in before product-market fit is obvious —
+                when the team and thesis are the bet.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="sl-sect sl-investors-cta">
+        <div className="shell">
+          <div className="sl-sect__eyebrow">/ let's talk</div>
+          <h2 className="sl-sect__title sl-investors-cta__title">
+            If the thesis fits, we'd like to talk specifics.
+          </h2>
+          <p className="sl-sect__sub">
+            Project briefs, cap-table structure, and operational details are shared
+            in initial conversations — tailored to your interests and check size.
+          </p>
+          <div className="sl-hero__cta">
+            <a className="sl-btn sl-btn--primary"
+               href="mailto:hello@solidlab.ai?subject=Investor%20inquiry"
+               target="_blank" rel="noopener">Request project brief →</a>
+            <a className="sl-btn sl-btn--ghost"
+               href="mailto:hello@solidlab.ai?subject=Introduction"
+               target="_blank" rel="noopener">/ just say hi</a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+Object.assign(window, { ContactPage, AboutPage, CaseStudy, InvestorsPage, SAMPLE_CASE });

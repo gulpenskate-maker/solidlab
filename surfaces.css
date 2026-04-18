@@ -177,3 +177,154 @@ html[data-theme="light"] .sl-img-ph::before {
     repeating-linear-gradient(0deg, transparent 0 47px, rgba(74,90,98,0.18) 47px 48px),
     repeating-linear-gradient(90deg, transparent 0 47px, rgba(74,90,98,0.18) 47px 48px);
 }
+
+/* =============================================================
+   INVESTORS PAGE
+   ============================================================= */
+
+.sl-investors-hero__accent {
+  display: block;
+  color: var(--oslo);
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.sl-investors-hero__sub {
+  max-width: 720px;
+}
+
+/* Section alt variant — warmer tone */
+.sl-sect--alt {
+  background: rgba(255, 255, 255, 0.01);
+}
+html[data-theme="light"] .sl-sect--alt {
+  background: var(--surface-elev);
+}
+
+/* ---------- The model grid (2x2) ---------- */
+.sl-investors-model {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border-dark);
+  border: 1px solid var(--border-dark);
+  margin-top: 48px;
+}
+@media (max-width: 800px) {
+  .sl-investors-model { grid-template-columns: 1fr; }
+}
+
+.sl-investors-model__item {
+  background: var(--sort);
+  padding: 48px 40px;
+  display: flex; flex-direction: column; gap: 16px;
+  min-height: 240px;
+  transition: background 200ms ease;
+}
+.sl-investors-model__item:hover { background: #141414; }
+html[data-theme="light"] .sl-investors-model__item { background: var(--surface-elev); }
+html[data-theme="light"] .sl-investors-model__item:hover { background: var(--surface-hover); }
+
+.sl-investors-model__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--oslo);
+}
+.sl-investors-model__title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--antikkhvit);
+  line-height: 1.2;
+}
+.sl-investors-model__desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--alvesolv);
+}
+
+/* ---------- Track record ---------- */
+.sl-investors-record {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+}
+@media (max-width: 800px) {
+  .sl-investors-record { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+.sl-investors-record__item {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sl-investors-record__num {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  color: var(--antikkhvit);
+}
+.sl-investors-record__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.sl-investors-record__note {
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--mist);
+  font-style: italic;
+}
+
+/* ---------- Why now ---------- */
+.sl-investors-why__sub {
+  max-width: 800px;
+}
+.sl-investors-why__sub + .sl-investors-why__sub {
+  margin-top: -40px;  /* Pull second paragraph closer */
+  padding-top: 20px;
+}
+
+/* ---------- Thesis fit ---------- */
+.sl-investors-fit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 64px;
+  margin-top: 48px;
+}
+@media (max-width: 800px) {
+  .sl-investors-fit { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.sl-investors-fit__item {
+  display: flex; flex-direction: column; gap: 12px;
+  padding-top: 24px;
+  border-top: 3px solid var(--oslo);
+  max-width: 480px;
+}
+.sl-investors-fit__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--oslo);
+}
+.sl-investors-fit__text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--antikkhvit);
+}
+
+/* ---------- CTA ---------- */
+.sl-investors-cta__title {
+  max-width: 900px;
+}
+
