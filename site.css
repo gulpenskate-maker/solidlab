@@ -40,9 +40,9 @@ html, body {
   line-height: 1;
 }
 .sl-wm__solid { font-weight: 700; }
-.sl-wm__lab   { font-weight: 400; }
+.sl-wm__lab   { font-weight: 300; }
 .sl-wm__ai    {
-  font-weight: 400;
+  font-weight: 300;
   margin-left: 0.5px;
   color: #6B8290;  /* Nordic Breeze — dark mode default */
 }
