@@ -98,7 +98,7 @@ function Typewriter({ words, typeSpeed = 70, deleteSpeed = 40, pauseAfterType = 
   );
 }
 
-const SOLID_WORDS = ["software", "apps", "integrations", "websites", "ecommerce"];
+const SOLID_WORDS = ["software", "apps", "integrations", "websites", "ecommerce", "concepts"];
 
 /* ============ HEADER ============ */
 function Header({ current, onNav }) {
