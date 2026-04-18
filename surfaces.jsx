@@ -49,7 +49,7 @@ function ContactPage() {
             <div className="sl-contact-meta__block">
               <span className="sl-contact__label">/ studio</span>
               <span>Solidlab AS</span>
-              <span>Stavanger · Norway</span>
+              <span>Nordic · Remote-first</span>
               <span style={{color:"var(--mist)"}}>Org.nr 933 xxx xxx</span>
             </div>
             <div className="sl-contact-meta__block">
@@ -87,7 +87,7 @@ function AboutPage() {
             A studio anchored in Nordic craft — <em style={{fontStyle:"normal",color:"var(--oslo)"}}>not aesthetic, commitment.</em>
           </h1>
           <p className="sl-section__intro" style={{marginTop:40, maxWidth:680, fontSize:19}}>
-            Based in Stavanger, on the west coast of Norway. We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
+            Rooted in the Nordic tradition of craft and quiet confidence. We build AI-powered SaaS products and consult on digital infrastructure — with the discipline of master builders.
           </p>
         </div>
       </section>
@@ -105,7 +105,7 @@ function AboutPage() {
                   <span style={{fontFamily:"var(--font-mono)", fontSize:12, color:"var(--mist)", letterSpacing:"0.08em", textTransform:"uppercase", marginTop:12}}>replace with photo</span>
                 </div>
               </div>
-              <div style={{marginTop:16, fontFamily:"var(--font-mono)", fontSize:12, color:"var(--mist)", letterSpacing:"0.08em", textTransform:"uppercase"}}>/ stavanger, 2026</div>
+              <div style={{marginTop:16, fontFamily:"var(--font-mono)", fontSize:12, color:"var(--mist)", letterSpacing:"0.08em", textTransform:"uppercase"}}>/ nordic, 2026</div>
             </div>
             <div style={{display:"flex", flexDirection:"column", gap:28}}>
               <h2 style={{fontSize:40, fontWeight:600, letterSpacing:"-0.01em", lineHeight:1.15}}>Ulrik Andresen</h2>
@@ -124,16 +124,16 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Stavanger narrative */}
+      {/* Nordic narrative */}
       <section className="sl-section">
         <div className="shell">
-          <div className="sl-slash" style={{marginBottom:24}}>/ stavanger / norway</div>
+          <div className="sl-slash" style={{marginBottom:24}}>/ nordic / since 2026</div>
           <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"start"}}>
             <h2 style={{fontSize:48, fontWeight:700, letterSpacing:"-0.02em", lineHeight:1.1, textWrap:"balance"}}>
               Why we're here, and not somewhere louder.
             </h2>
             <div style={{display:"flex", flexDirection:"column", gap:20, fontSize:17, lineHeight:1.65, color:"var(--alvesolv)"}}>
-              <p>Stavanger is a harbor town on Norway's southwest coast — 140,000 people, a thousand-year-old cathedral, and the oil industry that shaped modern Norwegian engineering.</p>
+              <p>The Nordic tradition is quiet, material, built to last. Wooden houses painted in Jotun tones. Engineering that outlasts fashion. A culture that values restraint over excess — and work that works.</p>
               <p>The city punches above its weight in serious software because it has to. Platforms built here run on North Sea rigs, in hospitals, in boats that can't afford to be wrong about the weather. It's a culture that ships once and maintains for decades.</p>
               <p>That's the tradition we work in. We build for the long view, because where we're from, everything else already does.</p>
             </div>
@@ -141,7 +141,7 @@ function AboutPage() {
           {/* Meta strip */}
           <div className="sl-about-meta">
             <div><span>/ founded</span><strong>2026</strong></div>
-            <div><span>/ studio</span><strong>Stavanger · Norway</strong></div>
+            <div><span>/ studio</span><strong>Nordic · Remote-first</strong></div>
             <div><span>/ team</span><strong>Small, intentionally</strong></div>
             <div><span>/ working</span><strong>Globally, remotely</strong></div>
           </div>
@@ -268,7 +268,7 @@ const SAMPLE_CASE = {
   approach: "We built a small team of two and shipped a v0 in six weeks: a purpose-built forecast model for the Norwegian coast, a map UI that shows confidence bands instead of false precision, and a boringly reliable subscription billing stack. AI where it served the work; not where it didn't.",
   result: "Launched publicly in spring 2026. Hit operating-cost break-even in eleven weeks. Used today by licensed captains along the west coast. The team now runs it as a product, and we stepped back to a maintenance role — exactly as designed.",
   quote: "Solidlab wrote the kind of code I'd be happy to inherit. Three years from now this thing will still be cheap to run and easy to extend. That's rare.",
-  quoteAttribution: "Kjetil H. · Captain, Stavanger Charter",
+  quoteAttribution: "Kjetil H. · Captain, Nordic Charter",
   nextTitle: "Lara",
   nextKicker: "AI scheduling assistant for clinical operations.",
 };
@@ -337,7 +337,7 @@ function InvestorsPage() {
               <div className="sl-investors-model__num">/ 04</div>
               <div className="sl-investors-model__title">We stay Nordic</div>
               <div className="sl-investors-model__desc">
-                Built from Stavanger. Operating globally. Craft discipline from the
+                Built across the Nordics. Operating globally. Craft discipline from the
                 Nordic tradition applied to AI-era software.
               </div>
             </div>

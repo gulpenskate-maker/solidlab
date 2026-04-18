@@ -131,7 +131,7 @@ function Hero({ onNav, variant = "inline" }) {
     return (
       <section className="sl-hero">
         <div className="shell">
-          <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
+          <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
             Building solid <Typewriter words={SOLID_WORDS}/>.
           </h1>
@@ -150,7 +150,7 @@ function Hero({ onNav, variant = "inline" }) {
     return (
       <section className="sl-hero">
         <div className="shell">
-          <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
+          <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
             Building solid <Typewriter words={SOLID_WORDS}/>.
           </h1>
@@ -172,7 +172,7 @@ function Hero({ onNav, variant = "inline" }) {
           <div className="sl-hero-compare__tag sl-slash">/ stacked — 32px</div>
           <section className="sl-hero sl-hero--compact">
             <div className="shell">
-              <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
+              <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
                 Building solid <Typewriter words={SOLID_WORDS}/>.
               </h1>
@@ -191,7 +191,7 @@ function Hero({ onNav, variant = "inline" }) {
           <div className="sl-hero-compare__tag sl-slash">/ stacked — 40px</div>
           <section className="sl-hero sl-hero--compact">
             <div className="shell">
-              <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
+              <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
                 Building solid <Typewriter words={SOLID_WORDS}/>.
               </h1>
@@ -211,7 +211,7 @@ function Hero({ onNav, variant = "inline" }) {
   return (
     <section className="sl-hero">
       <div className="shell">
-        <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
+        <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio</div>
         <h1 className="sl-hero__title sl-hero__title--stacked">
           Building solid <Typewriter words={SOLID_WORDS}/>.
         </h1>
@@ -398,7 +398,7 @@ function About() {
         <div className="sl-about__inner">
           <h2 className="sl-about__title">A studio anchored in Nordic craft — not aesthetic, commitment.</h2>
           <div className="sl-about__body">
-            <p>Based in <strong>Stavanger</strong> on the west coast of Norway, we work at the intersection of craft and code — where good engineering meets good design.</p>
+            <p>Rooted in the <strong>Nordic tradition</strong> of craft and quiet confidence, we work at the intersection of code and craft — where good engineering meets good design.</p>
             <p>Our identity is rooted in the <strong>Scandinavian tradition</strong> of quiet craftsmanship, material honesty, and quality that outlasts trends. The technology may be new, but the values are old.</p>
             <p>We build for decades, not quarters.</p>
           </div>
@@ -436,7 +436,7 @@ function Contact() {
             </div>
             <div>
               <span className="sl-contact__label">/ studio</span>
-              stavanger / norway
+              nordic / since 2026
             </div>
             <div>
               <span className="sl-contact__label">/ response</span>
@@ -454,7 +454,7 @@ function Footer() {
   return (
     <footer className="sl-footer">
       <div className="shell sl-footer__inner">
-        <div>© 2026 solidlab · stavanger / norway</div>
+        <div>© 2026 solidlab · built in the nordics</div>
         <div className="sl-footer__right">
           <a href="#">/ github</a>
           <a href="#">/ linkedin</a>
