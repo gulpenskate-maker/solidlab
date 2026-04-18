@@ -143,7 +143,37 @@
 .sl-next-case__k { font-size: 18px; color: var(--alvesolv); margin-top: 4px; }
 
 /* =============================================================
-   Light theme adjustments for surfaces with hardcoded #111
+   LIGHT MODE — surface adjustments
    ============================================================= */
-html[data-theme="light"] .sl-portrait { background: #E8E4DB; }
-html[data-theme="light"] .sl-img-ph { background: #E8E4DB; }
+
+/* Portrait + image placeholders */
+html[data-theme="light"] .sl-portrait,
+html[data-theme="light"] .sl-img-ph {
+  background: var(--surface-elev);
+}
+
+/* Value cards */
+html[data-theme="light"] .sl-value-card {
+  background: var(--surface-elev);
+}
+html[data-theme="light"] .sl-value-card:hover {
+  background: var(--surface-hover);
+}
+
+/* Form fields — softer borders in light mode */
+html[data-theme="light"] .sl-field__in,
+html[data-theme="light"] .sl-field__ta {
+  color: var(--antikkhvit);
+}
+html[data-theme="light"] .sl-field__in::placeholder,
+html[data-theme="light"] .sl-field__ta::placeholder {
+  color: var(--mist);
+}
+
+/* Architectural grid overlay color adjustments (oslo line pattern) */
+html[data-theme="light"] .sl-portrait::before,
+html[data-theme="light"] .sl-img-ph::before {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 47px, rgba(74,90,98,0.18) 47px 48px),
+    repeating-linear-gradient(90deg, transparent 0 47px, rgba(74,90,98,0.18) 47px 48px);
+}
