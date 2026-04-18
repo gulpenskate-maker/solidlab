@@ -84,9 +84,11 @@ html[data-theme="light"] .sl-wm__ai {
 .sl-hero__eyebrow { margin-bottom: 32px; }
 .sl-hero__title {
   font-size: 88px; line-height: 1.0; letter-spacing: -0.03em;
-  font-weight: 700; color: var(--antikkhvit);
+  font-weight: 400; color: var(--antikkhvit);
   max-width: 900px; text-wrap: balance;
 }
+.sl-hero__light { font-weight: 400; }
+.sl-hero__bold  { font-weight: 700; }
 .sl-hero__title em {
   font-style: normal; color: var(--oslo);
 }
