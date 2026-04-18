@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <style>
+    .dark { fill: #0A0A0A; }
+    .accent { fill: #4A5A62; }
+  </style>
+  <!-- Solid kube, todelt -->
+  <rect x="40" y="40" width="120" height="120" class="dark"/>
+  <!-- Diagonal slash skjærer kuben, Oslo-blå -->
+  <polygon points="40,160 160,40 160,60 60,160" class="accent"/>
+</svg>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>wordmark legibility test</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Geist+Mono&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #F4F1EA;
+  color: #0A0A0A;
+  font-family: 'Geist', sans-serif;
+  padding: 48px;
+}
+h1 { font-weight: 700; font-size: 28px; letter-spacing: -0.02em; margin-bottom: 32px; }
+
+.test { display: flex; flex-direction: column; gap: 2px; background: #E8E4DB; border: 1px solid #E8E4DB; }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.cell {
+  padding: 48px 40px;
+  display: flex; flex-direction: column; gap: 16px;
+  align-items: flex-start; justify-content: center;
+  min-height: 160px;
+}
+.cell--light { background: #F4F1EA; }
+.cell--dark { background: #0A0A0A; }
+
+.label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4A5A62;
+}
+.cell--dark .label { color: #8B9BA0; }
+
+.wm { font-family: 'Geist', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: -0.03em; }
+
+/* light mode */
+.cell--light .t1 { color: #0A0A0A; }
+.cell--light .t1 .ai { color: #4A5A62; }
+
+.cell--light .t2 { color: #0A0A0A; }
+.cell--light .t2 .ai { color: #4A5A62; font-weight: 400; letter-spacing: -0.01em; }
+
+.cell--light .t3 { color: #0A0A0A; }
+.cell--light .t3 .ai { color: #5A5A5A; margin-left: 6px; }
+
+.cell--light .t4 { color: #0A0A0A; }
+.cell--light .t4 .ai { color: #0A0A0A; opacity: 0.45; margin-left: 4px; font-weight: 500; }
+
+.cell--light .t5 { color: #0A0A0A; }
+.cell--light .t5 .divider { color: #D5CFC2; margin: 0 10px; font-weight: 400; }
+.cell--light .t5 .ai { font-family: 'Geist Mono', monospace; font-size: 24px; font-weight: 500; color: #4A5A62; letter-spacing: 0; }
+
+.cell--light .t6 { color: #0A0A0A; }
+.cell--light .t6 .ai-box {
+  display: inline-block; padding: 3px 8px; margin-left: 10px;
+  background: #4A5A62; color: #F4F1EA;
+  font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  vertical-align: middle; border-radius: 2px;
+}
+
+.cell--light .t7 { color: #0A0A0A; }
+.cell--light .t7 .ai { color: #0A0A0A; font-weight: 400; letter-spacing: -0.01em; }
+
+.cell--light .t8 { color: #0A0A0A; }
+.cell--light .t8 .dot { color: #4A5A62; margin: 0 2px; }
+
+/* dark mode — flip */
+.cell--dark .t1 { color: #F4F1EA; }
+.cell--dark .t1 .ai { color: #8B9BA0; }
+
+.cell--dark .t2 { color: #F4F1EA; }
+.cell--dark .t2 .ai { color: #8B9BA0; font-weight: 400; letter-spacing: -0.01em; }
+
+.cell--dark .t3 { color: #F4F1EA; }
+.cell--dark .t3 .ai { color: #8A8A8A; margin-left: 6px; }
+
+.cell--dark .t4 { color: #F4F1EA; }
+.cell--dark .t4 .ai { color: #F4F1EA; opacity: 0.45; margin-left: 4px; font-weight: 500; }
+
+.cell--dark .t5 { color: #F4F1EA; }
+.cell--dark .t5 .divider { color: #1F1F1F; margin: 0 10px; font-weight: 400; }
+.cell--dark .t5 .ai { font-family: 'Geist Mono', monospace; font-size: 24px; font-weight: 500; color: #8B9BA0; letter-spacing: 0; }
+
+.cell--dark .t6 { color: #F4F1EA; }
+.cell--dark .t6 .ai-box {
+  display: inline-block; padding: 3px 8px; margin-left: 10px;
+  background: #4A5A62; color: #F4F1EA;
+  font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  vertical-align: middle; border-radius: 2px;
+}
+
+.cell--dark .t7 { color: #F4F1EA; }
+.cell--dark .t7 .ai { color: #F4F1EA; font-weight: 400; letter-spacing: -0.01em; }
+
+.cell--dark .t8 { color: #F4F1EA; }
+.cell--dark .t8 .dot { color: #8B9BA0; margin: 0 2px; }
+</style>
+</head>
+<body>
+
+<h1>wordmark — legibility test</h1>
+
+<div class="test">
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ A — nåværende (Oslo på .ai)</div>
+      <div class="wm t1">solidlab<span class="ai">.ai</span></div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ A — dark</div>
+      <div class="wm t1">solidlab<span class="ai">.ai</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ B — .ai lettere vekt (400 vs 700)</div>
+      <div class="wm t2">solidlab<span class="ai">.ai</span></div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ B — dark</div>
+      <div class="wm t2">solidlab<span class="ai">.ai</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ C — bare Fog-grå, mer luft</div>
+      <div class="wm t3">solidlab<span class="ai">.ai</span></div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ C — dark</div>
+      <div class="wm t3">solidlab<span class="ai">.ai</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ D — samme farge, lavere opacity</div>
+      <div class="wm t4">solidlab<span class="ai">.ai</span></div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ D — dark</div>
+      <div class="wm t4">solidlab<span class="ai">.ai</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ E — vertikal separator + mono .ai</div>
+      <div class="wm t5">solidlab<span class="divider">|</span><span class="ai">.ai</span></div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ E — dark</div>
+      <div class="wm t5">solidlab<span class="divider">|</span><span class="ai">.ai</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ F — .AI som badge/pill</div>
+      <div class="wm t6">solidlab<span class="ai-box">AI</span></div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ F — dark</div>
+      <div class="wm t6">solidlab<span class="ai-box">AI</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ G — samme farge, lettere vekt (uten opacity)</div>
+      <div class="wm t7">solidlab<span class="ai">.ai</span></div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ G — dark</div>
+      <div class="wm t7">solidlab<span class="ai">.ai</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cell cell--light">
+      <div class="label">/ H — Oslo prikken alene</div>
+      <div class="wm t8">solidlab<span class="dot">.</span>ai</div>
+    </div>
+    <div class="cell cell--dark">
+      <div class="label">/ H — dark</div>
+      <div class="wm t8">solidlab<span class="dot">.</span>ai</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

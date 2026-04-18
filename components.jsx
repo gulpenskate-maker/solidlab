@@ -111,7 +111,7 @@ function Header({ current, onNav }) {
   return (
     <header className="sl-header">
       <div className="shell sl-header__inner">
-        <a className="sl-wm" href="#" onClick={(e)=>{e.preventDefault(); onNav("home");}}>solidlab</a>
+        <a className="sl-wm" href="#" onClick={(e)=>{e.preventDefault(); onNav("home");}}><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></a>
         <nav className="sl-nav">
           {items.map(i => (
             <a key={i.k} href="#"
@@ -454,7 +454,7 @@ function Footer() {
   return (
     <footer className="sl-footer">
       <div className="shell sl-footer__inner">
-        <div>© 2026 solidlab · built in the nordics</div>
+        <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · built in the nordics</div>
         <div className="sl-footer__right">
           <a href="#">/ github</a>
           <a href="#">/ linkedin</a>

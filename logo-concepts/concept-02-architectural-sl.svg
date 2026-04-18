@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" width="240" height="200">
+  <style>
+    .fill { fill: #0A0A0A; }
+  </style>
+  <!-- S bygget med blokker -->
+  <rect x="30" y="40" width="70" height="18" class="fill"/>
+  <rect x="30" y="40" width="18" height="50" class="fill"/>
+  <rect x="30" y="90" width="70" height="18" class="fill"/>
+  <rect x="82" y="108" width="18" height="50" class="fill"/>
+  <rect x="30" y="142" width="70" height="18" class="fill"/>
+  <!-- L bygget med blokker -->
+  <rect x="130" y="40" width="18" height="120" class="fill"/>
+  <rect x="130" y="142" width="80" height="18" class="fill"/>
+</svg>

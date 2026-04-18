@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" width="320" height="60">
+  <style>
+    .wm { font-family: 'Geist', 'Inter Tight', sans-serif; font-weight: 700; font-size: 48px; letter-spacing: -0.03em; fill: #0A0A0A; }
+    .ai { font-family: 'Geist', 'Inter Tight', sans-serif; font-weight: 700; font-size: 48px; letter-spacing: -0.03em; fill: #4A5A62; }
+  </style>
+  <text x="0" y="44" class="wm">solidlab</text>
+  <text x="186" y="44" class="ai">.ai</text>
+</svg>
