@@ -43,41 +43,57 @@ function ThemeToggle() {
 
 
 
-/* ============ ROTATING WORD ============ */
-function RotatingWord({ words, interval = 3000 }) {
-  const [index, setIndex] = React.useState(0);
-  const [isVisible, setIsVisible] = React.useState(true);
+/* ============ TYPEWRITER ============ */
+function Typewriter({ words, typeSpeed = 70, deleteSpeed = 40, pauseAfterType = 2000, pauseAfterDelete = 300 }) {
+  const [display, setDisplay] = React.useState(words[0].charAt(0));
+  const [wordIndex, setWordIndex] = React.useState(0);
+  const [charIndex, setCharIndex] = React.useState(1);
+  const [phase, setPhase] = React.useState("typing"); // "typing" | "pause" | "deleting" | "rest"
 
   React.useEffect(() => {
-    // Respect prefers-reduced-motion — skip animation
+    // Respect prefers-reduced-motion — show first word statically
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return; // stays on first word, no rotation
+      setDisplay(words[0]);
+      return;
     }
 
-    const id = setInterval(() => {
-      // Fade out
-      setIsVisible(false);
-      // After fade duration, swap word and fade back in
-      setTimeout(() => {
-        setIndex(i => (i + 1) % words.length);
-        setIsVisible(true);
-      }, 300);
-    }, interval);
+    let timeout;
+    const currentWord = words[wordIndex];
 
-    return () => clearInterval(id);
-  }, [words.length, interval]);
+    if (phase === "typing") {
+      if (charIndex < currentWord.length) {
+        timeout = setTimeout(() => {
+          setDisplay(currentWord.slice(0, charIndex + 1));
+          setCharIndex(charIndex + 1);
+        }, typeSpeed);
+      } else {
+        // Word fully typed — pause then start deleting
+        timeout = setTimeout(() => setPhase("deleting"), pauseAfterType);
+      }
+    } else if (phase === "deleting") {
+      if (charIndex > 0) {
+        timeout = setTimeout(() => {
+          setDisplay(currentWord.slice(0, charIndex - 1));
+          setCharIndex(charIndex - 1);
+        }, deleteSpeed);
+      } else {
+        // Fully deleted — move to next word
+        timeout = setTimeout(() => {
+          setWordIndex((wordIndex + 1) % words.length);
+          setCharIndex(1);
+          setDisplay(words[(wordIndex + 1) % words.length].charAt(0));
+          setPhase("typing");
+        }, pauseAfterDelete);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, wordIndex, phase, words, typeSpeed, deleteSpeed, pauseAfterType, pauseAfterDelete]);
 
   return (
-    <span
-      className="sl-rotating-word"
-      aria-live="polite"
-      aria-atomic="true"
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transition: "opacity 300ms ease"
-      }}
-    >
-      {words[index]}
+    <span className="sl-typewriter" aria-live="polite" aria-atomic="true">
+      <span className="sl-typewriter__text">{display}</span>
+      <span className="sl-typewriter__cursor" aria-hidden="true">|</span>
     </span>
   );
 }
@@ -117,7 +133,7 @@ function Hero({ onNav, variant = "inline" }) {
         <div className="shell">
           <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
-            Building solid <RotatingWord words={SOLID_WORDS}/>.
+            Building solid <Typewriter words={SOLID_WORDS}/>.
             <span className="sl-hero__tagline sl-hero__tagline--32"><em>From the Nordic coast.</em></span>
           </h1>
           <p className="sl-hero__sub">
@@ -137,7 +153,7 @@ function Hero({ onNav, variant = "inline" }) {
         <div className="shell">
           <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
-            Building solid <RotatingWord words={SOLID_WORDS}/>.
+            Building solid <Typewriter words={SOLID_WORDS}/>.
             <span className="sl-hero__tagline sl-hero__tagline--40"><em>From the Nordic coast.</em></span>
           </h1>
           <p className="sl-hero__sub">
@@ -160,7 +176,7 @@ function Hero({ onNav, variant = "inline" }) {
             <div className="shell">
               <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
-                Building solid <RotatingWord words={SOLID_WORDS}/>.
+                Building solid <Typewriter words={SOLID_WORDS}/>.
                 <span className="sl-hero__tagline sl-hero__tagline--32"><em>From the Nordic coast.</em></span>
               </h1>
               <p className="sl-hero__sub">
@@ -180,7 +196,7 @@ function Hero({ onNav, variant = "inline" }) {
             <div className="shell">
               <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
-                Building solid <RotatingWord words={SOLID_WORDS}/>.
+                Building solid <Typewriter words={SOLID_WORDS}/>.
                 <span className="sl-hero__tagline sl-hero__tagline--40"><em>From the Nordic coast.</em></span>
               </h1>
               <p className="sl-hero__sub">
@@ -201,7 +217,7 @@ function Hero({ onNav, variant = "inline" }) {
       <div className="shell">
         <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
         <h1 className="sl-hero__title">
-          Building solid <RotatingWord words={SOLID_WORDS}/>. <em>From the Nordic coast.</em>
+          Building solid <Typewriter words={SOLID_WORDS}/>. <em>From the Nordic coast.</em>
         </h1>
         <p className="sl-hero__sub">
           We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
@@ -488,4 +504,4 @@ function Detail({ item, onBack }) {
 }
 
 /* Export to global scope so index.html can use them */
-Object.assign(window, { ThemeToggle, RotatingWord, SOLID_WORDS, Header, Hero, WhatWeDo, Work, About, Contact, Footer, Detail, WORK_ITEMS });
+Object.assign(window, { ThemeToggle, Typewriter, SOLID_WORDS, Header, Hero, WhatWeDo, Work, About, Contact, Footer, Detail, WORK_ITEMS });
