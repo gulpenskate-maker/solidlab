@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=1280"/>
+<title>solidlab — building solid software</title>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="surfaces.css">
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="surfaces.jsx"></script>
+<script type="text/babel">
+const { useState } = React;
+
+function App() {
+  const [view, setView] = useState("home"); // home | work | about | contact | detail
+  const [detail, setDetail] = useState(null);
+  const [heroVariant, setHeroVariant] = useState("inline"); // "inline" | "stacked"
+
+  const nav = (k) => {
+    if (k === "home") { setView("home"); setDetail(null); }
+    else if (k === "work") { setView("work"); setDetail(null); }
+    else if (k === "about") { setView("about"); setDetail(null); }
+    else if (k === "contact") { setView("contact"); setDetail(null); }
+    else if (k === "writing") { setView("home"); }
+    window.scrollTo({top:0, behavior:"smooth"});
+  };
+
+  const selectWork = (k) => {
+    const item = WORK_ITEMS.find(w => w.k === k);
+    setDetail(item);
+    setView("detail");
+    window.scrollTo({top:0});
+  };
+
+  return (
+    <>
+      <Header current={view === "detail" ? "work" : view === "home" ? null : view} onNav={nav}/>
+      {view === "home" && (
+        <>
+          <Hero onNav={nav} variant={heroVariant}/>
+          {heroVariant !== "compare" && <WhatWeDo/>}
+          {heroVariant !== "compare" && <Work onSelect={selectWork}/>}
+          {heroVariant !== "compare" && <About/>}
+          {heroVariant !== "compare" && <Contact/>}
+        </>
+      )}
+      {view === "work" && (
+        <>
+          <Work onSelect={selectWork}/>
+          <Contact/>
+        </>
+      )}
+      {view === "about" && (
+        <AboutPage/>
+      )}
+      {view === "contact" && (
+        <ContactPage/>
+      )}
+      {view === "case" && (
+        <CaseStudy data={SAMPLE_CASE} onBack={() => { setView("work"); window.scrollTo({top:0}); }} onNext={() => { window.scrollTo({top:0}); }}/>
+      )}
+      {view === "detail" && (
+        <Detail item={detail} onBack={() => { setView("work"); setDetail(null); window.scrollTo({top:0}); }} />
+      )}
+      <Footer/>
+      <div style={{position:"fixed",bottom:24,right:24,display:"flex",gap:8,zIndex:20,fontFamily:"var(--font-mono)",fontSize:11,letterSpacing:"0.08em",textTransform:"uppercase",flexWrap:"wrap",justifyContent:"flex-end",maxWidth:640}}>
+        {[
+          ["inline","/ hero: inline"],
+          ["stacked32","/ stacked 32"],
+          ["stacked40","/ stacked 40"],
+          ["compare","/ compare 32→40"],
+        ].map(([v,lbl])=>(
+          <button key={v} onClick={()=>{setView("home"); setHeroVariant(v); window.scrollTo({top:0});}} style={{padding:"8px 12px",background:heroVariant===v&&view==="home"?"#4A5A62":"transparent",color:"#F4F1EA",border:"1px solid "+(heroVariant===v&&view==="home"?"#4A5A62":"#1F1F1F"),cursor:"pointer",fontFamily:"inherit",fontSize:"inherit",letterSpacing:"inherit",textTransform:"inherit"}}>{lbl}</button>
+        ))}
+        <button onClick={()=>{setView("case"); window.scrollTo({top:0});}} style={{padding:"8px 12px",background:view==="case"?"#4A5A62":"transparent",color:"#F4F1EA",border:"1px solid "+(view==="case"?"#4A5A62":"#1F1F1F"),cursor:"pointer",fontFamily:"inherit",fontSize:"inherit",letterSpacing:"inherit",textTransform:"inherit"}}>/ case study</button>
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
