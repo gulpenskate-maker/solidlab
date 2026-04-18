@@ -141,3 +141,9 @@
   display: inline-block; color: var(--mist); transition: all 200ms ease; margin-left: 12px;
 }
 .sl-next-case__k { font-size: 18px; color: var(--alvesolv); margin-top: 4px; }
+
+/* =============================================================
+   Light theme adjustments for surfaces with hardcoded #111
+   ============================================================= */
+html[data-theme="light"] .sl-portrait { background: #E8E4DB; }
+html[data-theme="light"] .sl-img-ph { background: #E8E4DB; }

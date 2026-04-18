@@ -2,6 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<script>
+  // Theme initialization — runs before any render to prevent flash
+  (function() {
+    try {
+      var saved = localStorage.getItem("solidlab-theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
 <meta name="viewport" content="width=1280"/>
 <title>solidlab — building solid software</title>
 <link rel="stylesheet" href="site.css">

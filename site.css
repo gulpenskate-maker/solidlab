@@ -192,3 +192,54 @@ html, body {
 /* View toggle (for demo) */
 .view { display: none; }
 .view.active { display: block; }
+
+/* =============================================================
+   Light mode — Antikkgrå-based Nordic theme
+   Activated by <html data-theme="light">
+   Overrides the core color tokens so all existing rules follow.
+   ============================================================= */
+html[data-theme="light"] {
+  --sort:          #D5CFC2;  /* Antikkgrå replaces Sort as the dark-ground */
+  --antikkhvit:    #0A0A0A;  /* Text flips to near-black */
+  --border-dark:   rgba(10, 10, 10, 0.12);
+  --fog:           #5A5A5A;
+  --mist:          #8A8A8A;
+  --alvesolv:      #5A5A5A;  /* Secondary text — Fog instead of light Alvesølv */
+}
+
+/* Smooth theme transition on body + header surfaces */
+html, body, .sl-header {
+  transition: background 300ms ease, color 300ms ease, border-color 300ms ease;
+}
+
+/* Light-mode adjustments where Sort-on-Sort would break */
+html[data-theme="light"] .sl-work__thumb { background: #E8E4DB; }
+html[data-theme="light"] .sl-wwd__card:hover,
+html[data-theme="light"] .sl-work__card:hover,
+html[data-theme="light"] .sl-value-card:hover { background: #E8E4DB; }
+html[data-theme="light"] .sl-tweaks { background: #E8E4DB; }
+
+/* =============================================================
+   Theme toggle button
+   ============================================================= */
+.sl-theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-dark);
+  color: var(--mist);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+  margin-left: 16px;
+}
+.sl-theme-toggle:hover {
+  border-color: var(--antikkhvit);
+  color: var(--antikkhvit);
+}
