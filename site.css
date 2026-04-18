@@ -290,3 +290,24 @@ html[data-theme="light"] .sl-footer {
   border-color: var(--antikkhvit);
   color: var(--antikkhvit);
 }
+
+/* =============================================================
+   BUTTON FIX — Primary button always has light text
+   regardless of theme, because Oslo background is dark in both modes.
+   ============================================================= */
+.sl-btn--primary {
+  color: #F4F1EA !important;  /* Always Antikkhvit text on Oslo */
+}
+.sl-btn--primary:hover {
+  color: #F4F1EA !important;
+}
+
+/* Ghost button in light mode gets proper border/text */
+html[data-theme="light"] .sl-btn--ghost {
+  border-color: var(--antikkhvit);  /* now #0A0A0A, which is correct */
+  color: var(--antikkhvit);
+}
+html[data-theme="light"] .sl-btn--ghost:hover {
+  background: var(--surface-elev);
+  border-color: var(--antikkhvit);
+}
