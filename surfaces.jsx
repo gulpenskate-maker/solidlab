@@ -127,7 +127,7 @@ function AboutPage() {
       {/* Nordic narrative */}
       <section className="sl-section">
         <div className="shell">
-          <div className="sl-slash" style={{marginBottom:24}}>/ nordic / since 2026</div>
+          <div className="sl-slash" style={{marginBottom:24}}>/ nordic / since 1994</div>
           <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"start"}}>
             <h2 style={{fontSize:48, fontWeight:700, letterSpacing:"-0.02em", lineHeight:1.1, textWrap:"balance"}}>
               Why we're here, and not somewhere louder.

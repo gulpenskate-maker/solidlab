@@ -441,7 +441,7 @@ function Contact() {
             </div>
             <div>
               <span className="sl-contact__label">/ studio</span>
-              nordic / since 2026
+              nordic / since 1994
             </div>
             <div>
               <span className="sl-contact__label">/ response</span>
