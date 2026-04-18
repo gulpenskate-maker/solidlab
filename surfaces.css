@@ -193,14 +193,6 @@ html[data-theme="light"] .sl-img-ph::before {
   max-width: 720px;
 }
 
-/* Section alt variant — warmer tone */
-.sl-sect--alt {
-  background: rgba(255, 255, 255, 0.01);
-}
-html[data-theme="light"] .sl-sect--alt {
-  background: var(--surface-elev);
-}
-
 /* ---------- The model grid (2x2) ---------- */
 .sl-investors-model {
   display: grid;
@@ -287,10 +279,10 @@ html[data-theme="light"] .sl-investors-model__item:hover { background: var(--sur
 /* ---------- Why now ---------- */
 .sl-investors-why__sub {
   max-width: 800px;
+  margin-bottom: 24px;
 }
-.sl-investors-why__sub + .sl-investors-why__sub {
-  margin-top: -40px;  /* Pull second paragraph closer */
-  padding-top: 20px;
+.sl-investors-why__sub:last-child {
+  margin-bottom: 0;
 }
 
 /* ---------- Thesis fit ---------- */

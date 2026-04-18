@@ -360,3 +360,54 @@ html[data-theme="light"] .sl-btn--ghost:hover {
     opacity: 0;
   }
 }
+
+/* =============================================================
+   .sl-sect — generic section layout used by Investors page
+   (separate from legacy .sl-section to avoid conflicts)
+   ============================================================= */
+
+.sl-sect {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.sl-sect__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 24px;
+}
+
+.sl-sect__title {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--antikkhvit);
+  margin-bottom: 24px;
+  max-width: 800px;
+  text-wrap: balance;
+}
+
+.sl-sect__sub {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--alvesolv);
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.sl-sect__sub:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Alt-variant section (warmer tone) ---------- */
+.sl-sect--alt {
+  background: rgba(255, 255, 255, 0.015);
+}
+html[data-theme="light"] .sl-sect--alt {
+  background: var(--surface-elev);
+}
+
