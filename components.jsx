@@ -41,6 +41,49 @@ function ThemeToggle() {
   );
 }
 
+
+
+/* ============ ROTATING WORD ============ */
+function RotatingWord({ words, interval = 3000 }) {
+  const [index, setIndex] = React.useState(0);
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  React.useEffect(() => {
+    // Respect prefers-reduced-motion — skip animation
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return; // stays on first word, no rotation
+    }
+
+    const id = setInterval(() => {
+      // Fade out
+      setIsVisible(false);
+      // After fade duration, swap word and fade back in
+      setTimeout(() => {
+        setIndex(i => (i + 1) % words.length);
+        setIsVisible(true);
+      }, 300);
+    }, interval);
+
+    return () => clearInterval(id);
+  }, [words.length, interval]);
+
+  return (
+    <span
+      className="sl-rotating-word"
+      aria-live="polite"
+      aria-atomic="true"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transition: "opacity 300ms ease"
+      }}
+    >
+      {words[index]}
+    </span>
+  );
+}
+
+const SOLID_WORDS = ["software", "apps", "integrations"];
+
 /* ============ HEADER ============ */
 function Header({ current, onNav }) {
   const items = [
@@ -74,7 +117,7 @@ function Hero({ onNav, variant = "inline" }) {
         <div className="shell">
           <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
-            Building solid software.
+            Building solid <RotatingWord words={SOLID_WORDS}/>.
             <span className="sl-hero__tagline sl-hero__tagline--32"><em>From the Nordic coast.</em></span>
           </h1>
           <p className="sl-hero__sub">
@@ -94,7 +137,7 @@ function Hero({ onNav, variant = "inline" }) {
         <div className="shell">
           <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
-            Building solid software.
+            Building solid <RotatingWord words={SOLID_WORDS}/>.
             <span className="sl-hero__tagline sl-hero__tagline--40"><em>From the Nordic coast.</em></span>
           </h1>
           <p className="sl-hero__sub">
@@ -117,7 +160,7 @@ function Hero({ onNav, variant = "inline" }) {
             <div className="shell">
               <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
-                Building solid software.
+                Building solid <RotatingWord words={SOLID_WORDS}/>.
                 <span className="sl-hero__tagline sl-hero__tagline--32"><em>From the Nordic coast.</em></span>
               </h1>
               <p className="sl-hero__sub">
@@ -137,7 +180,7 @@ function Hero({ onNav, variant = "inline" }) {
             <div className="shell">
               <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
-                Building solid software.
+                Building solid <RotatingWord words={SOLID_WORDS}/>.
                 <span className="sl-hero__tagline sl-hero__tagline--40"><em>From the Nordic coast.</em></span>
               </h1>
               <p className="sl-hero__sub">
@@ -158,7 +201,7 @@ function Hero({ onNav, variant = "inline" }) {
       <div className="shell">
         <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
         <h1 className="sl-hero__title">
-          Building solid software. <em>From the Nordic coast.</em>
+          Building solid <RotatingWord words={SOLID_WORDS}/>. <em>From the Nordic coast.</em>
         </h1>
         <p className="sl-hero__sub">
           We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
@@ -445,4 +488,4 @@ function Detail({ item, onBack }) {
 }
 
 /* Export to global scope so index.html can use them */
-Object.assign(window, { ThemeToggle, Header, Hero, WhatWeDo, Work, About, Contact, Footer, Detail, WORK_ITEMS });
+Object.assign(window, { ThemeToggle, RotatingWord, SOLID_WORDS, Header, Hero, WhatWeDo, Work, About, Contact, Footer, Detail, WORK_ITEMS });

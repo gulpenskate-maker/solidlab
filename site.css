@@ -311,3 +311,28 @@ html[data-theme="light"] .sl-btn--ghost:hover {
   background: var(--surface-elev);
   border-color: var(--antikkhvit);
 }
+
+/* =============================================================
+   ROTATING WORD — cycles through "software / apps / integrations"
+   in the hero title. Subtle Oslo blue underline marks it as dynamic.
+   ============================================================= */
+.sl-rotating-word {
+  display: inline-block;
+  position: relative;
+  color: var(--antikkhvit);
+  /* subtle Oslo blue underline — integral part of the word */
+  text-decoration: underline;
+  text-decoration-color: var(--oslo);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+  /* Avoid layout shift when word changes width */
+  min-width: 0;
+}
+
+/* Respect reduced motion — show first word statically, no transitions */
+@media (prefers-reduced-motion: reduce) {
+  .sl-rotating-word {
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}
