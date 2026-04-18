@@ -131,7 +131,7 @@ function Hero({ onNav, variant = "inline" }) {
     return (
       <section className="sl-hero">
         <div className="shell">
-          <div className="sl-hero__eyebrow sl-slash">/ nordic venture studio · builders and backers</div>
+          <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · builders and backers</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
             Building solid <Typewriter words={SOLID_WORDS}/>.
           </h1>
@@ -150,7 +150,7 @@ function Hero({ onNav, variant = "inline" }) {
     return (
       <section className="sl-hero">
         <div className="shell">
-          <div className="sl-hero__eyebrow sl-slash">/ nordic venture studio · builders and backers</div>
+          <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · builders and backers</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
             Building solid <Typewriter words={SOLID_WORDS}/>.
           </h1>
@@ -172,7 +172,7 @@ function Hero({ onNav, variant = "inline" }) {
           <div className="sl-hero-compare__tag sl-slash">/ stacked — 32px</div>
           <section className="sl-hero sl-hero--compact">
             <div className="shell">
-              <div className="sl-hero__eyebrow sl-slash">/ nordic venture studio · builders and backers</div>
+              <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · builders and backers</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
                 Building solid <Typewriter words={SOLID_WORDS}/>.
               </h1>
@@ -191,7 +191,7 @@ function Hero({ onNav, variant = "inline" }) {
           <div className="sl-hero-compare__tag sl-slash">/ stacked — 40px</div>
           <section className="sl-hero sl-hero--compact">
             <div className="shell">
-              <div className="sl-hero__eyebrow sl-slash">/ nordic venture studio · builders and backers</div>
+              <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · builders and backers</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
                 Building solid <Typewriter words={SOLID_WORDS}/>.
               </h1>
@@ -211,7 +211,7 @@ function Hero({ onNav, variant = "inline" }) {
   return (
     <section className="sl-hero">
       <div className="shell">
-        <div className="sl-hero__eyebrow sl-slash">/ nordic venture studio · builders and backers</div>
+        <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · builders and backers</div>
         <h1 className="sl-hero__title sl-hero__title--stacked">
           Building solid <Typewriter words={SOLID_WORDS}/>.
         </h1>
