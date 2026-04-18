@@ -134,7 +134,6 @@ function Hero({ onNav, variant = "inline" }) {
           <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
             Building solid <Typewriter words={SOLID_WORDS}/>.
-            <span className="sl-hero__tagline sl-hero__tagline--32">From the Nordic coast.</span>
           </h1>
           <p className="sl-hero__sub">
             We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
@@ -154,7 +153,6 @@ function Hero({ onNav, variant = "inline" }) {
           <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
           <h1 className="sl-hero__title sl-hero__title--stacked">
             Building solid <Typewriter words={SOLID_WORDS}/>.
-            <span className="sl-hero__tagline sl-hero__tagline--40">From the Nordic coast.</span>
           </h1>
           <p className="sl-hero__sub">
             We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
@@ -177,7 +175,6 @@ function Hero({ onNav, variant = "inline" }) {
               <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
                 Building solid <Typewriter words={SOLID_WORDS}/>.
-                <span className="sl-hero__tagline sl-hero__tagline--32">From the Nordic coast.</span>
               </h1>
               <p className="sl-hero__sub">
                 We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
@@ -197,7 +194,6 @@ function Hero({ onNav, variant = "inline" }) {
               <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
               <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
                 Building solid <Typewriter words={SOLID_WORDS}/>.
-                <span className="sl-hero__tagline sl-hero__tagline--40">From the Nordic coast.</span>
               </h1>
               <p className="sl-hero__sub">
                 We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
@@ -218,7 +214,6 @@ function Hero({ onNav, variant = "inline" }) {
         <div className="sl-hero__eyebrow sl-slash">/ nordic technology studio · stavanger, no</div>
         <h1 className="sl-hero__title sl-hero__title--stacked">
           Building solid <Typewriter words={SOLID_WORDS}/>.
-          <span className="sl-hero__tagline sl-hero__tagline--40">From the Nordic coast.</span>
         </h1>
         <p className="sl-hero__sub">
           We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
