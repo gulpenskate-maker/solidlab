@@ -224,14 +224,14 @@ function Technology({ onNav }) {
     {
       k: "frontend",
       n: "01",
-      t: "Frontend",
-      b: "Next.js, React, React Native, TypeScript, Tailwind.",
+      t: "Frontend & CMS",
+      b: "Next.js, React, Vue, Webflow, WordPress, Sanity — and more.",
     },
     {
       k: "backend",
       n: "02",
-      t: "Backend & Data",
-      b: "Supabase, Postgres, Node.js, Edge Functions.",
+      t: "Backend & Cloud",
+      b: "Supabase, Postgres, AWS, Vercel, Cloudflare — production-grade stack.",
     },
     {
       k: "ai",
@@ -243,14 +243,14 @@ function Technology({ onNav }) {
     {
       k: "integrations",
       n: "04",
-      t: "Integrations",
-      b: "Stripe, Resend, 46elks, Slack, HubSpot, Google Workspace.",
+      t: "Commerce & Payments",
+      b: "Shopify, WooCommerce, Stripe, Vipps, Klarna, Klaviyo.",
     },
     {
       k: "infra",
       n: "05",
-      t: "Infrastructure",
-      b: "Vercel, Cloudflare, GitHub Actions, Supabase auth, Stripe webhooks.",
+      t: "CRM & Messaging",
+      b: "HubSpot, Intercom, Slack, Twilio, 46elks, Resend.",
     },
   ];
   return (
@@ -260,7 +260,7 @@ function Technology({ onNav }) {
         <div className="sl-section__head">
           <h2 className="sl-section__title">The right tool for the job.</h2>
           <p className="sl-section__intro">
-            We're pragmatic about technology — modern where it serves the work, boring where it keeps things stable. Our stack is chosen to last, not to impress.
+            We're pragmatic about technology — modern where it serves the work, boring where it keeps things stable. Our toolkit spans 11 categories and hundreds of tools — chosen to last, not to impress.
           </p>
         </div>
         <div className="sl-tech__grid">

@@ -261,76 +261,168 @@ function TechnologyPage({ onNav }) {
   const groups = [
     {
       n: "01",
-      t: "Frontend",
-      intro: "We build fast, accessible interfaces that scale from landing page to full product. Modern React, type safety, no framework-of-the-month.",
+      t: "Frontend & Frameworks",
+      intro: "Modern interfaces that scale from landing page to full product. Type safety, component-driven, no framework-of-the-month.",
       tools: [
-        { name: "Next.js", note: "App Router, server components, production defaults." },
-        { name: "React", note: "Component model for everything we ship." },
+        { name: "Next.js", note: "Our default for fullstack React apps. App Router, server components." },
+        { name: "React", note: "Component model for everything we ship. Pairs with TypeScript, Tailwind." },
         { name: "React Native (Expo)", note: "Native iOS & Android from one codebase." },
+        { name: "Vue.js", note: "When the project calls for it." },
+        { name: "Astro", note: "Fast static sites with islands of interactivity." },
         { name: "TypeScript", note: "Type safety from day one, no exceptions." },
-        { name: "Tailwind CSS", note: "Utility-first, design system enforced." },
+        { name: "Tailwind CSS", note: "Utility-first styling, design system enforced." },
       ],
+      more: "and 15+ more — ask us what else we work with.",
     },
     {
       n: "02",
-      t: "Backend & Data",
-      intro: "Postgres-first, with Supabase as our default BaaS. Real-time, auth, and row-level security out of the box.",
+      t: "CMS & Publishing",
+      intro: "From designer-friendly builders to headless content platforms — we match the tool to your team's workflow.",
       tools: [
-        { name: "Supabase", note: "Postgres + auth + storage + realtime + edge functions." },
-        { name: "PostgreSQL", note: "The database. Not MongoDB. Not DynamoDB. Postgres." },
-        { name: "Node.js", note: "Server-side JS when we need custom logic." },
-        { name: "Edge Functions", note: "Low-latency serverless, deployed globally." },
-        { name: "pg_cron", note: "Scheduled jobs inside the database, no extra infrastructure." },
+        { name: "Webflow", note: "Designer-friendly, no-code to low-code." },
+        { name: "WordPress", note: "Still the market leader for content-heavy sites. Pairs with WooCommerce, WP Engine." },
+        { name: "Sanity", note: "Headless CMS for modern stacks. Real-time collaboration." },
+        { name: "Contentful", note: "Enterprise headless with strong workflows." },
+        { name: "Strapi", note: "Self-hosted headless when you need full control." },
+        { name: "Ghost", note: "Publishing and newsletters, Markdown-native." },
       ],
+      more: "and 10+ more — ask us what else we work with.",
     },
     {
       n: "03",
-      t: "AI & Automation",
-      intro: "We integrate AI where it earns its place — not as a feature demo. See our dedicated AI page for the full picture.",
+      t: "E-commerce",
+      intro: "Stores built for growth, not just presence. Full stack or headless — whichever fits the business model.",
       tools: [
-        { name: "Claude (Anthropic)", note: "Our primary assistant. API, MCP, custom agents." },
-        { name: "OpenAI", note: "GPT models where appropriate." },
-        { name: "Gemini", note: "Multimodal tasks, image understanding." },
-        { name: "Imagen 4", note: "Production image generation (powers Lara)." },
-        { name: "Ollama", note: "Local models for privacy-sensitive workflows." },
-        { name: "ElevenLabs", note: "Voice synthesis for calls and agents." },
+        { name: "Shopify", note: "The B2C default. Pairs with Klaviyo, Stripe, Google Analytics." },
+        { name: "WooCommerce", note: "WordPress-integrated commerce. Pairs with WordPress + WP Engine." },
+        { name: "Medusa", note: "Open-source headless commerce." },
+        { name: "BigCommerce", note: "Enterprise e-commerce platform." },
+        { name: "Klaviyo", note: "Marketing automation for e-commerce. Integrates with all stores above." },
+        { name: "Voyado", note: "Customer loyalty and personalization — Nordic market." },
       ],
+      more: "and more commerce platforms on request.",
+    },
+    {
+      n: "04",
+      t: "Backend & Data",
+      intro: "Postgres-first. Real-time, auth, and row-level security out of the box. Scalable without lock-in.",
+      tools: [
+        { name: "Supabase", note: "Our default BaaS. Postgres + auth + storage + realtime + edge functions." },
+        { name: "PostgreSQL", note: "The database. Battle-tested, feature-rich, no reason to use alternatives without cause." },
+        { name: "Firebase", note: "Google's alternative — works well for mobile-first apps." },
+        { name: "MongoDB", note: "When the document model genuinely fits the data." },
+        { name: "Redis", note: "Cache and queues, fast key-value ops." },
+        { name: "Node.js", note: "Server-side JavaScript for custom logic." },
+        { name: "Python", note: "Data-heavy workflows, scripting, AI pipelines." },
+        { name: "Prisma", note: "Type-safe ORM for TypeScript projects." },
+      ],
+      more: "and more databases/runtimes on request.",
+    },
+    {
+      n: "05",
+      t: "Cloud & Infrastructure",
+      intro: "Deploy platforms chosen for zero-friction scaling. Observability without vendor lock-in.",
+      tools: [
+        { name: "Vercel", note: "Our default for modern web apps. CI/CD baked in." },
+        { name: "AWS", note: "Full cloud stack — EC2, S3, Lambda, RDS, CloudFront." },
+        { name: "Google Cloud Platform", note: "Alternative cloud — strong for data and AI workloads." },
+        { name: "Cloudflare", note: "CDN, DNS, edge workers, R2 storage." },
+        { name: "WP Engine", note: "Managed WordPress hosting for enterprise." },
+        { name: "DigitalOcean", note: "Simple VPS for when managed platforms overkill." },
+        { name: "Docker", note: "Containerization for reproducible environments." },
+        { name: "GitHub Actions", note: "Automated testing, deploys, and workflows." },
+      ],
+      more: "and more infra tools on request.",
+    },
+    {
+      n: "06",
+      t: "Payments",
+      intro: "From global cards to Nordic mobile payments — we integrate the right rail for your market.",
+      tools: [
+        { name: "Stripe", note: "Global default. Cards, subscriptions, webhooks. MCP-integrated." },
+        { name: "Vipps", note: "Norwegian mobile payments — essential for local market." },
+        { name: "Klarna", note: "Buy now, pay later. Invoice options." },
+        { name: "PayPal", note: "Still widely expected by customers globally." },
+        { name: "Adyen", note: "Enterprise-grade unified payments platform." },
+      ],
+      more: "and local providers on request.",
+    },
+    {
+      n: "07",
+      t: "Communication & CRM",
+      intro: "The tools your business already runs on — CRM, email, messaging. We connect them cleanly.",
+      tools: [
+        { name: "HubSpot", note: "CRM + marketing automation. Our go-to for growing B2B teams." },
+        { name: "Pipedrive", note: "Simpler CRM for sales-focused teams." },
+        { name: "Intercom", note: "Customer service and live chat." },
+        { name: "Mailchimp", note: "Email marketing for SMBs." },
+        { name: "Resend", note: "Modern transactional email, EU region." },
+        { name: "SendGrid", note: "Enterprise transactional email." },
+        { name: "46elks", note: "SMS and voice IVR, Nordic-first carrier." },
+        { name: "Twilio", note: "Global communications platform — SMS, voice, WhatsApp." },
+        { name: "Slack", note: "Team communication with webhooks, bots, custom apps." },
+      ],
+      more: "and 10+ more — ask us what else we work with.",
+    },
+    {
+      n: "08",
+      t: "Automation & Integrations",
+      intro: "Clean up the manual work that steals your time. Connect systems so data flows where it should.",
+      tools: [
+        { name: "Zapier", note: "No-code automation for standard flows." },
+        { name: "Make (Integromat)", note: "Visual automation with more flexibility than Zapier." },
+        { name: "n8n", note: "Self-hosted automation when you need data sovereignty." },
+        { name: "Google Workspace", note: "Sheets, Drive, Calendar — API-driven." },
+        { name: "Apps Script", note: "Lightweight automation inside Google Workspace." },
+        { name: "Webhooks", note: "The standard for system-to-system integration." },
+      ],
+      more: "and custom integrations on any API.",
+    },
+    {
+      n: "09",
+      t: "AI & LLMs",
+      intro: "We integrate AI where it earns its place — not as a feature demo. Full detail on our dedicated AI page.",
+      tools: [
+        { name: "Claude (Anthropic)", note: "Our primary assistant. Reasoning, code, MCP tool use." },
+        { name: "OpenAI GPT", note: "Breadth of training, strong for classification and standard tasks." },
+        { name: "Google Gemini", note: "Multimodal — image understanding, video, OCR." },
+        { name: "Imagen 4", note: "Production image generation." },
+        { name: "Ollama", note: "Local models for privacy-sensitive workflows." },
+        { name: "ElevenLabs", note: "Voice synthesis for calls and conversational agents." },
+      ],
+      more: "and the full MCP ecosystem.",
       ctaLabel: "/ see our ai stack",
       ctaAction: "ai",
     },
     {
-      n: "04",
-      t: "Integrations",
-      intro: "Your business already runs on tools. We connect them so data flows where it should.",
+      n: "10",
+      t: "Analytics & Observability",
+      intro: "Measure what matters, respect privacy, catch issues before users do.",
       tools: [
-        { name: "Stripe", note: "Payments, subscriptions, webhooks. MCP-integrated." },
-        { name: "Resend", note: "Transactional email, EU region." },
-        { name: "46elks", note: "SMS and voice IVR, Nordic-first carrier." },
-        { name: "Slack", note: "Webhooks, bots, custom apps." },
-        { name: "HubSpot", note: "CRM and marketing automation." },
-        { name: "Google Workspace", note: "Sheets, Drive, Calendar — API-driven." },
-      ],
-    },
-    {
-      n: "05",
-      t: "Infrastructure & Ops",
-      intro: "Deploy platforms chosen for zero-friction scaling. Observability without vendor lock-in.",
-      tools: [
-        { name: "Vercel", note: "Hosting and CI/CD for everything we ship." },
-        { name: "Cloudflare", note: "DNS, CDN, and edge workers." },
-        { name: "GitHub Actions", note: "Automated testing and deploys." },
+        { name: "Google Analytics 4", note: "Still the market default." },
+        { name: "Plausible", note: "Privacy-first, cookieless analytics." },
+        { name: "Mixpanel", note: "Product analytics — funnels, cohorts, retention." },
+        { name: "PostHog", note: "All-in-one product analytics with session replay." },
         { name: "Sentry", note: "Error tracking and performance monitoring." },
+        { name: "Cloudflare Web Analytics", note: "Lightweight, privacy-respecting." },
       ],
+      more: "and more on request.",
     },
     {
-      n: "06",
+      n: "11",
       t: "Smart Home & IoT",
-      intro: "Specialized work for physical systems — off-grid cabins, industrial sensors, home automation.",
+      intro: "Specialized work for physical systems — automation hubs, industrial sensors, off-grid power.",
       tools: [
-        { name: "Homey Pro", note: "Home automation hub, open Flow API." },
-        { name: "Victron Energy", note: "Off-grid solar, VRM cloud API." },
+        { name: "Homey Pro", note: "Home automation hub with open Flow API." },
+        { name: "Home Assistant", note: "Open-source smart home platform — maximum flexibility." },
+        { name: "Raspberry Pi", note: "Physical control units, edge compute." },
+        { name: "Arduino", note: "Microcontrollers for custom hardware." },
+        { name: "Victron Energy", note: "Off-grid solar with VRM cloud API." },
         { name: "Modbus TCP", note: "Industrial protocol integration." },
+        { name: "Zigbee / Z-Wave / Matter", note: "Smart home wireless protocols." },
+        { name: "MQTT", note: "Lightweight IoT messaging protocol." },
       ],
+      more: "and more hardware/protocols on request.",
     },
   ];
 
@@ -343,7 +435,7 @@ function TechnologyPage({ onNav }) {
             Our toolkit — <em style={{fontStyle:"normal",color:"var(--fg-secondary)"}}>chosen to last, not to impress.</em>
           </h1>
           <p className="sl-section__intro" style={{marginTop:40, maxWidth:720, fontSize:19}}>
-            We're pragmatic about technology. Modern where it serves the work, boring where it keeps things stable. Every tool below has earned its place by solving a real problem for a real client.
+            We're pragmatic about technology. Modern where it serves the work, boring where it keeps things stable. Every tool below has earned its place by solving a real problem — and we're always adding to the toolkit.
           </p>
         </div>
       </section>
@@ -367,6 +459,12 @@ function TechnologyPage({ onNav }) {
                     <p className="sl-tech-item__note">{tool.note}</p>
                   </div>
                 ))}
+                {g.more && (
+                  <div className="sl-tech-item sl-tech-item--more">
+                    <h4 className="sl-tech-item__name sl-tech-item__name--muted">+ more</h4>
+                    <p className="sl-tech-item__note">{g.more}</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -381,7 +479,7 @@ function TechnologyPage({ onNav }) {
               Tech stack is a means, not an end.
             </h2>
             <p className="sl-section__intro" style={{maxWidth:640}}>
-              We pick the right tool for the job — and we're honest when the right tool isn't in the list above. Let's talk about what your project actually needs.
+              Don't see your tool above? Ask us — chances are it's in our toolkit, or we know exactly which alternative will solve your problem.
             </p>
             <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a conversation →</a>
           </div>

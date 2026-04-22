@@ -987,3 +987,18 @@ html[data-theme="light"] .sl-tech-closing {
   align-items: flex-start;
   max-width: 800px;
 }
+
+/* Muted "+ more" row in tech lists — signals breadth without listing everything */
+.sl-tech-item--more {
+  opacity: 0.65;
+  border-bottom: none !important;
+  padding-top: 16px !important;
+}
+.sl-tech-item__name--muted {
+  color: var(--fg-tertiary) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
