@@ -126,99 +126,14 @@ function Header({ current, onNav }) {
 }
 
 /* ============ HERO ============ */
-function Hero({ onNav, variant = "inline" }) {
-  if (variant === "stacked32") {
-    return (
-      <section className="sl-hero">
-        <div className="shell">
-          <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · for builders and backers</div>
-          <h1 className="sl-hero__title sl-hero__title--stacked">
-            <span><span className="sl-hero__light">We build </span><span className="sl-hero__bold">solid</span></span>
-            <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
-          </h1>
-          <p className="sl-hero__sub">
-            We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
-          </p>
-          <div className="sl-hero__cta">
-            <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a project →</a>
-            <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("work");}}>/ view work</a>
-          </div>
-        </div>
-      </section>
-    );
-  }
-  if (variant === "stacked40") {
-    return (
-      <section className="sl-hero">
-        <div className="shell">
-          <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · for builders and backers</div>
-          <h1 className="sl-hero__title sl-hero__title--stacked">
-            <span><span className="sl-hero__light">We build </span><span className="sl-hero__bold">solid</span></span>
-            <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
-          </h1>
-          <p className="sl-hero__sub">
-            We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
-          </p>
-          <div className="sl-hero__cta">
-            <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a project →</a>
-            <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("work");}}>/ view work</a>
-          </div>
-        </div>
-      </section>
-    );
-  }
-  if (variant === "compare") {
-    return (
-      <div className="sl-hero-compare">
-        <div className="sl-hero-compare__band">
-          <div className="sl-hero-compare__tag sl-slash">/ stacked — 32px</div>
-          <section className="sl-hero sl-hero--compact">
-            <div className="shell">
-              <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · for builders and backers</div>
-              <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
-                <span><span className="sl-hero__light">We build </span><span className="sl-hero__bold">solid</span></span>
-            <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
-              </h1>
-              <p className="sl-hero__sub">
-                We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
-              </p>
-              <div className="sl-hero__cta">
-                <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a project →</a>
-                <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("work");}}>/ view work</a>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div className="sl-hero-compare__gap"></div>
-        <div className="sl-hero-compare__band">
-          <div className="sl-hero-compare__tag sl-slash">/ stacked — 40px</div>
-          <section className="sl-hero sl-hero--compact">
-            <div className="shell">
-              <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · for builders and backers</div>
-              <h1 className="sl-hero__title sl-hero__title--stacked sl-hero__title--compact">
-                <span><span className="sl-hero__light">We build </span><span className="sl-hero__bold">solid</span></span>
-            <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
-              </h1>
-              <p className="sl-hero__sub">
-                We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
-              </p>
-              <div className="sl-hero__cta">
-                <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a project →</a>
-                <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("work");}}>/ view work</a>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-    );
-  }
+function Hero({ onNav }) {
   return (
     <section className="sl-hero">
       <div className="shell">
         <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · for builders and backers</div>
         <h1 className="sl-hero__title sl-hero__title--stacked">
           <span><span className="sl-hero__light">We build </span><span className="sl-hero__bold">solid</span></span>
-            <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
+          <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
         </h1>
         <p className="sl-hero__sub">
           We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
@@ -461,10 +376,7 @@ function Footer() {
       <div className="shell sl-footer__inner">
         <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · built in the nordics</div>
         <div className="sl-footer__right">
-          <a href="#">/ github</a>
-          <a href="#">/ linkedin</a>
-          <a href="#">/ rss</a>
-          <a href="#">hello@solidlab.ai</a>
+          <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>
         </div>
       </div>
     </footer>

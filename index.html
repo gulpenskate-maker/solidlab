@@ -18,7 +18,23 @@
   })();
 </script>
 <meta name="viewport" content="width=1280"/>
-<title>solidlab.ai — a nordic venture studio</title>
+<title>Solidlab — A Nordic Venture Studio</title>
+<meta name="description" content="Solidlab is a Nordic venture studio for builders and backers. We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders."/>
+<meta name="theme-color" content="#1F1F1F"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://solidlab.ai/"/>
+<meta property="og:title" content="Solidlab — A Nordic Venture Studio"/>
+<meta property="og:description" content="Builders and backers. AI-powered SaaS products and digital infrastructure consulting, built with Nordic craft."/>
+<meta property="og:site_name" content="Solidlab"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Solidlab — A Nordic Venture Studio"/>
+<meta name="twitter:description" content="Builders and backers. AI-powered SaaS products and digital infrastructure consulting, built with Nordic craft."/>
+
+<link rel="canonical" href="https://solidlab.ai/"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -40,7 +56,6 @@ const { useState } = React;
 function App() {
   const [view, setView] = useState("home"); // home | work | about | contact | investors | case | detail
   const [detail, setDetail] = useState(null);
-  const [heroVariant, setHeroVariant] = useState("inline"); // "inline" | "stacked"
 
   const nav = (k) => {
     if (k === "home") { setView("home"); setDetail(null); }
@@ -64,11 +79,11 @@ function App() {
       <Header current={view === "detail" ? "work" : view === "home" ? null : view} onNav={nav}/>
       {view === "home" && (
         <>
-          <Hero onNav={nav} variant={heroVariant}/>
-          {heroVariant !== "compare" && <WhatWeDo/>}
-          {heroVariant !== "compare" && <Work onSelect={selectWork}/>}
-          {heroVariant !== "compare" && <About/>}
-          {heroVariant !== "compare" && <Contact/>}
+          <Hero onNav={nav}/>
+          <WhatWeDo/>
+          <Work onSelect={selectWork}/>
+          <About/>
+          <Contact/>
         </>
       )}
       {view === "work" && (
@@ -93,17 +108,6 @@ function App() {
         <Detail item={detail} onBack={() => { setView("work"); setDetail(null); window.scrollTo({top:0}); }} />
       )}
       <Footer/>
-      <div style={{position:"fixed",bottom:24,right:24,display:"flex",gap:8,zIndex:20,fontFamily:"var(--font-mono)",fontSize:11,letterSpacing:"0.08em",textTransform:"uppercase",flexWrap:"wrap",justifyContent:"flex-end",maxWidth:640}}>
-        {[
-          ["inline","/ hero: inline"],
-          ["stacked32","/ stacked 32"],
-          ["stacked40","/ stacked 40"],
-          ["compare","/ compare 32→40"],
-        ].map(([v,lbl])=>(
-          <button key={v} onClick={()=>{setView("home"); setHeroVariant(v); window.scrollTo({top:0});}} style={{padding:"8px 12px",background:heroVariant===v&&view==="home"?"#4A5A62":"transparent",color:"#F4F1EA",border:"1px solid "+(heroVariant===v&&view==="home"?"#4A5A62":"#1F1F1F"),cursor:"pointer",fontFamily:"inherit",fontSize:"inherit",letterSpacing:"inherit",textTransform:"inherit"}}>{lbl}</button>
-        ))}
-        <button onClick={()=>{setView("case"); window.scrollTo({top:0});}} style={{padding:"8px 12px",background:view==="case"?"#4A5A62":"transparent",color:"#F4F1EA",border:"1px solid "+(view==="case"?"#4A5A62":"#1F1F1F"),cursor:"pointer",fontFamily:"inherit",fontSize:"inherit",letterSpacing:"inherit",textTransform:"inherit"}}>/ case study</button>
-      </div>
     </>
   );
 }
