@@ -195,7 +195,6 @@ function Header({ current, onNav }) {
           <div className="sl-sidemenu__divider"></div>
 
           <nav className="sl-sidemenu__secondary">
-            <a href="#" className="sl-sidemenu__link-small" onClick={(e)=>{e.preventDefault(); handleNav("investors");}}>/ investors</a>
             <a href="mailto:hello@solidlab.ai" className="sl-sidemenu__link-small">hello@solidlab.ai</a>
           </nav>
 
