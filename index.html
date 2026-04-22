@@ -38,8 +38,8 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="stylesheet" href="site.css?v=8">
-<link rel="stylesheet" href="surfaces.css?v=8">
+<link rel="stylesheet" href="site.css?v=9">
+<link rel="stylesheet" href="surfaces.css?v=9">
 
 <!-- Weglot — translation layer (EN source → NO/SE/DK)
      Note: Dynamic content (React-rendered) requires adding "body" as a
@@ -200,6 +200,8 @@ function App() {
     else if (k === "about") { setView("about"); setDetail(null); }
     else if (k === "contact") { setView("contact"); setDetail(null); }
     else if (k === "investors") { setView("investors"); setDetail(null); }
+    else if (k === "technology") { setView("technology"); setDetail(null); }
+    else if (k === "ai") { setView("ai"); setDetail(null); }
     else if (k === "writing") { setView("home"); }
     window.scrollTo({top:0, behavior:"smooth"});
   };
@@ -218,6 +220,7 @@ function App() {
           <Hero onNav={nav}/>
           <WhatWeDo/>
           <Advisory onNav={nav}/>
+          <Technology onNav={nav}/>
           <About/>
           <Contact/>
         </>
@@ -230,6 +233,12 @@ function App() {
       )}
       {view === "investors" && (
         <InvestorsPage/>
+      )}
+      {view === "technology" && (
+        <TechnologyPage onNav={nav}/>
+      )}
+      {view === "ai" && (
+        <AIPage onNav={nav}/>
       )}
       <Footer/>
     </>

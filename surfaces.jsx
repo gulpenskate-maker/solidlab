@@ -256,6 +256,275 @@ function CaseStudy({ data, onBack, onNext }) {
   );
 }
 
+/* ============ TECHNOLOGY PAGE ============ */
+function TechnologyPage({ onNav }) {
+  const groups = [
+    {
+      n: "01",
+      t: "Frontend",
+      intro: "We build fast, accessible interfaces that scale from landing page to full product. Modern React, type safety, no framework-of-the-month.",
+      tools: [
+        { name: "Next.js", note: "App Router, server components, production defaults." },
+        { name: "React", note: "Component model for everything we ship." },
+        { name: "React Native (Expo)", note: "Native iOS & Android from one codebase." },
+        { name: "TypeScript", note: "Type safety from day one, no exceptions." },
+        { name: "Tailwind CSS", note: "Utility-first, design system enforced." },
+      ],
+    },
+    {
+      n: "02",
+      t: "Backend & Data",
+      intro: "Postgres-first, with Supabase as our default BaaS. Real-time, auth, and row-level security out of the box.",
+      tools: [
+        { name: "Supabase", note: "Postgres + auth + storage + realtime + edge functions." },
+        { name: "PostgreSQL", note: "The database. Not MongoDB. Not DynamoDB. Postgres." },
+        { name: "Node.js", note: "Server-side JS when we need custom logic." },
+        { name: "Edge Functions", note: "Low-latency serverless, deployed globally." },
+        { name: "pg_cron", note: "Scheduled jobs inside the database, no extra infrastructure." },
+      ],
+    },
+    {
+      n: "03",
+      t: "AI & Automation",
+      intro: "We integrate AI where it earns its place — not as a feature demo. See our dedicated AI page for the full picture.",
+      tools: [
+        { name: "Claude (Anthropic)", note: "Our primary assistant. API, MCP, custom agents." },
+        { name: "OpenAI", note: "GPT models where appropriate." },
+        { name: "Gemini", note: "Multimodal tasks, image understanding." },
+        { name: "Imagen 4", note: "Production image generation (powers Lara)." },
+        { name: "Ollama", note: "Local models for privacy-sensitive workflows." },
+        { name: "ElevenLabs", note: "Voice synthesis for calls and agents." },
+      ],
+      ctaLabel: "/ see our ai stack",
+      ctaAction: "ai",
+    },
+    {
+      n: "04",
+      t: "Integrations",
+      intro: "Your business already runs on tools. We connect them so data flows where it should.",
+      tools: [
+        { name: "Stripe", note: "Payments, subscriptions, webhooks. MCP-integrated." },
+        { name: "Resend", note: "Transactional email, EU region." },
+        { name: "46elks", note: "SMS and voice IVR, Nordic-first carrier." },
+        { name: "Slack", note: "Webhooks, bots, custom apps." },
+        { name: "HubSpot", note: "CRM and marketing automation." },
+        { name: "Google Workspace", note: "Sheets, Drive, Calendar — API-driven." },
+      ],
+    },
+    {
+      n: "05",
+      t: "Infrastructure & Ops",
+      intro: "Deploy platforms chosen for zero-friction scaling. Observability without vendor lock-in.",
+      tools: [
+        { name: "Vercel", note: "Hosting and CI/CD for everything we ship." },
+        { name: "Cloudflare", note: "DNS, CDN, and edge workers." },
+        { name: "GitHub Actions", note: "Automated testing and deploys." },
+        { name: "Sentry", note: "Error tracking and performance monitoring." },
+      ],
+    },
+    {
+      n: "06",
+      t: "Smart Home & IoT",
+      intro: "Specialized work for physical systems — off-grid cabins, industrial sensors, home automation.",
+      tools: [
+        { name: "Homey Pro", note: "Home automation hub, open Flow API." },
+        { name: "Victron Energy", note: "Off-grid solar, VRM cloud API." },
+        { name: "Modbus TCP", note: "Industrial protocol integration." },
+      ],
+    },
+  ];
+
+  return (
+    <>
+      <section className="sl-section" style={{paddingTop: 80}}>
+        <div className="shell">
+          <div className="sl-slash" style={{marginBottom:24}}>/ technology</div>
+          <h1 className="sl-section__title" style={{fontSize:72, maxWidth:1100}}>
+            Our toolkit — <em style={{fontStyle:"normal",color:"var(--fg-secondary)"}}>chosen to last, not to impress.</em>
+          </h1>
+          <p className="sl-section__intro" style={{marginTop:40, maxWidth:720, fontSize:19}}>
+            We're pragmatic about technology. Modern where it serves the work, boring where it keeps things stable. Every tool below has earned its place by solving a real problem for a real client.
+          </p>
+        </div>
+      </section>
+
+      {groups.map((g, idx) => (
+        <section key={g.n} className="sl-section sl-tech-group" style={idx === 0 ? {paddingTop: 40} : {}}>
+          <div className="shell">
+            <div className="sl-tech-group__grid">
+              <div className="sl-tech-group__head">
+                <div className="sl-slash sl-tech-group__num">/ {g.n}</div>
+                <h2 className="sl-tech-group__title">{g.t}</h2>
+                <p className="sl-tech-group__intro">{g.intro}</p>
+                {g.ctaLabel && (
+                  <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav(g.ctaAction);}}>{g.ctaLabel}</a>
+                )}
+              </div>
+              <div className="sl-tech-group__list">
+                {g.tools.map(tool => (
+                  <div key={tool.name} className="sl-tech-item">
+                    <h4 className="sl-tech-item__name">{tool.name}</h4>
+                    <p className="sl-tech-item__note">{tool.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* Closing CTA */}
+      <section className="sl-section sl-tech-closing">
+        <div className="shell">
+          <div className="sl-tech-closing__inner">
+            <h2 className="sl-section__title" style={{maxWidth:800}}>
+              Tech stack is a means, not an end.
+            </h2>
+            <p className="sl-section__intro" style={{maxWidth:640}}>
+              We pick the right tool for the job — and we're honest when the right tool isn't in the list above. Let's talk about what your project actually needs.
+            </p>
+            <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a conversation →</a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ============ AI PAGE ============ */
+function AIPage({ onNav }) {
+  return (
+    <>
+      <section className="sl-section" style={{paddingTop: 80}}>
+        <div className="shell">
+          <div className="sl-slash" style={{marginBottom:24}}>/ ai</div>
+          <h1 className="sl-section__title" style={{fontSize:72, maxWidth:1100}}>
+            AI that earns its place — <em style={{fontStyle:"normal",color:"var(--fg-secondary)"}}>not as a feature demo.</em>
+          </h1>
+          <p className="sl-section__intro" style={{marginTop:40, maxWidth:720, fontSize:19}}>
+            We use AI where it solves a real problem and avoid it where it doesn't. No AI-washing, no demo-ware. Just working systems that happen to use the best models available.
+          </p>
+        </div>
+      </section>
+
+      {/* Our approach */}
+      <section className="sl-section">
+        <div className="shell">
+          <div className="sl-slash" style={{marginBottom:24}}>/ 01 — approach</div>
+          <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"start"}}>
+            <h2 style={{fontSize:40, fontWeight:600, letterSpacing:"-0.01em", lineHeight:1.15, margin:0}}>
+              We build with AI where it matters.
+            </h2>
+            <div style={{display:"flex", flexDirection:"column", gap:20}}>
+              <p style={{fontSize:17, lineHeight:1.65, color:"var(--fg-secondary)", margin:0}}>
+                Every model has strengths. Claude for reasoning and long-form work. GPT for breadth. Gemini for multimodal. Imagen for images. Local models (Ollama) for privacy-sensitive tasks.
+              </p>
+              <p style={{fontSize:17, lineHeight:1.65, color:"var(--fg-secondary)", margin:0}}>
+                We're model-agnostic and opinion-heavy. Our default is Claude because it's the best at understanding and code. Your stack can be different.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech stack */}
+      <section className="sl-section sl-tech-group">
+        <div className="shell">
+          <div className="sl-tech-group__grid">
+            <div className="sl-tech-group__head">
+              <div className="sl-slash sl-tech-group__num">/ 02</div>
+              <h2 className="sl-tech-group__title">Our AI stack</h2>
+              <p className="sl-tech-group__intro">The tools we actually use, in production, every day.</p>
+            </div>
+            <div className="sl-tech-group__list">
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">Claude (Anthropic)</h4>
+                <p className="sl-tech-item__note">Our primary assistant. Used for reasoning, long-form work, agentic workflows, and MCP tool integration. The foundation of most of our AI-powered products.</p>
+              </div>
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">Model Context Protocol (MCP)</h4>
+                <p className="sl-tech-item__note">We build custom MCP servers that give Claude access to Stripe, Supabase, Slack, and your own APIs. Real tools, real data — not just chat.</p>
+              </div>
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">OpenAI GPT</h4>
+                <p className="sl-tech-item__note">Used where breadth of training beats depth of reasoning. Often the right choice for classification and standard completions.</p>
+              </div>
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">Google Gemini</h4>
+                <p className="sl-tech-item__note">Multimodal workflows — image understanding, video analysis, document OCR.</p>
+              </div>
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">Imagen 4</h4>
+                <p className="sl-tech-item__note">Production image generation. Powers Lara, our creative image platform.</p>
+              </div>
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">Ollama (local)</h4>
+                <p className="sl-tech-item__note">Llama 3.2 running on-device for privacy-sensitive workflows. Data never leaves the machine.</p>
+              </div>
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">ElevenLabs</h4>
+                <p className="sl-tech-item__note">Voice synthesis for phone agents, IVR systems, and conversational interfaces.</p>
+              </div>
+              <div className="sl-tech-item">
+                <h4 className="sl-tech-item__name">Google TTS</h4>
+                <p className="sl-tech-item__note">Norwegian-native voice (nb-NO-Wavenet-D) for local language work.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Where we apply it */}
+      <section className="sl-section">
+        <div className="shell">
+          <div className="sl-slash" style={{marginBottom:24}}>/ 03 — applied</div>
+          <h2 style={{fontSize:40, fontWeight:600, letterSpacing:"-0.01em", lineHeight:1.2, maxWidth:800, marginBottom:40}}>
+            Where AI actually earns its place.
+          </h2>
+          <div className="sl-tech__grid" style={{gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))"}}>
+            <div className="sl-tech__card">
+              <span className="sl-slash sl-tech__num">/ 01</span>
+              <h3 className="sl-tech__card-title">Internal copilots</h3>
+              <p className="sl-tech__card-body">Claude agents with MCP access to your systems — CRM, billing, support tickets. Real tools, not just chat.</p>
+            </div>
+            <div className="sl-tech__card">
+              <span className="sl-slash sl-tech__num">/ 02</span>
+              <h3 className="sl-tech__card-title">Voice & phone agents</h3>
+              <p className="sl-tech__card-body">Automated IVR and outbound calls with ElevenLabs or Google TTS. Norwegian-native by default.</p>
+            </div>
+            <div className="sl-tech__card">
+              <span className="sl-slash sl-tech__num">/ 03</span>
+              <h3 className="sl-tech__card-title">Smart automations</h3>
+              <p className="sl-tech__card-body">Email triage, lead scoring, document classification. AI as the first-pass filter for your team.</p>
+            </div>
+            <div className="sl-tech__card">
+              <span className="sl-slash sl-tech__num">/ 04</span>
+              <h3 className="sl-tech__card-title">Creative tools</h3>
+              <p className="sl-tech__card-body">Image generation pipelines, content drafting, prompt-engineering-as-a-service.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Closing CTA */}
+      <section className="sl-section sl-tech-closing">
+        <div className="shell">
+          <div className="sl-tech-closing__inner">
+            <h2 className="sl-section__title" style={{maxWidth:800}}>
+              Thinking about AI in your business?
+            </h2>
+            <p className="sl-section__intro" style={{maxWidth:640}}>
+              We'll help you figure out where it belongs, where it doesn't, and what it would actually take to ship. No hype. Just honest answers.
+            </p>
+            <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Book a conversation →</a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+
 /* Sample case study data */
 const SAMPLE_CASE = {
   title: "Bølgevarsel",
@@ -461,4 +730,4 @@ function InvestorsPage() {
   );
 }
 
-Object.assign(window, { ContactPage, AboutPage, CaseStudy, InvestorsPage, SAMPLE_CASE });
+Object.assign(window, { ContactPage, AboutPage, CaseStudy, InvestorsPage, TechnologyPage, AIPage, SAMPLE_CASE });

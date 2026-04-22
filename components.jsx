@@ -110,6 +110,8 @@ const SOLID_WORDS = ["concepts", "software", "apps", "integrations", "websites",
 /* ============ HEADER ============ */
 function Header({ current, onNav }) {
   const items = [
+    { k: "technology", label: "/ tech" },
+    { k: "ai", label: "/ ai" },
     { k: "about", label: "/ about" },
     { k: "investors", label: "/ investors" },
     { k: "contact", label: "/ contact" },
@@ -211,6 +213,75 @@ function Advisory({ onNav }) {
               Book a conversation →
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ TECHNOLOGY — forside teaser ============ */
+function Technology({ onNav }) {
+  const categories = [
+    {
+      k: "frontend",
+      n: "01",
+      t: "Frontend",
+      b: "Next.js, React, React Native, TypeScript, Tailwind.",
+    },
+    {
+      k: "backend",
+      n: "02",
+      t: "Backend & Data",
+      b: "Supabase, Postgres, Node.js, Edge Functions.",
+    },
+    {
+      k: "ai",
+      n: "03",
+      t: "AI & Automation",
+      b: "Claude, GPT, Gemini, MCP, Ollama. Smart from the inside.",
+      highlight: true,
+    },
+    {
+      k: "integrations",
+      n: "04",
+      t: "Integrations",
+      b: "Stripe, Resend, 46elks, Slack, HubSpot, Google Workspace.",
+    },
+    {
+      k: "infra",
+      n: "05",
+      t: "Infrastructure",
+      b: "Vercel, Cloudflare, GitHub Actions, Supabase auth, Stripe webhooks.",
+    },
+  ];
+  return (
+    <section className="sl-tech">
+      <div className="shell">
+        <div className="sl-slash" style={{marginBottom:24}}>/ 03 — technology</div>
+        <div className="sl-section__head">
+          <h2 className="sl-section__title">The right tool for the job.</h2>
+          <p className="sl-section__intro">
+            We're pragmatic about technology — modern where it serves the work, boring where it keeps things stable. Our stack is chosen to last, not to impress.
+          </p>
+        </div>
+        <div className="sl-tech__grid">
+          {categories.map(c => (
+            <a
+              key={c.k}
+              href="#"
+              className={`sl-tech__card${c.highlight ? ' sl-tech__card--highlight' : ''}`}
+              onClick={(e) => { e.preventDefault(); onNav(c.k === "ai" ? "ai" : "technology"); }}
+            >
+              <span className="sl-slash sl-tech__num">/ {c.n}</span>
+              <h3 className="sl-tech__card-title">{c.t}</h3>
+              <p className="sl-tech__card-body">{c.b}</p>
+              <span className="sl-tech__arrow">→</span>
+            </a>
+          ))}
+        </div>
+        <div className="sl-tech__ctas">
+          <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("technology");}}>/ full toolkit</a>
+          <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("ai");}}>/ ai & claude</a>
         </div>
       </div>
     </section>
@@ -353,7 +424,7 @@ function About() {
   return (
     <section className="sl-section sl-about">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:24}}>/ 03 — about</div>
+        <div className="sl-slash" style={{marginBottom:24}}>/ 04 — about</div>
         <div className="sl-about__inner">
           <h2 className="sl-about__title">A studio anchored in Nordic craft — not aesthetic, commitment.</h2>
           <div className="sl-about__body">
@@ -381,7 +452,7 @@ function Contact() {
   return (
     <section className="sl-contact">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:32}}>/ 04 — contact</div>
+        <div className="sl-slash" style={{marginBottom:32}}>/ 05 — contact</div>
         <div className="sl-contact__grid">
           <h2 className="sl-contact__title">Want to build something <em>solid?</em></h2>
           <div className="sl-contact__meta">
@@ -456,4 +527,4 @@ function Detail({ item, onBack }) {
 }
 
 /* Export to global scope so index.html can use them */
-Object.assign(window, { ThemeToggle, Typewriter, SOLID_WORDS, Header, Hero, WhatWeDo, Advisory, Work, About, Contact, Footer, Detail, WORK_ITEMS });
+Object.assign(window, { ThemeToggle, Typewriter, SOLID_WORDS, Header, Hero, WhatWeDo, Advisory, Technology, Work, About, Contact, Footer, Detail, WORK_ITEMS });
