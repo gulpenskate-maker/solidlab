@@ -1002,3 +1002,255 @@ html[data-theme="light"] .sl-tech-closing {
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
 }
+
+/* =============================================================
+   MOBILE RESPONSIVENESS — comprehensive overrides
+   Mobile-first reset for all major components.
+   Breakpoints:
+   - 768px: tablet/large-phone (most fixes)
+   - 480px: small phone (extra tightening)
+   ============================================================= */
+
+@media (max-width: 768px) {
+  /* Shell — tighter gutter */
+  .shell { padding: 0 20px; }
+
+  /* Header — compact, readable */
+  .sl-header__inner { height: 64px; }
+  .sl-wm { font-size: 22px; }
+  .sl-nav {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .sl-nav a {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+  .sl-theme-toggle {
+    padding: 6px 10px !important;
+    font-size: 10px !important;
+  }
+
+  /* Hero — scaled down, left-aligned */
+  .sl-hero { padding: 48px 0 64px; }
+  .sl-hero__title {
+    font-size: 48px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em;
+  }
+  .sl-hero__title--stacked { gap: 12px; }
+  .sl-hero__eyebrow {
+    font-size: 11px;
+    margin-bottom: 20px;
+  }
+  .sl-hero__sub {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-top: 24px;
+    max-width: 100%;
+  }
+  .sl-hero__cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .sl-hero__cta .sl-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Buttons — full width on mobile */
+  .sl-btn { padding: 14px 20px; font-size: 14px; }
+
+  /* Section titles */
+  .sl-section { padding: 64px 0; }
+  .sl-section__title {
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+    max-width: 100% !important;
+  }
+  .sl-section__intro {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-top: 16px;
+  }
+  .sl-section__head {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  /* Services grid — stack to 1 column */
+  .sl-services { grid-template-columns: 1fr !important; margin-top: 32px; }
+  .sl-service { padding: 28px 20px; }
+  .sl-service:last-child:nth-child(odd) { grid-column: span 1 !important; }
+  .sl-service__title { font-size: 20px; }
+  .sl-service__body { font-size: 14px; }
+
+  /* Advisory — stack, tighten type */
+  .sl-advisory { padding: 72px 0; }
+  .sl-advisory__eyebrow { margin-bottom: 32px; }
+  .sl-advisory__grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px;
+  }
+  .sl-advisory__left { position: static !important; }
+  .sl-advisory__title {
+    font-size: 32px !important;
+    line-height: 1.15 !important;
+  }
+  .sl-advisory__body { font-size: 15px !important; }
+  .sl-advisory__cta { width: 100%; text-align: center; justify-content: center; }
+
+  /* Technology teaser — stack bento to 1 col */
+  .sl-tech { padding: 72px 0; }
+  .sl-tech__grid {
+    grid-template-columns: 1fr !important;
+    margin-top: 32px;
+  }
+  .sl-tech__card {
+    padding: 24px 20px;
+    min-height: 160px;
+  }
+  .sl-tech__card-title { font-size: 18px; }
+  .sl-tech__card-body { font-size: 13px; }
+  .sl-tech__ctas {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .sl-tech__ctas .sl-btn { width: 100%; justify-content: center; }
+
+  /* Technology page — full stacking */
+  .sl-tech-group { padding: 48px 0; }
+  .sl-tech-group__grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .sl-tech-group__head {
+    position: static !important;
+    top: auto !important;
+  }
+  .sl-tech-group__title { font-size: 28px !important; }
+  .sl-tech-group__intro { font-size: 14px !important; }
+  .sl-tech-item {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+    padding: 18px 0 !important;
+  }
+  .sl-tech-item__name { font-size: 15px; }
+  .sl-tech-item__note { font-size: 14px; line-height: 1.5; }
+
+  /* Technology page closing */
+  .sl-tech-closing { padding: 72px 0; }
+  .sl-tech-closing__inner .sl-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Hero h1 on internal pages (about, tech, ai, investors) */
+  .sl-section h1.sl-section__title {
+    font-size: 40px !important;
+  }
+
+  /* About section */
+  .sl-about { padding: 64px 0; }
+  .sl-about__title { font-size: 30px !important; }
+  .sl-about__body p { font-size: 15px; line-height: 1.6; }
+  .sl-about__inner {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .sl-values {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .sl-value { padding: 20px 0; border-bottom: 1px solid var(--border-dark); }
+  .sl-value:last-child { border-bottom: none; }
+  html[data-theme="light"] .sl-value { border-bottom-color: var(--border-light); }
+
+  /* Contact */
+  .sl-contact { padding: 64px 0; }
+  .sl-contact__title { font-size: 36px !important; line-height: 1.1 !important; }
+  .sl-contact__grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+  .sl-contact__meta {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px 16px !important;
+  }
+
+  /* Footer — stack cleanly */
+  .sl-footer { padding: 32px 0; }
+  .sl-footer__inner {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 16px;
+  }
+  .sl-footer__right { gap: 16px; flex-wrap: wrap; }
+  .sl-wm--footer { font-size: 18px; }
+
+  /* Weglot switcher — smaller on mobile */
+  .weglot-container .weglot_switcher .wg-li.wgcurrent {
+    padding: 5px 8px !important;
+  }
+  .weglot-container .weglot_switcher .wg-li a {
+    font-size: 10px !important;
+  }
+
+  /* Detail page (case study) — if ever shown */
+  .sl-detail__title { font-size: 40px !important; line-height: 1.1 !important; }
+  .sl-detail__meta {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* About page — founder section stacking */
+  .sl-about-page [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Sticky headers become static on mobile */
+  [style*="position: sticky"],
+  [style*="position:sticky"] {
+    position: static !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra tight gutter */
+  .shell { padding: 0 16px; }
+
+  /* Extra compact header */
+  .sl-header__inner { height: 56px; }
+  .sl-wm { font-size: 20px; }
+  .sl-nav { gap: 8px; }
+  .sl-nav a { font-size: 9px; }
+
+  /* Hero even smaller */
+  .sl-hero__title { font-size: 40px !important; }
+  .sl-hero__sub { font-size: 15px; }
+
+  /* Section titles */
+  .sl-section__title { font-size: 26px !important; }
+  .sl-section h1.sl-section__title { font-size: 34px !important; }
+
+  /* Advisory on tiny screens */
+  .sl-advisory__title { font-size: 26px !important; }
+
+  /* Technology page group title */
+  .sl-tech-group__title { font-size: 24px !important; }
+
+  /* Contact — stack meta grid too */
+  .sl-contact__meta {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Weglot — give extra room */
+  .weglot-container { margin-left: 0 !important; }
+}
