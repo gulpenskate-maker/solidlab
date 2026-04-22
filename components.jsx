@@ -222,7 +222,7 @@ function Hero({ onNav }) {
           We build solid products for our own ventures — and for the clients who want us to build the same for them.
         </p>
         <div className="sl-hero__cta">
-          <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a project →</a>
+          <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Get in touch →</a>
           <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("home"); setTimeout(() => document.querySelector('.sl-services')?.scrollIntoView({behavior:'smooth', block:'start'}), 50);}}>/ view services</a>
         </div>
       </div>
