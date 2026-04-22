@@ -161,7 +161,6 @@ function WhatWeDo() {
     { n: "02", t: "E-commerce", b: "Online stores built for growth, not just presence. Right platform for where you are and where you're going — Shopify, WooCommerce, or headless. User experience, conversion, operations." },
     { n: "03", t: "Web applications", b: "Custom SaaS and internal tools that solve concrete problems. Modern stack with security, scalability, and maintenance built in from day one." },
     { n: "04", t: "Automation & integrations", b: "Clean up the manual work that steals your time. We connect your systems — CRM, email, accounting, suppliers — so data flows where it should without anyone clicking through." },
-    { n: "05", t: "Advisory", b: "Is your technology a bottleneck or a growth engine? We take your business goals as the starting point and give you concrete answers — platform choice, architecture, priorities. No hype. Just what actually moves the company forward." },
   ];
   return (
     <section className="sl-section">
@@ -181,6 +180,38 @@ function WhatWeDo() {
               <p className="sl-service__body">{i.b}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ ADVISORY — standalone service block ============ */
+function Advisory({ onNav }) {
+  return (
+    <section className="sl-advisory">
+      <div className="shell">
+        <div className="sl-slash sl-advisory__eyebrow">/ 02 — advisory</div>
+        <div className="sl-advisory__grid">
+          <div className="sl-advisory__left">
+            <h2 className="sl-advisory__title">
+              The strategic layer — <em>where technology meets business decisions.</em>
+            </h2>
+          </div>
+          <div className="sl-advisory__right">
+            <p className="sl-advisory__body">
+              Not every challenge needs more code. Sometimes it needs the right question.
+            </p>
+            <p className="sl-advisory__body">
+              We work alongside founders, leadership teams, and product owners to cut through the noise: platform choices, build-vs-buy decisions, technical roadmaps, and where AI actually belongs in your operation.
+            </p>
+            <p className="sl-advisory__body">
+              <strong>No deliverables theatre. Just clear thinking and concrete next steps.</strong>
+            </p>
+            <a className="sl-btn sl-btn--primary sl-advisory__cta" href="#" onClick={(e)=>{e.preventDefault(); onNav && onNav("contact");}}>
+              Book a conversation →
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -286,7 +317,7 @@ function Work({ onSelect }) {
   return (
     <section className="sl-section">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:24}}>/ 02 — selected work</div>
+        <div className="sl-slash" style={{marginBottom:24}}>/ 03 — selected work</div>
         <div className="sl-section__head">
           <h2 className="sl-section__title">What we've shipped.</h2>
           <p className="sl-section__intro">Real outcomes, real clients, real code. No case-study fluff.</p>
@@ -323,7 +354,7 @@ function About() {
   return (
     <section className="sl-section sl-about">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:24}}>/ 03 — about</div>
+        <div className="sl-slash" style={{marginBottom:24}}>/ 04 — about</div>
         <div className="sl-about__inner">
           <h2 className="sl-about__title">A studio anchored in Nordic craft — not aesthetic, commitment.</h2>
           <div className="sl-about__body">
@@ -351,7 +382,7 @@ function Contact() {
   return (
     <section className="sl-contact">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:32}}>/ 04 — contact</div>
+        <div className="sl-slash" style={{marginBottom:32}}>/ 05 — contact</div>
         <div className="sl-contact__grid">
           <h2 className="sl-contact__title">Want to build something <em>solid?</em></h2>
           <div className="sl-contact__meta">
@@ -426,4 +457,4 @@ function Detail({ item, onBack }) {
 }
 
 /* Export to global scope so index.html can use them */
-Object.assign(window, { ThemeToggle, Typewriter, SOLID_WORDS, Header, Hero, WhatWeDo, Work, About, Contact, Footer, Detail, WORK_ITEMS });
+Object.assign(window, { ThemeToggle, Typewriter, SOLID_WORDS, Header, Hero, WhatWeDo, Advisory, Work, About, Contact, Footer, Detail, WORK_ITEMS });

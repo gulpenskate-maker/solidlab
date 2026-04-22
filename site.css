@@ -643,3 +643,95 @@ html[data-theme="light"] .sl-service:hover {
     grid-column: span 1;
   }
 }
+
+/* =============================================================
+   ADVISORY — standalone strategic services block
+   Distinct from /services grid. Warmer tone, larger type.
+   ============================================================= */
+.sl-advisory {
+  padding: 120px 0;
+  background: var(--bg-warm);
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  position: relative;
+}
+html[data-theme="light"] .sl-advisory {
+  background: var(--antikkgra);
+  border-color: var(--border-light);
+}
+
+.sl-advisory__eyebrow {
+  margin-bottom: 48px;
+}
+
+.sl-advisory__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.sl-advisory__left {
+  position: sticky;
+  top: 120px;
+}
+
+.sl-advisory__title {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--fg);
+  margin: 0;
+  text-wrap: balance;
+}
+.sl-advisory__title em {
+  font-weight: 400;
+  font-style: normal;
+  color: var(--fg-secondary);
+}
+
+.sl-advisory__right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sl-advisory__body {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--fg-secondary);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.sl-advisory__body strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.sl-advisory__cta {
+  align-self: flex-start;
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .sl-advisory {
+    padding: 80px 0;
+  }
+  .sl-advisory__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .sl-advisory__left {
+    position: static;
+  }
+  .sl-advisory__title {
+    font-size: 36px;
+  }
+  .sl-advisory__body {
+    font-size: 16px;
+  }
+}
