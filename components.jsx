@@ -157,26 +157,28 @@ function Hero({ onNav }) {
 /* ============ WHAT WE DO ============ */
 function WhatWeDo() {
   const items = [
-    { n: "01", t: "Product studio", b: "We build and launch our own SaaS products in parallel with client work. Bølgevarsel, Lara, Klinikkdrift — shipped and paying for themselves." },
-    { n: "02", t: "Infrastructure consulting", b: "Turning ambitious ideas into solid, scalable digital systems. AI where it serves the work — not as a slogan." },
-    { n: "03", t: "Engineering partnerships", b: "Embedded with your team for the long view. We write maintainable code your future team can inherit with pride." },
+    { n: "01", t: "Websites", b: "Sites that convert — built from real user needs, not template clichés. Modern stack (Next.js, React), from strategy and prototype to launch and iteration." },
+    { n: "02", t: "E-commerce", b: "Online stores built for growth, not just presence. Right platform for where you are and where you're going — Shopify, WooCommerce, or headless. User experience, conversion, operations." },
+    { n: "03", t: "Web applications", b: "Custom SaaS and internal tools that solve concrete problems. Modern stack with security, scalability, and maintenance built in from day one." },
+    { n: "04", t: "Automation & integrations", b: "Clean up the manual work that steals your time. We connect your systems — CRM, email, accounting, suppliers — so data flows where it should without anyone clicking through." },
+    { n: "05", t: "Advisory", b: "Is your technology a bottleneck or a growth engine? We take your business goals as the starting point and give you concrete answers — platform choice, architecture, priorities. No hype. Just what actually moves the company forward." },
   ];
   return (
     <section className="sl-section">
       <div className="shell">
         <div className="sl-slash" style={{marginBottom:24}}>/ 01 — what we do</div>
         <div className="sl-section__head">
-          <h2 className="sl-section__title">Two things, both of them carefully.</h2>
+          <h2 className="sl-section__title">We simplify and build the everyday tools of growing businesses.</h2>
           <p className="sl-section__intro">
-            We work at the intersection of craft and code. No shortcuts that become tomorrow's debt.
+            Solid technology. Skilled people. We work at the intersection of technology, business development, and concept design — no shortcuts that become tomorrow's debt.
           </p>
         </div>
-        <div className="sl-cols-3">
+        <div className="sl-services">
           {items.map(i => (
-            <div key={i.n} className="sl-col">
-              <span className="sl-slash"><span className="sl-col__num">/ {i.n}</span></span>
-              <h3 className="sl-col__title">{i.t}</h3>
-              <p className="sl-col__body">{i.b}</p>
+            <div key={i.n} className="sl-service">
+              <span className="sl-slash sl-service__num">/ {i.n}</span>
+              <h3 className="sl-service__title">{i.t}</h3>
+              <p className="sl-service__body">{i.b}</p>
             </div>
           ))}
         </div>
