@@ -104,6 +104,12 @@
     line-height: 1 !important;
     background: none !important;
   }
+  /* Slash prefix on current language (matches nav brand style) */
+  .weglot-container .weglot_switcher .wg-li.wgcurrent a::before {
+    content: "/ ";
+    color: var(--mist);
+    margin-right: 2px;
+  }
   .weglot-container .weglot_switcher .wg-li.wgcurrent a {
     color: var(--antikkhvit) !important;
   }
