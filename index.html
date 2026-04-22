@@ -47,7 +47,22 @@
 <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
 <script>
   Weglot.initialize({
-    api_key: 'wg_b25ee1a0ed399a9be118ba69f69de68a5'
+    api_key: 'wg_b25ee1a0ed399a9be118ba69f69de68a5',
+    switchers: [
+      {
+        style: {
+          full_name: false,
+          with_name: true,
+          is_dropdown: true,
+          with_flags: false,
+          flag_type: ""
+        },
+        location: {
+          target: ".sl-header nav",
+          sibling: null
+        }
+      }
+    ]
   });
 </script>
 </head>
