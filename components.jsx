@@ -201,7 +201,7 @@ function Header({ current, onNav }) {
 
           <div className="sl-sidemenu__footer">
             <ThemeToggle/>
-            <span className="sl-sidemenu__meta">stavanger / norway</span>
+            <span className="sl-sidemenu__meta">nordic / norway</span>
           </div>
         </aside>
       </div>
@@ -560,7 +560,7 @@ function Footer({ onNav }) {
   return (
     <footer className="sl-footer">
       <div className="shell sl-footer__inner">
-        <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · stavanger / norway</div>
+        <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · nordic / norway</div>
         <div className="sl-footer__right">
           <a href="#" onClick={(e)=>{e.preventDefault(); onNav && onNav("investors");}}>/ investors</a>
           <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>

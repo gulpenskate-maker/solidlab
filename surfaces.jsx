@@ -128,7 +128,7 @@ function AboutPage() {
             </h2>
             <div style={{display:"flex", flexDirection:"column", gap:20, fontSize:17, lineHeight:1.65, color:"var(--fg-secondary)"}}>
               <p>The Nordic tradition is quiet, material, built to last. Wooden houses painted in Jotun tones. Engineering that outlasts fashion. A culture that values restraint over excess — and work that works.</p>
-              <p>Stavanger punches above its weight in serious software because it has to. Platforms built here run on North Sea rigs, in hospitals, in boats that can't afford to be wrong about the weather. It's a culture that ships once and maintains for decades.</p>
+              <p>The Nordic region punches above its weight in serious software because it has to. Platforms built here run on North Sea rigs, in hospitals, in boats that can't afford to be wrong about the weather. It's a culture that ships once and maintains for decades.</p>
               <p>That's the tradition we work in. We build for the long view, because where we're from, everything else already does.</p>
             </div>
           </div>
