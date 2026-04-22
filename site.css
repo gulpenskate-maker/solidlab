@@ -36,8 +36,9 @@ html, body {
   color: var(--antikkhvit);
   text-decoration: none;
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   line-height: 1;
+  height: 100%;
 }
 .sl-wm__solid { font-weight: 700; }
 .sl-wm__lab   { font-weight: 300; }
@@ -53,18 +54,25 @@ html[data-theme="light"] .sl-wm__ai {
 }
 
 /* Footer variant — inherits size, .ai slightly dimmed */
+/* Footer variant — slightly larger than surrounding text for brand presence */
 .sl-wm--footer {
-  font-size: inherit;
-  display: inline;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  letter-spacing: -0.02em;
 }
 .sl-wm--footer .sl-wm__ai {
   opacity: 0.7;
 }
-.sl-nav { display: flex; gap: 32px; }
+.sl-nav { display: flex; gap: 32px; align-items: center; }
 .sl-nav a {
   font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--mist); text-decoration: none;
   transition: color 150ms ease;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 .sl-nav a:hover, .sl-nav a.active { color: var(--antikkhvit); }
 .sl-nav a.active { color: var(--oslo); }
@@ -214,7 +222,13 @@ html[data-theme="light"] .sl-wm__ai {
   color: var(--mist); letter-spacing: 0.04em;
 }
 .sl-footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
-.sl-footer__right { display: flex; gap: 24px; }
+.sl-footer__inner > div:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sl-footer__right { display: flex; gap: 24px; align-items: center; }
 .sl-footer__right a { color: var(--mist); text-decoration: none; transition: color 150ms; }
 .sl-footer__right a:hover { color: var(--antikkhvit); }
 
