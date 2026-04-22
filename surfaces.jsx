@@ -18,7 +18,7 @@ function ContactPage() {
           <form className="sl-contact-form" onSubmit={(e)=>{e.preventDefault(); setSent(true);}}>
             <div className="sl-field">
               <label className="sl-field__lbl">/ your name</label>
-              <input className="sl-field__in" value={form.name} onChange={up("name")} placeholder="Ulrik Andresen" required/>
+              <input className="sl-field__in" value={form.name} onChange={up("name")} placeholder="Your full name" required/>
             </div>
             <div className="sl-field-row">
               <div className="sl-field">
@@ -92,32 +92,26 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Founder */}
+      {/* Studio approach (replaces founder section) */}
       <section className="sl-section">
         <div className="shell">
-          <div className="sl-slash" style={{marginBottom:24}}>/ founder</div>
+          <div className="sl-slash" style={{marginBottom:24}}>/ how we work</div>
           <div style={{display:"grid", gridTemplateColumns:"1fr 1.2fr", gap:80, alignItems:"start"}}>
             <div>
-              {/* Portrait placeholder — intentional; swap for a real photo */}
-              <div className="sl-portrait" aria-label="Portrait placeholder">
-                <div className="sl-portrait__inner">
-                  <span className="sl-slash" style={{color:"var(--mist)"}}>/ portrait</span>
-                  <span style={{fontFamily:"var(--font-mono)", fontSize:12, color:"var(--mist)", letterSpacing:"0.08em", textTransform:"uppercase", marginTop:12}}>replace with photo</span>
-                </div>
-              </div>
-              <div style={{marginTop:16, fontFamily:"var(--font-mono)", fontSize:12, color:"var(--mist)", letterSpacing:"0.08em", textTransform:"uppercase"}}>/ nordic, 2026</div>
+              <h2 style={{fontSize:40, fontWeight:600, letterSpacing:"-0.01em", lineHeight:1.15, margin:0}}>
+                Small team. Long time horizons.
+              </h2>
+              <div className="sl-slash" style={{marginTop:20, color:"var(--mist)"}}>/ studio model</div>
             </div>
-            <div style={{display:"flex", flexDirection:"column", gap:28}}>
-              <h2 style={{fontSize:40, fontWeight:600, letterSpacing:"-0.01em", lineHeight:1.15}}>Ulrik Andresen</h2>
-              <div className="sl-slash">/ founder · engineer</div>
-              <p style={{fontSize:19, lineHeight:1.65, color:"var(--alvesolv)"}}>
-                I started Solidlab because I wanted to build software the way my grandfather built houses — slowly enough to get it right, and for people who'd still be using it in twenty years.
+            <div style={{display:"flex", flexDirection:"column", gap:24}}>
+              <p style={{fontSize:19, lineHeight:1.65, color:"var(--fg-secondary)", margin:0}}>
+                We're intentionally small — because the best work happens when there's no layer of management between the people making decisions and the people writing code.
               </p>
-              <p style={{fontSize:19, lineHeight:1.65, color:"var(--alvesolv)"}}>
-                Before this I spent a decade shipping infrastructure in and around Oslo — platforms that handle real money for real people. The studio is the continuation of that work, with a smaller team and a longer time horizon.
+              <p style={{fontSize:19, lineHeight:1.65, color:"var(--fg-secondary)", margin:0}}>
+                We build software the way Nordic craftsmen build houses — slowly enough to get it right, for people who'll still be using it in twenty years. That means we turn down projects we can't do well, and we stay on the ones we do.
               </p>
-              <p style={{fontSize:19, lineHeight:1.65, color:"var(--alvesolv)"}}>
-                If you'd like to talk about a project, or just how Norwegian engineering culture handles AI differently, <a className="sl-link" href="mailto:hello@solidlab.ai" style={{color:"var(--antikkhvit)", borderBottom:"1px solid var(--oslo)"}}>write to me directly</a>.
+              <p style={{fontSize:19, lineHeight:1.65, color:"var(--fg-secondary)", margin:0}}>
+                Have a project in mind? <a className="sl-link" href="mailto:hello@solidlab.ai" style={{color:"var(--fg)", borderBottom:"1px solid var(--oslo)"}}>Write to us</a>.
               </p>
             </div>
           </div>
@@ -127,14 +121,14 @@ function AboutPage() {
       {/* Nordic narrative */}
       <section className="sl-section">
         <div className="shell">
-          <div className="sl-slash" style={{marginBottom:24}}>/ nordic / since 1994</div>
+          <div className="sl-slash" style={{marginBottom:24}}>/ nordic / since 2026</div>
           <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"start"}}>
             <h2 style={{fontSize:48, fontWeight:700, letterSpacing:"-0.02em", lineHeight:1.1, textWrap:"balance"}}>
               Why we're here, and not somewhere louder.
             </h2>
-            <div style={{display:"flex", flexDirection:"column", gap:20, fontSize:17, lineHeight:1.65, color:"var(--alvesolv)"}}>
+            <div style={{display:"flex", flexDirection:"column", gap:20, fontSize:17, lineHeight:1.65, color:"var(--fg-secondary)"}}>
               <p>The Nordic tradition is quiet, material, built to last. Wooden houses painted in Jotun tones. Engineering that outlasts fashion. A culture that values restraint over excess — and work that works.</p>
-              <p>The city punches above its weight in serious software because it has to. Platforms built here run on North Sea rigs, in hospitals, in boats that can't afford to be wrong about the weather. It's a culture that ships once and maintains for decades.</p>
+              <p>Stavanger punches above its weight in serious software because it has to. Platforms built here run on North Sea rigs, in hospitals, in boats that can't afford to be wrong about the weather. It's a culture that ships once and maintains for decades.</p>
               <p>That's the tradition we work in. We build for the long view, because where we're from, everything else already does.</p>
             </div>
           </div>

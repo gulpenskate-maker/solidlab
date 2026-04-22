@@ -146,6 +146,21 @@
   --divider-strong: var(--oslo);
 }
 
+/* ---------- Light mode — explicit reset so dark vars don't persist ---------- */
+[data-theme='light'] {
+  --bg:             var(--antikkhvit);
+  --bg-warm:        var(--antikkgra);
+  --bg-soft:        var(--linbla);
+  --fg:             var(--sort);
+  --fg-secondary:   var(--fog);
+  --fg-tertiary:    var(--mist);
+  --fg-muted:       var(--alvesolv);
+  --accent:         var(--oslo);
+  --accent-hover:   var(--nordic-breeze);
+  --divider:        var(--border-light);
+  --divider-strong: var(--oslo);
+}
+
 /* =============================================================
    Semantic element styles — opt-in via the .prose or body scope
    ============================================================= */
