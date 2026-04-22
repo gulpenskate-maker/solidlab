@@ -59,7 +59,7 @@ function ContactPage() {
             </div>
             <div className="sl-contact-meta__block">
               <span className="sl-contact__label">/ best fit</span>
-              <span>AI-powered SaaS · infrastructure · engineering partnerships.</span>
+              <span>Web apps · e-commerce · automation · advisory.</span>
             </div>
           </aside>
         </div>
@@ -87,7 +87,7 @@ function AboutPage() {
             A studio anchored in Nordic craft — <em style={{fontStyle:"normal",color:"var(--oslo)"}}>not aesthetic, commitment.</em>
           </h1>
           <p className="sl-section__intro" style={{marginTop:40, maxWidth:680, fontSize:19}}>
-            Rooted in the Nordic tradition of craft and quiet confidence. We build AI-powered SaaS products and consult on digital infrastructure — with the discipline of master builders.
+            Rooted in the Nordic tradition of craft and quiet confidence. We build solid products for our own ventures — and for the clients who want us to build the same for them.
           </p>
         </div>
       </section>
@@ -531,7 +531,7 @@ function AIPage({ onNav }) {
             <div className="sl-tech-group__list">
               <div className="sl-tech-item">
                 <h4 className="sl-tech-item__name">Claude (Anthropic)</h4>
-                <p className="sl-tech-item__note">Our primary assistant. Used for reasoning, long-form work, agentic workflows, and MCP tool integration. The foundation of most of our AI-powered products.</p>
+                <p className="sl-tech-item__note">Our primary assistant. Used for reasoning, long-form work, agentic workflows, and MCP tool integration. The foundation of most AI work we ship.</p>
               </div>
               <div className="sl-tech-item">
                 <h4 className="sl-tech-item__name">Model Context Protocol (MCP)</h4>

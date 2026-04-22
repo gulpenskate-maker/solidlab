@@ -220,7 +220,7 @@ function Hero({ onNav }) {
           <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
         </h1>
         <p className="sl-hero__sub">
-          We build AI-powered SaaS products and consult on digital infrastructure — with the craft and discipline of master builders.
+          We build solid products for our own ventures — and for the clients who want us to build the same for them.
         </p>
         <div className="sl-hero__cta">
           <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a project →</a>
