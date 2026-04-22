@@ -65,6 +65,106 @@
     ]
   });
 </script>
+
+<!-- Weglot brand override — loaded AFTER Weglot's own stylesheet for priority -->
+<style id="weglot-brand-override">
+  /* Neutralize Weglot default chrome */
+  .weglot-container .weglot_switcher,
+  .weglot-container .weglot_switcher .wg-li.wgcurrent,
+  .weglot-container .weglot_switcher ul[role="listbox"] {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    min-height: 0 !important;
+  }
+  .weglot-container .weglot_switcher .wg-li.wgcurrent {
+    border: 1px solid var(--border-dark) !important;
+    padding: 7px 10px 7px 12px !important;
+    background: transparent !important;
+    min-width: 0 !important;
+  }
+  html[data-theme="light"] .weglot-container .weglot_switcher .wg-li.wgcurrent {
+    border-color: var(--border-light) !important;
+  }
+  .weglot-container .weglot_switcher .wg-li.wgcurrent:hover {
+    border-color: var(--oslo) !important;
+  }
+  /* Links — mono, uppercase, brand color */
+  .weglot-container .weglot_switcher .wg-li a,
+  .weglot-container .weglot_switcher .wg-li a:visited {
+    font-family: var(--font-mono) !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: var(--mist) !important;
+    text-decoration: none !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    background: none !important;
+  }
+  .weglot-container .weglot_switcher .wg-li.wgcurrent a {
+    color: var(--antikkhvit) !important;
+  }
+  html[data-theme="light"] .weglot-container .weglot_switcher .wg-li.wgcurrent a {
+    color: var(--sort) !important;
+  }
+  /* Dropdown list */
+  .weglot-container .weglot_switcher ul[role="listbox"] {
+    background: var(--sort) !important;
+    border: 1px solid var(--border-dark) !important;
+    border-top: none !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+    min-width: 100% !important;
+  }
+  html[data-theme="light"] .weglot-container .weglot_switcher ul[role="listbox"] {
+    background: var(--antikkhvit) !important;
+    border-color: var(--border-light) !important;
+  }
+  .weglot-container .weglot_switcher ul[role="listbox"] li {
+    padding: 7px 10px !important;
+    background: transparent !important;
+    transition: background 150ms ease;
+  }
+  .weglot-container .weglot_switcher ul[role="listbox"] li:hover {
+    background: rgba(74, 90, 98, 0.2) !important;
+  }
+  .weglot-container .weglot_switcher ul[role="listbox"] li:hover a {
+    color: var(--antikkhvit) !important;
+  }
+  html[data-theme="light"] .weglot-container .weglot_switcher ul[role="listbox"] li:hover a {
+    color: var(--sort) !important;
+  }
+  /* Dropdown arrow */
+  .weglot-container .weglot_switcher.wg-drop.closed:after,
+  .weglot-container .weglot_switcher.wg-drop:after {
+    border-color: var(--mist) transparent transparent transparent !important;
+    right: 10px !important;
+    top: 45% !important;
+  }
+  /* Hide flags, just in case */
+  .weglot-container .weglot_switcher .wg-flag,
+  .weglot-container .weglot_switcher img[class*="flag"] {
+    display: none !important;
+  }
+  /* Watermark — dim */
+  .wg-switcher-watermark {
+    opacity: 0.3 !important;
+    padding: 4px 0 !important;
+  }
+  .wg-switcher-watermark a {
+    font-size: 9px !important;
+    color: var(--mist) !important;
+  }
+  /* Align inside nav — switcher should be inline with other nav items */
+  .sl-nav .weglot-container {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-left: 4px;
+  }
+</style>
 </head>
 <body>
 <div id="root"></div>
