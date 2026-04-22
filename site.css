@@ -1504,3 +1504,180 @@ html[data-theme="light"] .sl-sidemenu__footer {
     margin-bottom: 36px;
   }
 }
+
+/* =============================================================
+   FILE UPLOAD — brand-matched drop zone + file list
+   Used in contact form. Follows slash/Jotun aesthetic.
+   ============================================================= */
+.sl-upload {
+  position: relative;
+  margin-top: 8px;
+}
+
+/* Hide native input, use label as drop zone */
+.sl-upload__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sl-upload__dropzone {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg);
+  border: 1px dashed var(--border-dark);
+  cursor: pointer;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+html[data-theme="light"] .sl-upload__dropzone {
+  background: var(--antikkhvit);
+  border-color: var(--border-light);
+}
+.sl-upload__dropzone:hover,
+.sl-upload--dragging .sl-upload__dropzone {
+  border-color: var(--oslo);
+  background: var(--bg-warm);
+}
+html[data-theme="light"] .sl-upload__dropzone:hover,
+html[data-theme="light"] .sl-upload--dragging .sl-upload__dropzone {
+  background: var(--antikkgra);
+}
+
+.sl-upload__icon {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--fg-tertiary);
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-dark);
+  flex-shrink: 0;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+html[data-theme="light"] .sl-upload__icon {
+  border-color: var(--border-light);
+}
+.sl-upload__dropzone:hover .sl-upload__icon,
+.sl-upload--dragging .sl-upload__icon {
+  border-color: var(--oslo);
+  color: var(--oslo);
+}
+
+.sl-upload__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sl-upload__primary {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.sl-upload__secondary {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--fg-tertiary);
+}
+
+/* Error message */
+.sl-upload__error {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #C95A4B; /* warm error tone, not harsh red */
+  text-transform: lowercase;
+}
+
+/* File list */
+.sl-upload__list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sl-upload__file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-warm);
+  border-bottom: 1px solid var(--border-dark);
+}
+html[data-theme="light"] .sl-upload__file {
+  background: var(--antikkgra);
+  border-bottom-color: var(--border-light);
+}
+.sl-upload__file:last-child { border-bottom: none; }
+
+.sl-upload__file-info {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.sl-upload__file-name {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.sl-upload__file-size {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--fg-tertiary);
+  flex-shrink: 0;
+}
+
+.sl-upload__remove {
+  background: transparent;
+  border: none;
+  color: var(--fg-tertiary);
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 150ms ease;
+  flex-shrink: 0;
+}
+.sl-upload__remove:hover {
+  color: var(--fg);
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .sl-upload__dropzone { padding: 16px 18px; gap: 12px; }
+  .sl-upload__icon { width: 28px; height: 28px; font-size: 20px; }
+  .sl-upload__primary { font-size: 13px; }
+  .sl-upload__secondary { font-size: 10px; }
+  .sl-upload__file { padding: 10px 12px; }
+  .sl-upload__file-name { font-size: 12px; }
+}

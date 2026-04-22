@@ -3,8 +3,90 @@ const { useState } = React;
 /* ============ CONTACT PAGE ============ */
 function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", org: "", message: "" });
+  const [files, setFiles] = useState([]);
+  const [fileError, setFileError] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
   const [sent, setSent] = useState(false);
   const up = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+
+  /* File upload config */
+  const MAX_TOTAL_SIZE = 20 * 1024 * 1024; // 20 MB
+  const MAX_FILES = 5;
+  const ALLOWED_TYPES = [
+    "application/pdf",
+    "image/png",
+    "image/jpeg",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/zip",
+    "application/x-zip-compressed",
+  ];
+  const ALLOWED_EXTENSIONS = [".pdf", ".png", ".jpg", ".jpeg", ".doc", ".docx", ".zip"];
+
+  const formatSize = (bytes) => {
+    if (bytes < 1024) return bytes + " B";
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+  };
+
+  const validateAndAdd = (newFiles) => {
+    setFileError("");
+    const fileArray = Array.from(newFiles);
+
+    /* Check type */
+    const invalidType = fileArray.find(f => {
+      const ext = "." + f.name.split(".").pop().toLowerCase();
+      return !ALLOWED_EXTENSIONS.includes(ext);
+    });
+    if (invalidType) {
+      setFileError(`"${invalidType.name}" is not a supported file type. Allowed: PDF, PNG, JPG, DOC, DOCX, ZIP.`);
+      return;
+    }
+
+    /* Check total count */
+    if (files.length + fileArray.length > MAX_FILES) {
+      setFileError(`Maximum ${MAX_FILES} files. You have ${files.length}, trying to add ${fileArray.length}.`);
+      return;
+    }
+
+    /* Check total size */
+    const currentSize = files.reduce((sum, f) => sum + f.size, 0);
+    const newSize = fileArray.reduce((sum, f) => sum + f.size, 0);
+    if (currentSize + newSize > MAX_TOTAL_SIZE) {
+      setFileError(`Total size exceeds 20 MB limit. Currently: ${formatSize(currentSize + newSize)}.`);
+      return;
+    }
+
+    setFiles([...files, ...fileArray]);
+  };
+
+  const removeFile = (idx) => {
+    setFiles(files.filter((_, i) => i !== idx));
+    setFileError("");
+  };
+
+  const onFileInput = (e) => {
+    validateAndAdd(e.target.files);
+    e.target.value = ""; /* reset so same file can be re-added if removed */
+  };
+
+  const onDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      validateAndAdd(e.dataTransfer.files);
+    }
+  };
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const onDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
 
   return (
     <section className="sl-section" style={{borderBottom:0, paddingTop: 80}}>
@@ -34,7 +116,60 @@ function ContactPage() {
               <label className="sl-field__lbl">/ what are you building?</label>
               <textarea className="sl-field__ta" rows="6" value={form.message} onChange={up("message")} placeholder="A sentence or two about the work. We reply within a day."/>
             </div>
-            <div style={{display:"flex", gap:12, marginTop:8}}>
+
+            {/* File upload */}
+            <div className="sl-field">
+              <label className="sl-field__lbl">/ attachments (optional)</label>
+              <div
+                className={`sl-upload${isDragging ? ' sl-upload--dragging' : ''}${files.length > 0 ? ' sl-upload--has-files' : ''}`}
+                onDrop={onDrop}
+                onDragOver={onDragOver}
+                onDragLeave={onDragLeave}
+              >
+                <input
+                  type="file"
+                  id="sl-file-input"
+                  className="sl-upload__input"
+                  multiple
+                  accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.zip"
+                  onChange={onFileInput}
+                />
+                <label htmlFor="sl-file-input" className="sl-upload__dropzone">
+                  <div className="sl-upload__icon">+</div>
+                  <div className="sl-upload__text">
+                    <span className="sl-upload__primary">Drop files or click to browse</span>
+                    <span className="sl-upload__secondary">PDF, PNG, JPG, DOC, ZIP · max 20 MB · up to 5 files</span>
+                  </div>
+                </label>
+              </div>
+
+              {fileError && (
+                <div className="sl-upload__error">/ {fileError}</div>
+              )}
+
+              {files.length > 0 && (
+                <ul className="sl-upload__list">
+                  {files.map((file, idx) => (
+                    <li key={`${file.name}-${idx}`} className="sl-upload__file">
+                      <div className="sl-upload__file-info">
+                        <span className="sl-upload__file-name">{file.name}</span>
+                        <span className="sl-upload__file-size">{formatSize(file.size)}</span>
+                      </div>
+                      <button
+                        type="button"
+                        className="sl-upload__remove"
+                        aria-label={`Remove ${file.name}`}
+                        onClick={() => removeFile(idx)}
+                      >
+                        ×
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <div style={{display:"flex", gap:12, marginTop:8, flexWrap:"wrap"}}>
               <button type="submit" className="sl-btn sl-btn--primary">{sent ? "Thanks — reply within a day" : "Send →"}</button>
               <a className="sl-btn sl-btn--ghost" href="mailto:hello@solidlab.ai">/ or email directly</a>
             </div>
