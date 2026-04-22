@@ -53,10 +53,9 @@ html[data-theme="light"] .sl-wm__ai {
   color: #4A5A62;
 }
 
-/* Footer variant — inherits size, .ai slightly dimmed */
 /* Footer variant — slightly larger than surrounding text for brand presence */
 .sl-wm--footer {
-  font-size: 16px;
+  font-size: 20px;
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
@@ -218,7 +217,7 @@ html[data-theme="light"] .sl-wm__ai {
 /* ---------- Footer ---------- */
 .sl-footer {
   border-top: 1px solid var(--border-dark);
-  padding: 48px 0; font-family: var(--font-mono); font-size: 12px;
+  padding: 56px 0; font-family: var(--font-mono); font-size: 12px;
   color: var(--mist); letter-spacing: 0.04em;
 }
 .sl-footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
