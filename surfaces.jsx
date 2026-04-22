@@ -334,8 +334,9 @@ function TechnologyPage({ onNav }) {
       intro: "From global cards to Nordic mobile payments — we integrate the right rail for your market.",
       tools: [
         { name: "Stripe", note: "Global default. Cards, subscriptions, webhooks. MCP-integrated." },
-        { name: "Vipps", note: "Norwegian mobile payments — essential for local market." },
-        { name: "Klarna", note: "Buy now, pay later. Invoice options." },
+        { name: "Vipps / MobilePay", note: "Nordic mobile payments — essential for Norway and Denmark." },
+        { name: "Swish", note: "Dominant mobile payment rail in Sweden." },
+        { name: "Klarna", note: "Buy now, pay later. Invoice options. Strong across the Nordics." },
         { name: "PayPal", note: "Still widely expected by customers globally." },
         { name: "Adyen", note: "Enterprise-grade unified payments platform." },
       ],
@@ -559,7 +560,7 @@ function AIPage({ onNav }) {
               </div>
               <div className="sl-tech-item">
                 <h4 className="sl-tech-item__name">Google TTS</h4>
-                <p className="sl-tech-item__note">Norwegian-native voice (nb-NO-Wavenet-D) for local language work.</p>
+                <p className="sl-tech-item__note">Native Nordic voices for Norwegian, Swedish, Danish, and Finnish language work.</p>
               </div>
             </div>
           </div>
@@ -582,7 +583,7 @@ function AIPage({ onNav }) {
             <div className="sl-tech__card">
               <span className="sl-slash sl-tech__num">/ 02</span>
               <h3 className="sl-tech__card-title">Voice & phone agents</h3>
-              <p className="sl-tech__card-body">Automated IVR and outbound calls with ElevenLabs or Google TTS. Norwegian-native by default.</p>
+              <p className="sl-tech__card-body">Automated IVR and outbound calls with ElevenLabs or Google TTS. Nordic languages by default.</p>
             </div>
             <div className="sl-tech__card">
               <span className="sl-slash sl-tech__num">/ 03</span>
@@ -775,7 +776,7 @@ function InvestorsPage() {
             <div className="sl-investors-fit__item">
               <div className="sl-investors-fit__label">/ thesis</div>
               <div className="sl-investors-fit__text">
-                AI-era vertical SaaS, Norwegian infrastructure, operator-led
+                AI-era vertical SaaS, Nordic infrastructure, operator-led
                 venture studios, B2B products with recurring revenue.
               </div>
             </div>
