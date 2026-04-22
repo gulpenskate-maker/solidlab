@@ -44,20 +44,27 @@ function ThemeToggle() {
 
 
 /* ============ TYPEWRITER ============ */
-function Typewriter({ words, typeSpeed = 70, deleteSpeed = 40, pauseAfterType = 2000, pauseAfterDelete = 300 }) {
-  const [display, setDisplay] = React.useState(words[0].charAt(0));
+function Typewriter({ words, typeSpeed = 70, deleteSpeed = 40, pauseAfterType = 2000, pauseAfterDelete = 300, initialPause = 1200 }) {
+  const [display, setDisplay] = React.useState(words[0]);
   const [wordIndex, setWordIndex] = React.useState(0);
-  const [charIndex, setCharIndex] = React.useState(1);
-  const [phase, setPhase] = React.useState("typing"); // "typing" | "pause" | "deleting" | "rest"
+  const [charIndex, setCharIndex] = React.useState(words[0].length);
+  const [phase, setPhase] = React.useState("rest"); // start at rest, let first word sit fully typed
 
   React.useEffect(() => {
-    // Respect prefers-reduced-motion — show first word statically
+    // Respect prefers-reduced-motion — show first word statically, skip animation entirely
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setDisplay(words[0]);
       return;
     }
 
     let timeout;
+
+    // On mount, wait for initialPause before starting the delete-and-cycle loop
+    if (phase === "rest") {
+      timeout = setTimeout(() => setPhase("deleting"), initialPause);
+      return () => clearTimeout(timeout);
+    }
+
     const currentWord = words[wordIndex];
 
     if (phase === "typing") {
@@ -88,7 +95,7 @@ function Typewriter({ words, typeSpeed = 70, deleteSpeed = 40, pauseAfterType = 
     }
 
     return () => clearTimeout(timeout);
-  }, [charIndex, wordIndex, phase, words, typeSpeed, deleteSpeed, pauseAfterType, pauseAfterDelete]);
+  }, [charIndex, wordIndex, phase, words, typeSpeed, deleteSpeed, pauseAfterType, pauseAfterDelete, initialPause]);
 
   return (
     <span className="sl-typewriter" aria-live="polite" aria-atomic="true">
@@ -192,8 +199,8 @@ const WORK_ITEMS = [
   {
     k: "lara",
     title: "Lara",
-    kicker: "AI scheduling assistant for clinical operations.",
-    year: "2025",
+    kicker: "AI image generation platform — prompt, generate, refine. Powered by Imagen 4.",
+    year: "2026",
     kind: "product",
     tag: "/ shipped",
     thumbClass: "b",
@@ -374,7 +381,7 @@ function Footer() {
   return (
     <footer className="sl-footer">
       <div className="shell sl-footer__inner">
-        <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · built in the nordics</div>
+        <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · stavanger / norway</div>
         <div className="sl-footer__right">
           <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>
         </div>
