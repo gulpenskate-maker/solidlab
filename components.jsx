@@ -113,7 +113,6 @@ function Header({ current, onNav }) {
     { k: "technology", label: "/ tech" },
     { k: "ai", label: "/ ai" },
     { k: "about", label: "/ about" },
-    { k: "investors", label: "/ investors" },
     { k: "contact", label: "/ contact" },
   ];
   return (
@@ -480,12 +479,13 @@ function Contact() {
 }
 
 /* ============ FOOTER ============ */
-function Footer() {
+function Footer({ onNav }) {
   return (
     <footer className="sl-footer">
       <div className="shell sl-footer__inner">
         <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · stavanger / norway</div>
         <div className="sl-footer__right">
+          <a href="#" onClick={(e)=>{e.preventDefault(); onNav && onNav("investors");}}>/ investors</a>
           <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>
         </div>
       </div>
