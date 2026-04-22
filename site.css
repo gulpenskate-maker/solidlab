@@ -23,7 +23,7 @@ html, body {
 }
 .sl-header__inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: 72px;
+  height: 88px;
 }
 /* =============================================================
    WORDMARK — solid (700) + lab (400) + .ai (Oslo blue)
@@ -31,7 +31,7 @@ html, body {
    ============================================================= */
 .sl-wm {
   font-family: var(--font-sans);
-  font-size: 22px;
+  font-size: 28px;
   letter-spacing: -0.02em;
   color: var(--antikkhvit);
   text-decoration: none;
