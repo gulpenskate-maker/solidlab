@@ -443,3 +443,127 @@ html[data-theme="light"] .sl-sect--alt {
   background: var(--surface-elev);
 }
 
+
+/* =============================================================
+   WEGLOT LANGUAGE SWITCHER — brand override
+   Matches the slash/mono aesthetic of the rest of the site.
+   ============================================================= */
+
+/* Container positioned inline with nav (not floating) */
+.weglot-container.wg-default {
+  position: fixed !important;
+  top: 24px !important;
+  right: 180px !important;
+  z-index: 15 !important;
+}
+
+/* Base switcher — remove borders, rounding, Weglot defaults */
+.weglot_switcher.country-selector {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--font-mono) !important;
+  min-width: 0 !important;
+}
+
+/* Current language display */
+.weglot_switcher .wg-li.wgcurrent {
+  background: transparent !important;
+  border: 1px solid var(--border-dark) !important;
+  border-radius: 0 !important;
+  padding: 6px 12px !important;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+.weglot_switcher .wg-li.wgcurrent:hover {
+  border-color: var(--oslo) !important;
+}
+
+/* Links — slash prefix, uppercase, mono */
+.weglot_switcher .wg-li a {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--mist) !important;
+  text-decoration: none !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  background: none !important;
+}
+.weglot_switcher .wg-li.wgcurrent a {
+  color: var(--antikkhvit) !important;
+}
+html[data-theme="light"] .weglot_switcher .wg-li.wgcurrent a {
+  color: var(--sort) !important;
+}
+
+/* Slash prefix before language code */
+.weglot_switcher .wg-li a::before {
+  content: "/ ";
+  color: var(--mist);
+  margin-right: 2px;
+}
+
+/* Dropdown list */
+.weglot_switcher ul[role="listbox"] {
+  background: var(--sort) !important;
+  border: 1px solid var(--border-dark) !important;
+  border-top: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: -1px !important;
+}
+html[data-theme="light"] .weglot_switcher ul[role="listbox"] {
+  background: var(--antikkhvit) !important;
+  border-color: var(--border-light) !important;
+}
+
+.weglot_switcher ul[role="listbox"] li {
+  padding: 6px 12px !important;
+  background: transparent !important;
+  transition: background 150ms ease;
+}
+.weglot_switcher ul[role="listbox"] li:hover {
+  background: rgba(74, 90, 98, 0.15) !important;
+}
+.weglot_switcher ul[role="listbox"] li:hover a {
+  color: var(--antikkhvit) !important;
+}
+html[data-theme="light"] .weglot_switcher ul[role="listbox"] li:hover a {
+  color: var(--sort) !important;
+}
+
+/* Remove flag icons (not in brand system) */
+.weglot_switcher .wg-li .wg-flag {
+  display: none !important;
+}
+
+/* Remove dropdown arrow (minimalist) */
+.weglot_switcher.wg-drop.closed:after,
+.weglot_switcher.wg-drop:after {
+  border-color: var(--mist) transparent transparent transparent !important;
+  right: 8px !important;
+}
+
+/* Watermark — dim if visible (can be removed on paid plan) */
+.wg-switcher-watermark {
+  opacity: 0.3 !important;
+  padding: 4px !important;
+}
+
+/* Hide watermark text, keep minimal link */
+.wg-switcher-watermark a {
+  font-size: 9px !important;
+  color: var(--mist) !important;
+}
+
+/* Mobile — smaller, top-right tap target */
+@media (max-width: 768px) {
+  .weglot-container.wg-default {
+    top: 16px !important;
+    right: 16px !important;
+  }
+}
