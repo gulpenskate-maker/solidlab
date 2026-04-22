@@ -109,26 +109,103 @@ const SOLID_WORDS = ["concepts", "software", "apps", "integrations", "websites",
 
 /* ============ HEADER ============ */
 function Header({ current, onNav }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const items = [
     { k: "technology", label: "/ tech" },
     { k: "ai", label: "/ ai" },
     { k: "about", label: "/ about" },
     { k: "contact", label: "/ contact" },
   ];
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const handleNav = (k) => {
+    setMenuOpen(false);
+    onNav(k);
+  };
+
   return (
-    <header className="sl-header">
-      <div className="shell sl-header__inner">
-        <a className="sl-wm" href="#" onClick={(e)=>{e.preventDefault(); onNav("home");}}><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></a>
-        <nav className="sl-nav">
-          {items.map(i => (
-            <a key={i.k} href="#"
-               className={current === i.k ? "active" : ""}
-               onClick={(e)=>{e.preventDefault(); onNav(i.k);}}>{i.label}</a>
-          ))}
-          <ThemeToggle/>
-        </nav>
+    <>
+      <header className="sl-header">
+        <div className="shell sl-header__inner">
+          <a className="sl-wm" href="#" onClick={(e)=>{e.preventDefault(); handleNav("home");}}><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></a>
+
+          {/* Desktop nav */}
+          <nav className="sl-nav sl-nav--desktop">
+            {items.map(i => (
+              <a key={i.k} href="#"
+                 className={current === i.k ? "active" : ""}
+                 onClick={(e)=>{e.preventDefault(); onNav(i.k);}}>{i.label}</a>
+            ))}
+            <ThemeToggle/>
+          </nav>
+
+          {/* Mobile menu trigger */}
+          <button
+            className="sl-menu-trigger"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(true)}
+          >
+            <span className="sl-menu-trigger__line"></span>
+            <span className="sl-menu-trigger__line"></span>
+            <span className="sl-menu-trigger__label">/ menu</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile side menu */}
+      <div className={`sl-sidemenu${menuOpen ? ' sl-sidemenu--open' : ''}`} aria-hidden={!menuOpen}>
+        <div className="sl-sidemenu__backdrop" onClick={() => setMenuOpen(false)}></div>
+        <aside className="sl-sidemenu__panel" role="dialog" aria-label="Main menu">
+          <div className="sl-sidemenu__head">
+            <span className="sl-slash sl-sidemenu__eyebrow">/ menu</span>
+            <button
+              className="sl-sidemenu__close"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="sl-sidemenu__close-x">×</span>
+              <span className="sl-sidemenu__close-label">close</span>
+            </button>
+          </div>
+
+          <nav className="sl-sidemenu__nav">
+            {items.map(i => (
+              <a
+                key={i.k}
+                href="#"
+                className={`sl-sidemenu__link${current === i.k ? ' active' : ''}`}
+                onClick={(e)=>{e.preventDefault(); handleNav(i.k);}}
+              >
+                {i.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="sl-sidemenu__divider"></div>
+
+          <nav className="sl-sidemenu__secondary">
+            <a href="#" className="sl-sidemenu__link-small" onClick={(e)=>{e.preventDefault(); handleNav("investors");}}>/ investors</a>
+            <a href="mailto:hello@solidlab.ai" className="sl-sidemenu__link-small">hello@solidlab.ai</a>
+          </nav>
+
+          <div className="sl-sidemenu__footer">
+            <ThemeToggle/>
+            <span className="sl-sidemenu__meta">stavanger / norway</span>
+          </div>
+        </aside>
       </div>
-    </header>
+    </>
   );
 }
 
