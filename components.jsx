@@ -110,7 +110,6 @@ const SOLID_WORDS = ["concepts", "software", "apps", "integrations", "websites",
 /* ============ HEADER ============ */
 function Header({ current, onNav }) {
   const items = [
-    { k: "work", label: "/ work" },
     { k: "about", label: "/ about" },
     { k: "investors", label: "/ investors" },
     { k: "contact", label: "/ contact" },
@@ -147,7 +146,7 @@ function Hero({ onNav }) {
         </p>
         <div className="sl-hero__cta">
           <a className="sl-btn sl-btn--primary" href="#" onClick={(e)=>{e.preventDefault(); onNav("contact");}}>Start a project →</a>
-          <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("work");}}>/ view work</a>
+          <a className="sl-btn sl-btn--ghost" href="#" onClick={(e)=>{e.preventDefault(); onNav("home"); setTimeout(() => document.querySelector('.sl-services')?.scrollIntoView({behavior:'smooth', block:'start'}), 50);}}>/ view services</a>
         </div>
       </div>
     </section>
@@ -354,7 +353,7 @@ function About() {
   return (
     <section className="sl-section sl-about">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:24}}>/ 04 — about</div>
+        <div className="sl-slash" style={{marginBottom:24}}>/ 03 — about</div>
         <div className="sl-about__inner">
           <h2 className="sl-about__title">A studio anchored in Nordic craft — not aesthetic, commitment.</h2>
           <div className="sl-about__body">
@@ -382,7 +381,7 @@ function Contact() {
   return (
     <section className="sl-contact">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:32}}>/ 05 — contact</div>
+        <div className="sl-slash" style={{marginBottom:32}}>/ 04 — contact</div>
         <div className="sl-contact__grid">
           <h2 className="sl-contact__title">Want to build something <em>solid?</em></h2>
           <div className="sl-contact__meta">
