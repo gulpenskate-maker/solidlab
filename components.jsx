@@ -564,6 +564,7 @@ function Footer({ onNav }) {
           <a href="#" onClick={(e)=>{e.preventDefault(); onNav && onNav("investors");}}>/ investors</a>
           <a href="/trust">/ trust</a>
           <a href="/legal/privacy">/ privacy</a>
+          <a href="#" onClick={(e)=>{e.preventDefault(); window.solidlabConsent && window.solidlabConsent.showPreferences();}}>/ cookies</a>
           <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>
         </div>
       </div>
