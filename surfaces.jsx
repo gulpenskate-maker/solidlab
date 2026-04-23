@@ -560,7 +560,7 @@ function TechnologyPage({ onNav }) {
     <>
       <section className="sl-section" style={{paddingTop: 80}}>
         <div className="shell">
-          <div className="sl-slash" style={{marginBottom:24}}>/ technology</div>
+          <div className="sl-slash" style={{marginBottom:24}}>/ toolkit</div>
           <h1 className="sl-section__title" style={{fontSize:72, maxWidth:1100}}>
             Our toolkit — <em style={{fontStyle:"normal",color:"var(--fg-secondary)"}}>chosen to last, not to impress.</em>
           </h1>

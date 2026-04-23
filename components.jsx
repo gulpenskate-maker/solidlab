@@ -112,7 +112,7 @@ function Header({ current, onNav }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const items = [
-    { k: "technology", label: "/ tech" },
+    { k: "technology", label: "/ toolkit" },
     { k: "ai", label: "/ ai" },
     { k: "about", label: "/ about" },
     { k: "contact", label: "/ contact" },
@@ -332,7 +332,7 @@ function Technology({ onNav }) {
   return (
     <section className="sl-tech">
       <div className="shell">
-        <div className="sl-slash" style={{marginBottom:24}}>/ 03 — technology</div>
+        <div className="sl-slash" style={{marginBottom:24}}>/ 03 — toolkit</div>
         <div className="sl-section__head">
           <h2 className="sl-section__title">The right tool for the job.</h2>
           <p className="sl-section__intro">
