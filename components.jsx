@@ -561,6 +561,9 @@ function Footer({ onNav }) {
       <div className="shell sl-footer__inner">
         <div>© 2026 <span className="sl-wm sl-wm--footer"><span className="sl-wm__solid">solid</span><span className="sl-wm__lab">lab</span><span className="sl-wm__ai">.ai</span></span> · nordic / norway</div>
         <div className="sl-footer__right">
+          <a href="https://www.linkedin.com/company/solidlab-ai" target="_blank" rel="noopener noreferrer">/ linkedin</a>
+          <a href="https://www.facebook.com/solidlab.ai" target="_blank" rel="noopener noreferrer">/ facebook</a>
+          <span className="sl-footer__sep" aria-hidden="true">·</span>
           <a href="#" onClick={(e)=>{e.preventDefault(); onNav && onNav("investors");}}>/ investors</a>
           <a href="/trust">/ trust</a>
           <a href="/legal/privacy">/ privacy</a>

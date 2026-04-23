@@ -230,6 +230,8 @@ html[data-theme="light"] .sl-wm__ai {
 .sl-footer__right { display: flex; gap: 24px; align-items: center; }
 .sl-footer__right a { color: var(--mist); text-decoration: none; transition: color 150ms; }
 .sl-footer__right a:hover { color: var(--antikkhvit); }
+.sl-footer__sep { color: var(--mist); opacity: 0.4; font-size: 0.85em; }
+html[data-theme="light"] .sl-footer__sep { color: var(--fog); }
 
 /* ---------- Detail page (product case study) ---------- */
 .sl-detail { padding: 80px 0 120px; }
