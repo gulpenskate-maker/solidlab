@@ -198,6 +198,24 @@ function Header({ current, onNav }) {
             <a href="mailto:hello@solidlab.ai" className="sl-sidemenu__link-small">hello@solidlab.ai</a>
           </nav>
 
+          <div className="sl-sidemenu__divider"></div>
+
+          <nav className="sl-sidemenu__social">
+            <span className="sl-slash sl-sidemenu__social-label">/ follow</span>
+            <a
+              href="https://www.linkedin.com/company/115796478"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sl-sidemenu__link-small"
+            >/ linkedin</a>
+            <a
+              href="https://www.facebook.com/people/Solidlabai/61566190246544/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sl-sidemenu__link-small"
+            >/ facebook</a>
+          </nav>
+
           <div className="sl-sidemenu__footer">
             <ThemeToggle/>
             <span className="sl-sidemenu__meta">nordic / norway</span>

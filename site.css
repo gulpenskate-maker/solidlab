@@ -1437,7 +1437,6 @@ html[data-theme="light"] .sl-sidemenu__link:first-child {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: auto; /* push footer to bottom */
 }
 .sl-sidemenu__link-small {
   font-family: var(--font-mono);
@@ -1451,6 +1450,19 @@ html[data-theme="light"] .sl-sidemenu__link:first-child {
 .sl-sidemenu__link-small:hover,
 .sl-sidemenu__link-small:active {
   color: var(--fg);
+}
+
+/* Social sub-nav in side menu — LinkedIn, Facebook, etc. */
+.sl-sidemenu__social {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: auto; /* push footer to bottom */
+}
+.sl-sidemenu__social-label {
+  color: var(--mist);
+  opacity: 0.7;
+  margin-bottom: 2px;
 }
 
 /* Footer inside sidemenu — theme toggle + meta */
