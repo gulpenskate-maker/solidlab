@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<script>
+  // Theme initialization — runs before any render to prevent flash
+  // Matches main solidlab.ai site exactly
+  (function() {
+    try {
+      var saved = localStorage.getItem("solidlab-theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>/ trust — Solidlab</title>
+<meta name="description" content="How Solidlab handles data. Stack, subprocessors, and legal documentation. Built in Stavanger."/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://solidlab.ai/trust"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* dark is default — per brand spec v1.1 */
+    --bg: #0A0A0A;
+    --fg: #F4F1EA;
+    --fg-secondary: #8B9BA0;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #6B8290;
+    --divider: #1F1F1F;
+    --tag-bg: rgba(244, 241, 234, 0.06);
+    color-scheme: dark;
+  }
+  [data-theme="light"] {
+    --bg: #F4F1EA;
+    --fg: #0A0A0A;
+    --fg-secondary: #5A5A5A;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #2F3B41;
+    --divider: #E8E4DB;
+    --tag-bg: rgba(10, 10, 10, 0.04);
+    color-scheme: light;
+  }
+
+  /* theme toggle */
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--divider);
+    color: var(--fg-secondary);
+    padding: 6px 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+  .theme-toggle:hover {
+    color: var(--fg);
+    border-color: var(--accent);
+  }
+  .theme-toggle .slash { color: var(--accent); }
+  .theme-toggle .icon {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+  }
+  /* Show correct icon based on theme */
+  [data-theme="light"] .icon-sun { display: inline-block; }
+  [data-theme="light"] .icon-moon { display: none; }
+  .icon-sun { display: none; }
+  .icon-moon { display: inline-block; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Geist', -apple-system, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01' on;
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV */
+  nav {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  nav .logo {
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+  nav .logo .slash { color: var(--accent); margin-right: 4px; }
+  nav .links { display: flex; gap: 32px; font-family: 'Geist Mono', monospace; font-size: 12px; }
+  nav .links a {
+    color: var(--fg-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav .links a .slash { color: var(--accent); margin-right: 2px; }
+  nav .links a:hover { color: var(--fg); }
+
+  /* HERO */
+  header.hero {
+    padding: 120px 0 80px;
+    border-bottom: 1px solid var(--divider);
+  }
+  .meta-row {
+    display: flex;
+    gap: 24px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-tertiary);
+    margin-bottom: 48px;
+  }
+  .meta-row .slash { color: var(--accent); margin-right: 4px; }
+  h1 {
+    font-size: 72px;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    margin-bottom: 32px;
+    max-width: 980px;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--fg-secondary); }
+  .lead {
+    font-size: 20px;
+    color: var(--fg-secondary);
+    max-width: 680px;
+    line-height: 1.4;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-tertiary);
+    margin-bottom: 24px;
+  }
+  .section-label .num { color: var(--accent); }
+  h2 {
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  h2 em { font-style: italic; color: var(--fg-secondary); font-weight: 400; }
+  .section-desc {
+    color: var(--fg-secondary);
+    margin-bottom: 48px;
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  /* PRINCIPLES GRID */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--divider);
+    border-left: 1px solid var(--divider);
+  }
+  .principle {
+    padding: 32px;
+    border-right: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+  }
+  .principle .num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-tertiary);
+    margin-bottom: 24px;
+    letter-spacing: 0.08em;
+  }
+  .principle .num .slash { color: var(--accent); }
+  .principle h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .principle p { color: var(--fg-secondary); font-size: 14px; line-height: 1.5; }
+
+  /* INFRA GRID */
+  .infra-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--divider);
+    border-left: 1px solid var(--divider);
+  }
+  .infra {
+    padding: 32px;
+    border-right: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+  }
+  .infra h3 { font-size: 20px; font-weight: 500; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .infra p { color: var(--fg-secondary); font-size: 14px; margin-bottom: 20px; }
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--tag-bg);
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-secondary);
+    margin-right: 6px;
+  }
+
+  /* LEGAL GRID */
+  .legal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--divider);
+    border-left: 1px solid var(--divider);
+  }
+  .legal-item {
+    padding: 32px;
+    border-right: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    text-decoration: none;
+    color: var(--fg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .legal-item:hover { background: var(--tag-bg); }
+  .legal-item .meta {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-tertiary);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .legal-item .meta .slash { color: var(--accent); }
+  .legal-item .title { font-size: 22px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .legal-item .desc { font-size: 14px; color: var(--fg-secondary); }
+  .legal-item .arrow { color: var(--accent); font-size: 24px; }
+
+  /* ENTITY TABLE */
+  .entity-table {
+    width: 100%;
+    border-top: 1px solid var(--divider);
+    border-collapse: collapse;
+  }
+  .entity-table tr { border-bottom: 1px solid var(--divider); }
+  .entity-table td {
+    padding: 20px 0;
+    font-size: 15px;
+    vertical-align: top;
+  }
+  .entity-table td:first-child {
+    width: 280px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: 22px;
+  }
+  .entity-table td:first-child .slash { color: var(--accent); }
+  .entity-table a { color: var(--accent); text-decoration: none; }
+  .entity-table a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+  /* CONTACT */
+  .contact-block {
+    padding: 48px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    border-top: 1px solid var(--divider);
+  }
+  .contact-block h3 { font-size: 28px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .contact-block p { color: var(--fg-secondary); font-size: 15px; }
+  .btn {
+    background: var(--accent);
+    color: var(--fg);
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background 0.2s;
+    border: none;
+    white-space: nowrap;
+    font-family: 'Geist', sans-serif;
+  }
+  [data-theme="light"] .btn { color: #F4F1EA; }
+  .btn:hover { background: var(--accent-hover); }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 0;
+    color: var(--fg-tertiary);
+    font-size: 12px;
+    font-family: 'Geist Mono', monospace;
+    border-top: 1px solid var(--divider);
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .slash { color: var(--accent); }
+  footer a { color: var(--fg-secondary); text-decoration: none; margin-left: 16px; }
+  footer a:hover { color: var(--fg); }
+
+  @media (max-width: 900px) {
+    h1 { font-size: 44px; }
+    h2 { font-size: 32px; }
+    .principles, .infra-grid { grid-template-columns: 1fr; }
+    .legal-grid { grid-template-columns: 1fr; }
+    .contact-block { flex-direction: column; align-items: flex-start; }
+    .entity-table td:first-child { width: 160px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo"><span class="slash">/</span>solidlab</a>
+    <div class="links">
+      <a href="/"><span class="slash">/</span> home</a>
+      <a href="/trust"><span class="slash">/</span> trust</a>
+      <a href="mailto:hello@solidlab.ai"><span class="slash">/</span> contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+        <span class="theme-label">theme</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="meta-row">
+      <span><span class="slash">/</span> trust</span>
+      <span><span class="slash">/</span> v1.0</span>
+      <span><span class="slash">/</span> april 2026</span>
+      <span><span class="slash">/</span> stavanger / norway</span>
+    </div>
+    <h1>Your data, <em>handled</em> with the same craft we apply to everything.</h1>
+    <p class="lead">Solidlab builds and operates software for clients and portfolio companies. This page shows how we keep data safe — the stack, the subprocessors, the legal agreements. Nothing hidden.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-label"><span class="num">/ 01</span> — principles</div>
+    <h2>Four non-negotiables.</h2>
+    <p class="section-desc">The rules we apply to every system we build and every engagement we take on.</p>
+    <div class="principles">
+      <div class="principle">
+        <div class="num"><span class="slash">/</span> 01</div>
+        <h3>Privacy by design</h3>
+        <p>We collect what the service needs. Nothing more. Features that work without personal data, do.</p>
+      </div>
+      <div class="principle">
+        <div class="num"><span class="slash">/</span> 02</div>
+        <h3>Encryption everywhere</h3>
+        <p>TLS 1.3 in transit. AES-256 at rest. Every database, every backup, every API — encrypted by default.</p>
+      </div>
+      <div class="principle">
+        <div class="num"><span class="slash">/</span> 03</div>
+        <h3>EU data residency</h3>
+        <p>Production data lives in Ireland and Stockholm. Transfers outside EEA only with SCC or adequacy decision.</p>
+      </div>
+      <div class="principle">
+        <div class="num"><span class="slash">/</span> 04</div>
+        <h3>Transparent subprocessors</h3>
+        <p>Every third party we use is listed publicly — what they do, where, and why.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label"><span class="num">/ 02</span> — stack</div>
+    <h2>Built on <em>certified</em> infrastructure.</h2>
+    <p class="section-desc">We don't run our own data centers. We build on vendors with enterprise-grade certifications — so every product inherits that foundation.</p>
+    <div class="infra-grid">
+      <div class="infra">
+        <div>
+          <h3>Vercel</h3>
+          <p>Application hosting &amp; edge network.</p>
+        </div>
+        <div><span class="tag">SOC 2 Type II</span><span class="tag">ISO 27001</span></div>
+      </div>
+      <div class="infra">
+        <div>
+          <h3>Supabase</h3>
+          <p>Database &amp; auth, EU region.</p>
+        </div>
+        <div><span class="tag">SOC 2 Type II</span><span class="tag">EU-west-1</span></div>
+      </div>
+      <div class="infra">
+        <div>
+          <h3>Stripe</h3>
+          <p>Payments &amp; subscription billing.</p>
+        </div>
+        <div><span class="tag">PCI DSS L1</span></div>
+      </div>
+      <div class="infra">
+        <div>
+          <h3>Cloudflare</h3>
+          <p>DNS, DDoS protection, edge.</p>
+        </div>
+        <div><span class="tag">ISO 27001</span></div>
+      </div>
+      <div class="infra">
+        <div>
+          <h3>AWS Ireland</h3>
+          <p>Underlying cloud for Supabase EU.</p>
+        </div>
+        <div><span class="tag">ISO 27001</span></div>
+      </div>
+      <div class="infra">
+        <div>
+          <h3>Resend</h3>
+          <p>Transactional email, EU region.</p>
+        </div>
+        <div><span class="tag">GDPR compliant</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label"><span class="num">/ 03</span> — legal</div>
+    <h2>Legal documentation.</h2>
+    <p class="section-desc">All agreements under Norwegian law, aligned with GDPR. PDFs available on request.</p>
+    <div class="legal-grid">
+      <a href="/legal/privacy" class="legal-item">
+        <div>
+          <div class="meta"><span class="slash">/</span> 01 — policy</div>
+          <div class="title">Privacy Policy</div>
+          <div class="desc">What we collect, why, and your rights.</div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="/legal/dpa" class="legal-item">
+        <div>
+          <div class="meta"><span class="slash">/</span> 02 — agreement</div>
+          <div class="title">Data Processing Agreement</div>
+          <div class="desc">GDPR Article 28 agreement for customers.</div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="/legal/terms" class="legal-item">
+        <div>
+          <div class="meta"><span class="slash">/</span> 03 — terms</div>
+          <div class="title">Terms of Service</div>
+          <div class="desc">For using our products and services.</div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="/legal/subprocessors" class="legal-item">
+        <div>
+          <div class="meta"><span class="slash">/</span> 04 — transparency</div>
+          <div class="title">Subprocessors</div>
+          <div class="desc">Complete list of third parties and roles.</div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label"><span class="num">/ 04</span> — entity</div>
+    <h2>The legal entity.</h2>
+    <p class="section-desc">Solidlab is operated by Stå på Pinne AS — a Norwegian limited company, based in Stavanger.</p>
+    <table class="entity-table">
+      <tr>
+        <td><span class="slash">/</span> legal entity</td>
+        <td>Stå på Pinne AS</td>
+      </tr>
+      <tr>
+        <td><span class="slash">/</span> org number</td>
+        <td>935 233 488</td>
+      </tr>
+      <tr>
+        <td><span class="slash">/</span> address</td>
+        <td>Tunveien 13, 4016 Stavanger, Norway</td>
+      </tr>
+      <tr>
+        <td><span class="slash">/</span> trading name</td>
+        <td>Solidlab</td>
+      </tr>
+      <tr>
+        <td><span class="slash">/</span> privacy contact</td>
+        <td><a href="mailto:privacy@solidlab.ai">privacy@solidlab.ai</a></td>
+      </tr>
+      <tr>
+        <td><span class="slash">/</span> security contact</td>
+        <td><a href="mailto:security@solidlab.ai">security@solidlab.ai</a></td>
+      </tr>
+      <tr>
+        <td><span class="slash">/</span> jurisdiction</td>
+        <td>Norwegian law / Stavanger tingrett</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="contact-block">
+      <div>
+        <h3>Need a signed DPA?</h3>
+        <p>Security and privacy questions answered within 48 hours.</p>
+      </div>
+      <a href="mailto:security@solidlab.ai" class="btn">Get in touch →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div><span class="slash">/</span> © 2026 stå på pinne as · solidlab is a trading name</div>
+    <div>
+      <a href="/legal/privacy"><span class="slash">/</span> privacy</a>
+      <a href="/legal/dpa"><span class="slash">/</span> dpa</a>
+      <a href="/legal/terms"><span class="slash">/</span> terms</a>
+      <a href="/legal/subprocessors"><span class="slash">/</span> subprocessors</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('solidlab-theme', next); } catch (e) {}
+  }
+</script>
+</body>
+</html>

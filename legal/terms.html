@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8"/>
+<script>
+  // Theme initialization — runs before any render to prevent flash
+  // Matches main solidlab.ai site exactly
+  (function() {
+    try {
+      var saved = localStorage.getItem("solidlab-theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>/ terms — Solidlab</title>
+<meta name="description" content="Vilkår for bruk av Solidlabs produkter og tjenester. Operert av Stå på Pinne AS."/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://solidlab.ai/legal/terms"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* dark is default — per brand spec v1.1 */
+    --bg: #0A0A0A;
+    --fg: #F4F1EA;
+    --fg-secondary: #8B9BA0;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #6B8290;
+    --divider: #1F1F1F;
+    --tag-bg: rgba(244, 241, 234, 0.06);
+    color-scheme: dark;
+  }
+  [data-theme="light"] {
+    --bg: #F4F1EA;
+    --fg: #0A0A0A;
+    --fg-secondary: #5A5A5A;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #2F3B41;
+    --divider: #E8E4DB;
+    --tag-bg: rgba(10, 10, 10, 0.04);
+    color-scheme: light;
+  }
+
+  /* theme toggle */
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--divider);
+    color: var(--fg-secondary);
+    padding: 6px 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+  .theme-toggle:hover {
+    color: var(--fg);
+    border-color: var(--accent);
+  }
+  .theme-toggle .slash { color: var(--accent); }
+  .theme-toggle .icon {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+  }
+  /* Show correct icon based on theme */
+  [data-theme="light"] .icon-sun { display: inline-block; }
+  [data-theme="light"] .icon-moon { display: none; }
+  .icon-sun { display: none; }
+  .icon-moon { display: inline-block; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Geist', -apple-system, system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; font-feature-settings: 'ss01' on; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  nav { padding: 24px 0; border-bottom: 1px solid var(--divider); }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  nav .logo { color: var(--fg); text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  nav .logo .slash { color: var(--accent); margin-right: 4px; }
+  nav .links { display: flex; gap: 32px; font-family: 'Geist Mono', monospace; font-size: 12px; }
+  nav .links a { color: var(--fg-secondary); text-decoration: none; transition: color 0.2s; }
+  nav .links a .slash { color: var(--accent); margin-right: 2px; }
+  nav .links a:hover { color: var(--fg); }
+
+  .page-head { padding: 80px 0 48px; border-bottom: 1px solid var(--divider); }
+  .meta-row { display: flex; gap: 24px; font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-tertiary); margin-bottom: 40px; flex-wrap: wrap; }
+  .meta-row .slash { color: var(--accent); margin-right: 4px; }
+  h1 { font-size: 56px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px; max-width: 900px; }
+  h1 em { font-style: italic; color: var(--fg-secondary); font-weight: 400; }
+  .lead { font-size: 19px; color: var(--fg-secondary); max-width: 720px; line-height: 1.45; }
+
+  .layout { display: grid; grid-template-columns: 260px 1fr; gap: 80px; padding: 80px 0; }
+  aside { position: sticky; top: 32px; align-self: start; }
+  aside .toc-label { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-tertiary); margin-bottom: 16px; }
+  aside .toc-label .slash { color: var(--accent); }
+  aside ol { list-style: none; counter-reset: toc; font-family: 'Geist Mono', monospace; }
+  aside ol li { counter-increment: toc; }
+  aside ol li a {
+    color: var(--fg-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    font-size: 12px;
+    border-left: 2px solid transparent;
+    padding-left: 12px;
+    margin-left: -14px;
+    transition: all 0.2s;
+  }
+  aside ol li a::before {
+    content: "/ " counter(toc, decimal-leading-zero) " ";
+    color: var(--accent);
+  }
+  aside ol li a:hover { color: var(--fg); border-left-color: var(--accent); }
+
+  article { max-width: 760px; }
+  article h2 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 64px 0 16px;
+    scroll-margin-top: 32px;
+    line-height: 1.15;
+  }
+  article h2 .num {
+    color: var(--accent);
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    margin-right: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  article h2:first-of-type { margin-top: 0; }
+  article h3 { font-size: 17px; font-weight: 600; margin: 28px 0 8px; letter-spacing: -0.01em; }
+  article p { margin-bottom: 14px; color: var(--fg); }
+  article ul { margin: 12px 0 16px 20px; }
+  article li { margin-bottom: 6px; color: var(--fg); }
+  article a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  article a:hover { color: var(--accent-hover); }
+  article strong { font-weight: 600; }
+
+  .info-block {
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    padding: 24px 0;
+    margin: 24px 0;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+  }
+  .info-block .row { display: flex; gap: 24px; margin-bottom: 8px; }
+  .info-block .row:last-child { margin-bottom: 0; }
+  .info-block .label { color: var(--fg-tertiary); min-width: 140px; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11px; padding-top: 2px; }
+  .info-block .label .slash { color: var(--accent); }
+  .info-block .value { color: var(--fg); font-family: 'Geist', sans-serif; font-size: 14px; }
+  .info-block .value a { font-family: inherit; }
+
+  footer { padding: 48px 0; color: var(--fg-tertiary); font-size: 12px; font-family: 'Geist Mono', monospace; border-top: 1px solid var(--divider); margin-top: 80px; }
+  footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer .slash { color: var(--accent); }
+  footer a { color: var(--fg-secondary); text-decoration: none; margin-left: 16px; }
+  footer a:hover { color: var(--fg); }
+
+  @media (max-width: 900px) {
+    h1 { font-size: 36px; }
+    .layout { grid-template-columns: 1fr; gap: 32px; padding: 40px 0; }
+    aside { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo"><span class="slash">/</span>solidlab</a>
+    <div class="links">
+      <a href="/"><span class="slash">/</span> home</a>
+      <a href="/trust"><span class="slash">/</span> trust</a>
+      <a href="mailto:hello@solidlab.ai"><span class="slash">/</span> contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+        <span class="theme-label">theme</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="container">
+    <div class="meta-row">
+      <span><span class="slash">/</span> legal</span>
+      <span><span class="slash">/</span> vilkår</span>
+      <span><span class="slash">/</span> v1.0</span>
+      <span><span class="slash">/</span> 23 april 2026</span>
+    </div>
+    <h1>Vilkår <em>for bruk</em></h1>
+    <p class="lead">Ved å bruke Solidlabs tjenester aksepterer du disse vilkårene. Les dem nøye — de gjelder for alle våre SaaS-produkter, konsulenttjenester og utviklingsoppdrag.</p>
+  </div>
+</div>
+
+<div class="container">
+<div class="layout">
+
+<aside>
+  <div class="toc-label"><span class="slash">/</span> innhold</div>
+  <ol>
+    <li><a href="#om">Om vilkårene</a></li>
+    <li><a href="#tjenester">Tjenestene</a></li>
+    <li><a href="#konto">Brukerkonto</a></li>
+    <li><a href="#akseptabel">Akseptabel bruk</a></li>
+    <li><a href="#innhold">Kundeinnhold</a></li>
+    <li><a href="#priser">Priser og betaling</a></li>
+    <li><a href="#immaterielle">Immaterielle rettigheter</a></li>
+    <li><a href="#ansvar">Ansvarsbegrensning</a></li>
+    <li><a href="#oppsigelse">Oppsigelse</a></li>
+    <li><a href="#endringer">Endringer</a></li>
+    <li><a href="#personvern">Personvern</a></li>
+    <li><a href="#lovvalg">Lovvalg</a></li>
+  </ol>
+</aside>
+
+<article>
+
+  <h2 id="om"><span class="num">/ 01</span>Om vilkårene</h2>
+  <p>Disse vilkårene gjelder for alle tjenester, produkter, nettsider og applikasjoner levert av Stå på Pinne AS ("<strong>Solidlab</strong>", "<strong>vi</strong>", "<strong>oss</strong>").</p>
+  <div class="info-block">
+    <div class="row"><div class="label"><span class="slash">/</span> selskap</div><div class="value">Stå på Pinne AS</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> org.nr</div><div class="value">935 233 488</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> adresse</div><div class="value">Tunveien 13, 4016 Stavanger</div></div>
+  </div>
+  <p>"<strong>Kunden</strong>", "<strong>du</strong>" eller "<strong>bruker</strong>" betyr den fysiske eller juridiske personen som inngår avtale om bruk av tjenestene.</p>
+  <p>Ved motstrid mellom disse vilkårene og en individuelt fremforhandlet tjenesteavtale, går tjenesteavtalen foran.</p>
+
+  <h2 id="tjenester"><span class="num">/ 02</span>Tjenestene</h2>
+  <p>Solidlab leverer:</p>
+  <ul>
+    <li><strong>SaaS-produkter</strong> — blant annet Bølgevarsel, Lara AI og Klinikkdrift</li>
+    <li><strong>Konsulenttjenester</strong> — digital rådgivning, forretningsutvikling, integrasjoner, automatisering</li>
+    <li><strong>Utviklingstjenester</strong> — for egne porteføljeselskaper og eksterne kunder</li>
+  </ul>
+  <p>Vi tilstreber høy tilgjengelighet. Tjenestene leveres "som de er". Ingen garantier om uavbrutt drift med mindre annet følger av separat SLA.</p>
+
+  <h2 id="konto"><span class="num">/ 03</span>Brukerkonto</h2>
+  <p>For enkelte tjenester må du opprette en konto. Du er ansvarlig for:</p>
+  <ul>
+    <li>å oppgi korrekt og oppdatert informasjon</li>
+    <li>å holde påloggingsinformasjon konfidensiell</li>
+    <li>all aktivitet som skjer under din konto</li>
+    <li>å varsle oss umiddelbart ved mistanke om uautorisert tilgang</li>
+  </ul>
+  <p>Kontoer er personlige og kan ikke overdras uten samtykke. Brukere må være over 18 år eller ha samtykke fra foresatte.</p>
+
+  <h2 id="akseptabel"><span class="num">/ 04</span>Akseptabel bruk</h2>
+  <p>Du forplikter deg til ikke å bruke tjenestene til å:</p>
+  <ul>
+    <li>bryte norsk eller internasjonal lov</li>
+    <li>krenke tredjeparters immaterielle rettigheter</li>
+    <li>sende uønsket markedsføring eller skadelig programvare</li>
+    <li>omgå tekniske begrensninger, utføre penetrasjonstester uten samtykke, eller overbelaste tjenestene</li>
+    <li>laste opp innhold som er ulovlig, krenkende eller diskriminerende</li>
+    <li>skrape data automatisert uten skriftlig tillatelse</li>
+    <li>bruke AI-funksjoner til å generere innhold som villeder eller skader andre</li>
+  </ul>
+  <p>Solidlab forbeholder seg retten til å suspendere eller avslutte kontoer som bryter disse reglene.</p>
+
+  <h2 id="innhold"><span class="num">/ 05</span>Kundeinnhold</h2>
+  <p>Innhold du laster opp eller oppretter i tjenestene ("<strong>Kundeinnhold</strong>") tilhører deg. Solidlab gjør ikke krav på eierskap.</p>
+  <p>Du gir Solidlab en begrenset, ikke-eksklusiv lisens til å behandle Kundeinnhold i den utstrekning det er nødvendig for å levere tjenestene — lagring, overføring til underdatabehandlere, prosessering gjennom AI-modeller når aktivert.</p>
+  <p>Du er selv ansvarlig for at Kundeinnhold ikke krenker tredjeparters rettigheter og at du har rettslig grunnlag for å behandle personopplysninger som inngår.</p>
+
+  <h2 id="priser"><span class="num">/ 06</span>Priser og betaling</h2>
+  <p>Aktuelle priser fremgår av tjenestens prisside eller individuell avtale. Alle priser oppgis i NOK eks. mva med mindre annet er angitt.</p>
+  <p>Abonnementer fornyes automatisk ved utløp med mindre oppsigelse mottas før fornyelse. Betalingsdata håndteres av Stripe — vi lagrer ikke kortinformasjon selv.</p>
+  <p>Ved manglende betaling kan tjenesten suspenderes med 14 dagers skriftlig varsel. Prisendringer varsles minst 30 dager før ikrafttreden.</p>
+  <p>Konsulentfakturaer forfaller 14 dager etter fakturadato med mindre annet er avtalt.</p>
+
+  <h2 id="immaterielle"><span class="num">/ 07</span>Immaterielle rettigheter</h2>
+  <p>Rettigheter til Solidlabs programvare, design, dokumentasjon, varemerker og innhold tilhører Stå på Pinne AS eller våre lisensgivere. Ingen rettigheter overføres utover en begrenset, ikke-eksklusiv bruksrett.</p>
+  <p>For konsulentoppdrag reguleres eierskap til leveranser i individuell tjenesteavtale. Som hovedregel får Kunden bruksrett til leveransene mens Solidlab beholder eierskap til generell metodikk, kodebiblioteker og generiske komponenter.</p>
+
+  <h2 id="ansvar"><span class="num">/ 08</span>Ansvarsbegrensning</h2>
+  <p>Tjenestene leveres "som de er" uten garantier utover det som følger av ufravikelig lovgivning.</p>
+  <p>Solidlabs samlede ansvar er begrenset til det Kunden har betalt de siste 12 måneder før hendelsen som utløste kravet.</p>
+  <p>Solidlab er ikke ansvarlig for <strong>indirekte tap</strong> — tapt fortjeneste, tap av data, driftstap, goodwill-tap, følgeskader — med mindre tapet skyldes forsett eller grov uaktsomhet.</p>
+  <p><strong>AI-generert innhold:</strong> Resultater fra AI-funksjoner kan inneholde unøyaktigheter. Solidlab er ikke ansvarlig for beslutninger Kunden treffer på bakgrunn av AI-genererte resultater. Kunden er ansvarlig for å kvalitetssikre innholdet før videre bruk.</p>
+
+  <h2 id="oppsigelse"><span class="num">/ 09</span>Oppsigelse</h2>
+  <p>Kunden kan si opp abonnementet når som helst via kontoinnstillinger eller skriftlig melding. Oppsigelse får virkning ved utløpet av inneværende betalingsperiode.</p>
+  <p>Solidlab kan si opp avtalen med 30 dagers skriftlig varsel. Ved vesentlig mislighold kan avtalen heves med umiddelbar virkning.</p>
+  <p>Ved opphør har Kunden rett til å eksportere eget data i 30 dager. Deretter slettes data i tråd med personvernerklæringen, med unntak av data vi er pålagt å oppbevare etter lov.</p>
+
+  <h2 id="endringer"><span class="num">/ 10</span>Endringer</h2>
+  <p>Solidlab kan endre vilkårene. Vesentlige endringer varsles minst 30 dager før ikrafttreden. Fortsatt bruk etter ikrafttreden anses som aksept.</p>
+  <p>Hvis du ikke aksepterer endringene, kan du si opp avtalen før ikrafttreden uten gebyr.</p>
+
+  <h2 id="personvern"><span class="num">/ 11</span>Personvern</h2>
+  <p>Vår behandling av personopplysninger er beskrevet i <a href="/legal/privacy">personvernerklæringen</a>.</p>
+  <p>Når Solidlab behandler personopplysninger på vegne av Kunden (databehandler etter GDPR art. 28), gjelder vår <a href="/legal/dpa">databehandleravtale</a> som integrert del av avtaleforholdet.</p>
+
+  <h2 id="lovvalg"><span class="num">/ 12</span>Lovvalg</h2>
+  <p>Vilkårene er underlagt <strong>norsk rett</strong>. Tvister søkes løst gjennom forhandlinger. Dersom dette ikke fører frem, avgjøres tvisten ved <strong>Stavanger tingrett</strong> som verneting.</p>
+  <p>For forbrukere gjelder ufravikelige rettigheter etter forbrukerkjøpsloven og angrerettloven uavhengig av disse vilkårene.</p>
+
+  <div class="info-block">
+    <div class="row"><div class="label"><span class="slash">/</span> juridisk</div><div class="value"><a href="mailto:legal@solidlab.ai">legal@solidlab.ai</a></div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> support</div><div class="value"><a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a></div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> post</div><div class="value">Stå på Pinne AS, Tunveien 13, 4016 Stavanger</div></div>
+  </div>
+
+</article>
+
+</div>
+</div>
+
+<footer>
+  <div class="container">
+    <div><span class="slash">/</span> © 2026 stå på pinne as · solidlab is a trading name</div>
+    <div>
+      <a href="/legal/privacy"><span class="slash">/</span> privacy</a>
+      <a href="/legal/dpa"><span class="slash">/</span> dpa</a>
+      <a href="/legal/terms"><span class="slash">/</span> terms</a>
+      <a href="/legal/subprocessors"><span class="slash">/</span> subprocessors</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('solidlab-theme', next); } catch (e) {}
+  }
+</script>
+</body>
+</html>

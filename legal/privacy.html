@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8"/>
+<script>
+  // Theme initialization — runs before any render to prevent flash
+  // Matches main solidlab.ai site exactly
+  (function() {
+    try {
+      var saved = localStorage.getItem("solidlab-theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>/ personvern — Solidlab</title>
+<meta name="description" content="Solidlab (Stå på Pinne AS) personvernerklæring. Hva vi samler, hvorfor, og dine rettigheter."/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://solidlab.ai/legal/privacy"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* dark is default — per brand spec v1.1 */
+    --bg: #0A0A0A;
+    --fg: #F4F1EA;
+    --fg-secondary: #8B9BA0;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #6B8290;
+    --divider: #1F1F1F;
+    --tag-bg: rgba(244, 241, 234, 0.06);
+    color-scheme: dark;
+  }
+  [data-theme="light"] {
+    --bg: #F4F1EA;
+    --fg: #0A0A0A;
+    --fg-secondary: #5A5A5A;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #2F3B41;
+    --divider: #E8E4DB;
+    --tag-bg: rgba(10, 10, 10, 0.04);
+    color-scheme: light;
+  }
+
+  /* theme toggle */
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--divider);
+    color: var(--fg-secondary);
+    padding: 6px 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+  .theme-toggle:hover {
+    color: var(--fg);
+    border-color: var(--accent);
+  }
+  .theme-toggle .slash { color: var(--accent); }
+  .theme-toggle .icon {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+  }
+  /* Show correct icon based on theme */
+  [data-theme="light"] .icon-sun { display: inline-block; }
+  [data-theme="light"] .icon-moon { display: none; }
+  .icon-sun { display: none; }
+  .icon-moon { display: inline-block; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Geist', -apple-system, system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; font-feature-settings: 'ss01' on; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  nav { padding: 24px 0; border-bottom: 1px solid var(--divider); }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  nav .logo { color: var(--fg); text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  nav .logo .slash { color: var(--accent); margin-right: 4px; }
+  nav .links { display: flex; gap: 32px; font-family: 'Geist Mono', monospace; font-size: 12px; }
+  nav .links a { color: var(--fg-secondary); text-decoration: none; transition: color 0.2s; }
+  nav .links a .slash { color: var(--accent); margin-right: 2px; }
+  nav .links a:hover { color: var(--fg); }
+
+  .page-head { padding: 80px 0 48px; border-bottom: 1px solid var(--divider); }
+  .meta-row { display: flex; gap: 24px; font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-tertiary); margin-bottom: 40px; flex-wrap: wrap; }
+  .meta-row .slash { color: var(--accent); margin-right: 4px; }
+  h1 { font-size: 56px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px; max-width: 900px; }
+  h1 em { font-style: italic; color: var(--fg-secondary); font-weight: 400; }
+  .lead { font-size: 19px; color: var(--fg-secondary); max-width: 720px; line-height: 1.45; }
+
+  .layout { display: grid; grid-template-columns: 260px 1fr; gap: 80px; padding: 80px 0; }
+  aside { position: sticky; top: 32px; align-self: start; }
+  aside .toc-label { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-tertiary); margin-bottom: 16px; }
+  aside .toc-label .slash { color: var(--accent); }
+  aside ol { list-style: none; counter-reset: toc; font-family: 'Geist Mono', monospace; }
+  aside ol li { counter-increment: toc; }
+  aside ol li a {
+    color: var(--fg-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    font-size: 12px;
+    border-left: 2px solid transparent;
+    padding-left: 12px;
+    margin-left: -14px;
+    transition: all 0.2s;
+  }
+  aside ol li a::before {
+    content: "/ " counter(toc, decimal-leading-zero) " ";
+    color: var(--accent);
+  }
+  aside ol li a:hover { color: var(--fg); border-left-color: var(--accent); }
+
+  article { max-width: 760px; }
+  article h2 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 64px 0 16px;
+    scroll-margin-top: 32px;
+    line-height: 1.15;
+  }
+  article h2 .num {
+    color: var(--accent);
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    margin-right: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  article h2:first-of-type { margin-top: 0; }
+  article h3 { font-size: 17px; font-weight: 600; margin: 28px 0 8px; letter-spacing: -0.01em; }
+  article p { margin-bottom: 14px; color: var(--fg); }
+  article ul { margin: 12px 0 16px 20px; }
+  article li { margin-bottom: 6px; color: var(--fg); }
+  article a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  article a:hover { color: var(--accent-hover); }
+  article strong { font-weight: 600; }
+
+  .info-block {
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    padding: 24px 0;
+    margin: 24px 0;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+  }
+  .info-block .row { display: flex; gap: 24px; margin-bottom: 8px; }
+  .info-block .row:last-child { margin-bottom: 0; }
+  .info-block .label { color: var(--fg-tertiary); min-width: 140px; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11px; padding-top: 2px; }
+  .info-block .label .slash { color: var(--accent); }
+  .info-block .value { color: var(--fg); font-family: 'Geist', sans-serif; font-size: 14px; }
+  .info-block .value a { font-family: inherit; }
+
+  footer { padding: 48px 0; color: var(--fg-tertiary); font-size: 12px; font-family: 'Geist Mono', monospace; border-top: 1px solid var(--divider); margin-top: 80px; }
+  footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer .slash { color: var(--accent); }
+  footer a { color: var(--fg-secondary); text-decoration: none; margin-left: 16px; }
+  footer a:hover { color: var(--fg); }
+
+  @media (max-width: 900px) {
+    h1 { font-size: 36px; }
+    .layout { grid-template-columns: 1fr; gap: 32px; padding: 40px 0; }
+    aside { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo"><span class="slash">/</span>solidlab</a>
+    <div class="links">
+      <a href="/"><span class="slash">/</span> home</a>
+      <a href="/trust"><span class="slash">/</span> trust</a>
+      <a href="mailto:hello@solidlab.ai"><span class="slash">/</span> contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+        <span class="theme-label">theme</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="container">
+    <div class="meta-row">
+      <span><span class="slash">/</span> legal</span>
+      <span><span class="slash">/</span> personvern</span>
+      <span><span class="slash">/</span> v1.0</span>
+      <span><span class="slash">/</span> 23 april 2026</span>
+    </div>
+    <h1>Personvern&shy;erklæring</h1>
+    <p class="lead">Solidlab respekterer personvernet ditt. Her står det hva vi samler inn, hvorfor, og hvilke rettigheter du har. Vi følger norsk personopplysningslov og GDPR.</p>
+  </div>
+</div>
+
+<div class="container">
+<div class="layout">
+
+<aside>
+  <div class="toc-label"><span class="slash">/</span> innhold</div>
+  <ol>
+    <li><a href="#ansvarlig">Behandlingsansvarlig</a></li>
+    <li><a href="#opplysninger">Opplysninger vi samler</a></li>
+    <li><a href="#formal">Formål og rettslig grunnlag</a></li>
+    <li><a href="#lagring">Lagring og sikkerhet</a></li>
+    <li><a href="#deling">Deling med tredjeparter</a></li>
+    <li><a href="#overforing">Overføring utenfor EØS</a></li>
+    <li><a href="#oppbevaring">Oppbevaringstid</a></li>
+    <li><a href="#rettigheter">Dine rettigheter</a></li>
+    <li><a href="#cookies">Informasjonskapsler</a></li>
+    <li><a href="#endringer">Endringer</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ol>
+</aside>
+
+<article>
+
+  <h2 id="ansvarlig"><span class="num">/ 01</span>Behandlingsansvarlig</h2>
+  <p>Stå på Pinne AS, opererende under merkenavnet Solidlab (heretter "Solidlab", "vi", "oss"), er behandlingsansvarlig for personopplysninger som behandles via våre tjenester og i vår virksomhet.</p>
+
+  <div class="info-block">
+    <div class="row"><div class="label"><span class="slash">/</span> selskap</div><div class="value">Stå på Pinne AS</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> org.nr</div><div class="value">935 233 488</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> adresse</div><div class="value">Tunveien 13, 4016 Stavanger</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> kontakt</div><div class="value">Ulrik Gjellesvik Andresen, daglig leder</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> e-post</div><div class="value"><a href="mailto:privacy@solidlab.ai">privacy@solidlab.ai</a></div></div>
+  </div>
+
+  <h2 id="opplysninger"><span class="num">/ 02</span>Opplysninger vi samler</h2>
+
+  <h3>Opplysninger du gir oss</h3>
+  <ul>
+    <li><strong>Kontaktopplysninger:</strong> navn, e-post, telefonnummer, selskap</li>
+    <li><strong>Kontoopplysninger:</strong> brukernavn, passord (hashet), profilinnstillinger</li>
+    <li><strong>Faktureringsinformasjon:</strong> foretaksnavn, org.nr, fakturaadresse (betalingsdata håndteres av Stripe)</li>
+    <li><strong>Kommunikasjon:</strong> innhold i e-post, supporthenvendelser og meldinger du sender oss</li>
+    <li><strong>Brukergenerert innhold:</strong> data du laster opp til produktene våre — bilder, tekst, dokumenter, prosjektdata</li>
+  </ul>
+
+  <h3>Opplysninger vi samler automatisk</h3>
+  <ul>
+    <li><strong>Tekniske data:</strong> IP-adresse, nettlesertype, operativsystem, enhetsinformasjon</li>
+    <li><strong>Bruksdata:</strong> sidevisninger, tidspunkt, funksjoner du bruker</li>
+    <li><strong>Logger:</strong> feilmeldinger og sikkerhetshendelser for feilsøking og overvåking</li>
+  </ul>
+
+  <h2 id="formal"><span class="num">/ 03</span>Formål og rettslig grunnlag</h2>
+  <p>Vi behandler personopplysninger for disse formålene, med rettslig grunnlag etter GDPR artikkel 6:</p>
+  <ul>
+    <li><strong>Levering av tjenester</strong> — art. 6(1)(b), avtale: drift av SaaS-produkter, konsulenttjenester, support</li>
+    <li><strong>Fakturering og regnskap</strong> — art. 6(1)(c), rettslig forpliktelse: bokføringsloven krever 5 års oppbevaring</li>
+    <li><strong>Kundeservice</strong> — art. 6(1)(b), avtale</li>
+    <li><strong>Sikkerhet og feilsøking</strong> — art. 6(1)(f), berettiget interesse</li>
+    <li><strong>Markedsføring til eksisterende kunder</strong> — art. 6(1)(f), markedsføringsloven § 15 åpner for dette</li>
+    <li><strong>Markedsføring til ikke-kunder</strong> — art. 6(1)(a), samtykke</li>
+    <li><strong>Nyhetsbrev</strong> — art. 6(1)(a), samtykke; kan trekkes når som helst</li>
+  </ul>
+
+  <h2 id="lagring"><span class="num">/ 04</span>Lagring og sikkerhet</h2>
+  <p>Vi tar informasjonssikkerhet på alvor. Tekniske og organisatoriske tiltak i tråd med GDPR artikkel 32:</p>
+  <ul>
+    <li><strong>Kryptering</strong> ved overføring (TLS 1.3) og i hvile (AES-256)</li>
+    <li><strong>Tilgangsstyring</strong> basert på minste privilegium, rollebasert, med tofaktorautentisering</li>
+    <li><strong>Logging</strong> av tilgang og systemhendelser</li>
+    <li><strong>Segmentert infrastruktur</strong> med brannmurer og nettverksisolasjon</li>
+    <li><strong>Sikkerhetskopiering</strong> og testede gjenopprettingsrutiner</li>
+    <li><strong>Avvikshåndtering</strong> — vi varsler Datatilsynet og berørte personer innen 72 timer ved sikkerhetsbrudd (GDPR art. 33–34)</li>
+    <li><strong>Intern opplæring</strong> og taushetsplikt for alle med tilgang til personopplysninger</li>
+  </ul>
+
+  <h2 id="deling"><span class="num">/ 05</span>Deling med tredjeparter</h2>
+  <p>Vi selger aldri personopplysninger. Vi deler kun med databehandlere som er nødvendige for å levere tjenestene, bundet av databehandleravtaler etter GDPR art. 28.</p>
+  <p>Komplett og oppdatert liste: <a href="/legal/subprocessors">solidlab.ai/legal/subprocessors</a></p>
+  <p>Vi kan utlevere opplysninger ved pålegg fra offentlig myndighet eller rettslig prosess, men aldri i videre utstrekning enn nødvendig.</p>
+
+  <h2 id="overforing"><span class="num">/ 06</span>Overføring utenfor EØS</h2>
+  <p>Primær lagring skjer innenfor EU/EØS — Irland og Sverige. Enkelte underleverandører for AI-funksjonalitet (Anthropic, Google, OpenAI) kan behandle data i USA. Slik overføring skjer kun med:</p>
+  <ul>
+    <li><strong>Adequacy decision</strong> eller EU-US Data Privacy Framework der aktuelt</li>
+    <li><strong>Standard Contractual Clauses (SCC)</strong> godkjent av EU-kommisjonen</li>
+    <li><strong>Supplerende tekniske tiltak</strong> som kryptering og pseudonymisering</li>
+  </ul>
+
+  <h2 id="oppbevaring"><span class="num">/ 07</span>Oppbevaringstid</h2>
+  <ul>
+    <li><strong>Aktive brukerkontoer:</strong> så lenge kontoen er aktiv</li>
+    <li><strong>Inaktive kontoer:</strong> slettes automatisk etter 24 måneder</li>
+    <li><strong>Regnskapsdata:</strong> 5 år etter utgangen av regnskapsåret (bokføringsloven § 13)</li>
+    <li><strong>Supporthenvendelser:</strong> 2 år etter siste kontakt</li>
+    <li><strong>Markedsføringssamtykker:</strong> til du trekker samtykket tilbake</li>
+    <li><strong>Logger og sikkerhetsdata:</strong> 90 dager</li>
+  </ul>
+
+  <h2 id="rettigheter"><span class="num">/ 08</span>Dine rettigheter</h2>
+  <p>Etter GDPR har du rett til:</p>
+  <ul>
+    <li><strong>Innsyn</strong> (art. 15) — kopi av opplysninger vi har om deg</li>
+    <li><strong>Retting</strong> (art. 16) — rette uriktige opplysninger</li>
+    <li><strong>Sletting</strong> (art. 17) — "retten til å bli glemt"</li>
+    <li><strong>Begrensning</strong> av behandling (art. 18)</li>
+    <li><strong>Dataportabilitet</strong> (art. 20) — få data i maskinlesbart format</li>
+    <li><strong>Innsigelse</strong> mot behandling basert på berettiget interesse (art. 21)</li>
+    <li><strong>Trekke samtykke</strong> tilbake (art. 7)</li>
+    <li><strong>Klage til Datatilsynet</strong> — <a href="https://www.datatilsynet.no" target="_blank" rel="noopener">datatilsynet.no</a></li>
+  </ul>
+  <p>Kontakt <a href="mailto:privacy@solidlab.ai">privacy@solidlab.ai</a> for å utøve rettighetene dine. Vi svarer innen 30 dager.</p>
+
+  <h2 id="cookies"><span class="num">/ 09</span>Informasjonskapsler</h2>
+  <p>Vi bruker informasjonskapsler til:</p>
+  <ul>
+    <li><strong>Nødvendige:</strong> innlogging, sesjon og sikkerhet (ingen samtykke kreves)</li>
+    <li><strong>Analyse:</strong> anonymisert statistikk (kun med samtykke)</li>
+    <li><strong>Funksjonelle:</strong> lagre brukerpreferanser — språk, tema</li>
+  </ul>
+  <p>Du kan når som helst endre eller trekke samtykke via cookie-innstillinger eller ved å blokkere cookies i nettleseren.</p>
+
+  <h2 id="endringer"><span class="num">/ 10</span>Endringer i erklæringen</h2>
+  <p>Ved vesentlige endringer varsler vi registrerte brukere via e-post minst 30 dager før endringen trer i kraft. Siste oppdatering vises øverst på siden.</p>
+
+  <h2 id="kontakt"><span class="num">/ 11</span>Kontakt</h2>
+  <p>Spørsmål om erklæringen eller hvordan vi behandler personopplysninger?</p>
+  <div class="info-block">
+    <div class="row"><div class="label"><span class="slash">/</span> e-post</div><div class="value"><a href="mailto:privacy@solidlab.ai">privacy@solidlab.ai</a></div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> post</div><div class="value">Stå på Pinne AS, Tunveien 13, 4016 Stavanger</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> datatilsynet</div><div class="value"><a href="https://www.datatilsynet.no" target="_blank" rel="noopener">datatilsynet.no</a> · 22 39 69 00</div></div>
+  </div>
+
+</article>
+
+</div>
+</div>
+
+<footer>
+  <div class="container">
+    <div><span class="slash">/</span> © 2026 stå på pinne as · solidlab is a trading name</div>
+    <div>
+      <a href="/legal/privacy"><span class="slash">/</span> privacy</a>
+      <a href="/legal/dpa"><span class="slash">/</span> dpa</a>
+      <a href="/legal/terms"><span class="slash">/</span> terms</a>
+      <a href="/legal/subprocessors"><span class="slash">/</span> subprocessors</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('solidlab-theme', next); } catch (e) {}
+  }
+</script>
+</body>
+</html>

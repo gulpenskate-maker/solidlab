@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8"/>
+<script>
+  // Theme initialization — runs before any render to prevent flash
+  // Matches main solidlab.ai site exactly
+  (function() {
+    try {
+      var saved = localStorage.getItem("solidlab-theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>/ dpa — Solidlab</title>
+<meta name="description" content="Databehandleravtale (GDPR artikkel 28) for kunder av Solidlab (Stå på Pinne AS)."/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://solidlab.ai/legal/dpa"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* dark is default — per brand spec v1.1 */
+    --bg: #0A0A0A;
+    --fg: #F4F1EA;
+    --fg-secondary: #8B9BA0;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #6B8290;
+    --divider: #1F1F1F;
+    --tag-bg: rgba(244, 241, 234, 0.06);
+    color-scheme: dark;
+  }
+  [data-theme="light"] {
+    --bg: #F4F1EA;
+    --fg: #0A0A0A;
+    --fg-secondary: #5A5A5A;
+    --fg-tertiary: #8A8A8A;
+    --accent: #4A5A62;
+    --accent-hover: #2F3B41;
+    --divider: #E8E4DB;
+    --tag-bg: rgba(10, 10, 10, 0.04);
+    color-scheme: light;
+  }
+
+  /* theme toggle */
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--divider);
+    color: var(--fg-secondary);
+    padding: 6px 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+  .theme-toggle:hover {
+    color: var(--fg);
+    border-color: var(--accent);
+  }
+  .theme-toggle .slash { color: var(--accent); }
+  .theme-toggle .icon {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+  }
+  /* Show correct icon based on theme */
+  [data-theme="light"] .icon-sun { display: inline-block; }
+  [data-theme="light"] .icon-moon { display: none; }
+  .icon-sun { display: none; }
+  .icon-moon { display: inline-block; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Geist', -apple-system, system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; font-feature-settings: 'ss01' on; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  nav { padding: 24px 0; border-bottom: 1px solid var(--divider); }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  nav .logo { color: var(--fg); text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  nav .logo .slash { color: var(--accent); margin-right: 4px; }
+  nav .links { display: flex; gap: 32px; font-family: 'Geist Mono', monospace; font-size: 12px; }
+  nav .links a { color: var(--fg-secondary); text-decoration: none; transition: color 0.2s; }
+  nav .links a .slash { color: var(--accent); margin-right: 2px; }
+  nav .links a:hover { color: var(--fg); }
+
+  .page-head { padding: 80px 0 48px; border-bottom: 1px solid var(--divider); }
+  .meta-row { display: flex; gap: 24px; font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-tertiary); margin-bottom: 40px; flex-wrap: wrap; }
+  .meta-row .slash { color: var(--accent); margin-right: 4px; }
+  h1 { font-size: 56px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px; max-width: 900px; }
+  h1 em { font-style: italic; color: var(--fg-secondary); font-weight: 400; }
+  .lead { font-size: 19px; color: var(--fg-secondary); max-width: 720px; line-height: 1.45; }
+
+  .layout { display: grid; grid-template-columns: 260px 1fr; gap: 80px; padding: 80px 0; }
+  aside { position: sticky; top: 32px; align-self: start; }
+  aside .toc-label { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-tertiary); margin-bottom: 16px; }
+  aside .toc-label .slash { color: var(--accent); }
+  aside ol { list-style: none; counter-reset: toc; font-family: 'Geist Mono', monospace; }
+  aside ol li { counter-increment: toc; }
+  aside ol li a {
+    color: var(--fg-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    font-size: 12px;
+    border-left: 2px solid transparent;
+    padding-left: 12px;
+    margin-left: -14px;
+    transition: all 0.2s;
+  }
+  aside ol li a::before {
+    content: "/ " counter(toc, decimal-leading-zero) " ";
+    color: var(--accent);
+  }
+  aside ol li a:hover { color: var(--fg); border-left-color: var(--accent); }
+
+  article { max-width: 760px; }
+  article h2 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 64px 0 16px;
+    scroll-margin-top: 32px;
+    line-height: 1.15;
+  }
+  article h2 .num {
+    color: var(--accent);
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    margin-right: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  article h2:first-of-type { margin-top: 0; }
+  article h3 { font-size: 17px; font-weight: 600; margin: 28px 0 8px; letter-spacing: -0.01em; }
+  article p { margin-bottom: 14px; color: var(--fg); }
+  article ul { margin: 12px 0 16px 20px; }
+  article li { margin-bottom: 6px; color: var(--fg); }
+  article a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  article a:hover { color: var(--accent-hover); }
+  article strong { font-weight: 600; }
+
+  .info-block {
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    padding: 24px 0;
+    margin: 24px 0;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+  }
+  .info-block .row { display: flex; gap: 24px; margin-bottom: 8px; }
+  .info-block .row:last-child { margin-bottom: 0; }
+  .info-block .label { color: var(--fg-tertiary); min-width: 140px; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11px; padding-top: 2px; }
+  .info-block .label .slash { color: var(--accent); }
+  .info-block .value { color: var(--fg); font-family: 'Geist', sans-serif; font-size: 14px; }
+  .info-block .value a { font-family: inherit; }
+
+  footer { padding: 48px 0; color: var(--fg-tertiary); font-size: 12px; font-family: 'Geist Mono', monospace; border-top: 1px solid var(--divider); margin-top: 80px; }
+  footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer .slash { color: var(--accent); }
+  footer a { color: var(--fg-secondary); text-decoration: none; margin-left: 16px; }
+  footer a:hover { color: var(--fg); }
+
+  @media (max-width: 900px) {
+    h1 { font-size: 36px; }
+    .layout { grid-template-columns: 1fr; gap: 32px; padding: 40px 0; }
+    aside { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo"><span class="slash">/</span>solidlab</a>
+    <div class="links">
+      <a href="/"><span class="slash">/</span> home</a>
+      <a href="/trust"><span class="slash">/</span> trust</a>
+      <a href="mailto:hello@solidlab.ai"><span class="slash">/</span> contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+        <span class="theme-label">theme</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="container">
+    <div class="meta-row">
+      <span><span class="slash">/</span> legal</span>
+      <span><span class="slash">/</span> databehandleravtale</span>
+      <span><span class="slash">/</span> v1.0</span>
+      <span><span class="slash">/</span> 23 april 2026</span>
+    </div>
+    <h1>Databehandler&shy;avtale</h1>
+    <p class="lead">Denne avtalen regulerer Solidlabs behandling av personopplysninger på vegne av deg som kunde — etter GDPR artikkel 28. Den er integrert del av Tjenesteavtalen og går foran ved motstrid.</p>
+  </div>
+</div>
+
+<div class="container">
+<div class="layout">
+
+<aside>
+  <div class="toc-label"><span class="slash">/</span> innhold</div>
+  <ol>
+    <li><a href="#parter">Avtalens parter</a></li>
+    <li><a href="#bakgrunn">Bakgrunn og formål</a></li>
+    <li><a href="#definisjoner">Definisjoner</a></li>
+    <li><a href="#generelt">Generelt</a></li>
+    <li><a href="#instruks">Instruksjonsmyndighet</a></li>
+    <li><a href="#bistand">Plikt til å bistå</a></li>
+    <li><a href="#sikkerhet">Sikkerhet</a></li>
+    <li><a href="#underdatabehandler">Underdatabehandlere</a></li>
+    <li><a href="#overforing">Overføring til utlandet</a></li>
+    <li><a href="#rettigheter">Registrertes rettigheter</a></li>
+    <li><a href="#avvik">Avvikshåndtering</a></li>
+    <li><a href="#revisjon">Revisjon</a></li>
+    <li><a href="#konfidensialitet">Konfidensialitet</a></li>
+    <li><a href="#varighet">Varighet</a></li>
+    <li><a href="#opphor">Opphør</a></li>
+    <li><a href="#lovvalg">Lovvalg</a></li>
+    <li><a href="#vedlegg">Vedlegg</a></li>
+  </ol>
+</aside>
+
+<article>
+
+  <h2 id="parter"><span class="num">/ 01</span>Avtalens parter</h2>
+
+  <h3>Behandlingsansvarlig</h3>
+  <p>Kunden som har inngått Tjenesteavtalen med Databehandler. Den personen som har inngått Tjenesteavtalen på vegne av Kunden anses som kontaktperson.</p>
+
+  <h3>Databehandler</h3>
+  <div class="info-block">
+    <div class="row"><div class="label"><span class="slash">/</span> selskap</div><div class="value">Stå på Pinne AS (merkenavn: Solidlab)</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> org.nr</div><div class="value">935 233 488</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> adresse</div><div class="value">Tunveien 13, 4016 Stavanger</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> kontakt</div><div class="value">Ulrik Gjellesvik Andresen, daglig leder</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> telefon</div><div class="value">+47 400 93 494</div></div>
+    <div class="row"><div class="label"><span class="slash">/</span> e-post</div><div class="value"><a href="mailto:legal@solidlab.ai">legal@solidlab.ai</a></div></div>
+  </div>
+  <p>Behandlingsansvarlig og Databehandler omtales enkeltvis som "<strong>Part</strong>" og i fellesskap som "<strong>Partene</strong>".</p>
+
+  <h2 id="bakgrunn"><span class="num">/ 02</span>Bakgrunn og formål</h2>
+  <p>Databehandler leverer tjenestene beskrevet i Tjenesteavtalen. Utføringen innebærer at Databehandler vil Behandle Personopplysninger på vegne av Behandlingsansvarlig. Kunden bestemmer formålet og hvilke midler som skal benyttes.</p>
+  <p>Formålet med Databehandleravtalen:</p>
+  <ul>
+    <li>regulere partenes rettigheter og plikter ved behandling av personopplysninger</li>
+    <li>sikre etterlevelse av Personvernlovgivningen og GDPR</li>
+    <li>sikre at personopplysninger ikke behandles urettmessig eller til andre formål enn det avtalen fastsetter</li>
+  </ul>
+  <p>Ved motstrid mellom denne avtalen og andre avtaler, herunder Tjenesteavtalen, går Databehandleravtalen foran.</p>
+
+  <h2 id="definisjoner"><span class="num">/ 03</span>Definisjoner</h2>
+  <ul>
+    <li><strong>"Databehandleravtalen"</strong> — bestemmelsene i denne avtalen med vedlegg.</li>
+    <li><strong>"Personopplysning"</strong> — alle typer opplysninger som anses som personopplysninger etter Personvernlovgivningen og GDPR. Omfatter opplysningene i Vedlegg 1.</li>
+    <li><strong>"Behandling"</strong> — enhver bruk av personopplysninger: innsamling, lagring, organisering, endring, utlevering, overføring.</li>
+    <li><strong>"GDPR"</strong> — EU-forordning 2016/679 av 27. april 2016.</li>
+    <li><strong>"Personvernlovgivning"</strong> — lov om behandling av personopplysninger av 15. juni 2018 nr. 38 med forskrift.</li>
+    <li><strong>"Lov"</strong> — enhver annen gjeldende lovgivning partene er underlagt.</li>
+    <li><strong>"Underdatabehandler"</strong> — andre databehandlere Databehandler bruker.</li>
+    <li><strong>"De registrerte"</strong> — enhver identifisert eller identifiserbar person opplysningene knytter seg til.</li>
+  </ul>
+
+  <h2 id="generelt"><span class="num">/ 04</span>Generelt</h2>
+  <p>Partene skal behandle personopplysninger i samsvar med Personvernlovgivningen, GDPR og denne avtalen. Databehandler skal kun behandle opplysninger i den utstrekning det er nødvendig for å oppfylle Tjenesteavtalen og Databehandleravtalen. Behandlingsansvarlig må sikre at det finnes lovlig grunnlag for behandlingen.</p>
+
+  <h2 id="instruks"><span class="num">/ 05</span>Instruksjonsmyndighet</h2>
+  <p>Databehandler skal kun behandle personopplysninger etter dokumenterte instrukser fra Behandlingsansvarlig. Databehandler kan også behandle opplysninger hvis det kreves etter Lov som Databehandler er underlagt, og skal da varsle Behandlingsansvarlig i forkant, med mindre Loven forbyr slik informasjon av hensyn til allmenn interesse.</p>
+  <p>Instruksene er fastsatt av denne avtalen med vedlegg. Vedlegg 1 beskriver hvilke kategorier personopplysninger som behandles og formålet. Partene skal umiddelbart varsle hverandre dersom instrukser eller krav anses å være i strid med Personvernlovgivningen eller GDPR.</p>
+
+  <h2 id="bistand"><span class="num">/ 06</span>Plikt til å bistå</h2>
+  <p>Idet det tas hensyn til behandlingens art og tilgjengelig informasjon, skal Databehandler bistå Behandlingsansvarlig med å oppfylle forpliktelsene i GDPR artikkel 32–36. Dette omfatter bistand ved vurdering av personvernkonsekvenser og forhåndsdrøftelser.</p>
+
+  <h2 id="sikkerhet"><span class="num">/ 07</span>Personopplysningssikkerhet</h2>
+  <p>Databehandler skal oppfylle krav til informasjonssikkerhet etter Personvernlovgivningen og GDPR, herunder gjennomføre egnede tekniske og organisatoriske tiltak i tråd med GDPR artikkel 32.</p>
+  <p>Tiltakene er beskrevet i <strong>Vedlegg 2</strong>. Databehandler etterlever prinsippene om innebygd personvern og dataminimering — systemene er utformet slik at mengden personopplysninger som behandles begrenses til det som er nødvendig.</p>
+
+  <h2 id="underdatabehandler"><span class="num">/ 08</span>Underdatabehandlere</h2>
+  <p>Dersom Databehandler engasjerer en underdatabehandler, pålegges denne de samme forpliktelsene som fastsatt i denne avtalen gjennom avtale eller annet rettslig dokument. Databehandler er overfor Behandlingsansvarlig fullt ut ansvarlig for at underdatabehandler oppfyller sine forpliktelser.</p>
+  <p>De underdatabehandlere som benyttes fremgår av <strong>Vedlegg 3</strong> og på <a href="/legal/subprocessors">solidlab.ai/legal/subprocessors</a>. Behandlingsansvarlig aksepterer bruken av disse.</p>
+  <p>Ved bruk av nye underdatabehandlere skal Databehandler varsle Behandlingsansvarlig minst 30 dager før de tas i bruk. Behandlingsansvarlig har rett til å motsette seg bruk innen varslingsfristen.</p>
+
+  <h2 id="overforing"><span class="num">/ 09</span>Overføring til utlandet</h2>
+  <p>Databehandler kan overføre personopplysninger til de land der Databehandler og underdatabehandlerne driver virksomhet, som angitt i Vedlegg 3. Primær lagring skjer innenfor EU/EØS.</p>
+  <p>Databehandler skal ikke overføre personopplysninger til land utenfor EU/EØS eller til internasjonal organisasjon uten at overføringen skjer i tråd med GDPR kapittel V — gjennom Standard Contractual Clauses (SCC), adequacy decisions eller EU-US Data Privacy Framework.</p>
+  <p>Databehandleren forplikter seg til å vurdere beskyttelsesnivået i tredjeland og iverksette supplerende tiltak for å sikre tilsvarende beskyttelsesnivå som i EU/EØS.</p>
+
+  <h2 id="rettigheter"><span class="num">/ 10</span>Registrertes rettigheter</h2>
+  <p>Behandlingsansvarlig er kontaktpunkt for De registrerte og gir nødvendig informasjon om behandlingen. Behandlingsansvarlig er ansvarlig for å håndtere anmodninger om innsyn, retting, sletting, begrensning, dataportabilitet mv.</p>
+  <p>Databehandler skal, med egnede tekniske og organisatoriske tiltak, bistå Behandlingsansvarlig med å svare på anmodninger etter GDPR kapittel III. Dersom Databehandler mottar en forespørsel direkte fra Den registrerte, skal Databehandler snarest mulig varsle Behandlingsansvarlig.</p>
+
+  <h2 id="avvik"><span class="num">/ 11</span>Avvikshåndtering og varsling</h2>
+  <p>Enhver bruk av informasjonssystemer i strid med fastlagte rutiner, instrukser, Personvernlovgivningen eller GDPR, samt ethvert sikkerhetsbrudd, håndteres som avvik.</p>
+  <p>Partene skal, så snart de får kunnskap om et avvik, uten ugrunnet opphold og <strong>senest innen 36 timer</strong>, informere hverandre og iverksette nødvendige tiltak for å gjenopprette normaltilstand.</p>
+  <p>Behandlingsansvarlig er ansvarlig for å sende avviksmelding til Datatilsynet og De registrerte etter GDPR artikkel 33 og 34. Databehandler skal bistå om nødvendig.</p>
+
+  <h2 id="revisjon"><span class="num">/ 12</span>Revisjon og inspeksjon</h2>
+  <p>Databehandler skal gjøre tilgjengelig all informasjon som er nødvendig for å påvise overholdelse av forpliktelsene etter avtalen. Databehandler skal muliggjøre og bidra til revisjoner som gjennomføres av Behandlingsansvarlig eller annen inspektør på fullmakt.</p>
+  <p>Behandlingsansvarlig har rett til å gjennomføre revisjoner <strong>på egen kostnad, maksimalt én gang i året, med fire ukers forhåndsvarsel</strong>.</p>
+
+  <h2 id="konfidensialitet"><span class="num">/ 13</span>Konfidensialitet</h2>
+  <p>Databehandler har taushetsplikt om personopplysninger og dokumentasjon Databehandler får tilgang til gjennom avtalen. Taushetsplikten gjelder også etter avtalens opphør.</p>
+  <p>Databehandler skal ikke utlevere eller gi tilgang til personopplysninger til andre enn egne ansatte, underdatabehandlere eller ansatte hos Behandlingsansvarlig, uten at dette er skriftlig avtalt eller følger av lov. Databehandler skal sikre at personer med tilgang er forpliktet til konfidensialitet.</p>
+
+  <h2 id="varighet"><span class="num">/ 14</span>Varighet</h2>
+  <p>Avtalen gjelder så lenge Databehandler behandler personopplysninger på vegne av Behandlingsansvarlig.</p>
+
+  <h2 id="opphor"><span class="num">/ 15</span>Opphør</h2>
+  <p>Ved avtalens opphør skal Databehandler levere tilbake alle personopplysninger i et format egnet for videre behandling, eller slette dem etter Behandlingsansvarliges skriftlige instruks. Sletting skal dokumenteres skriftlig innen rimelig tid.</p>
+  <p>Unntak gjelder dersom Personvernlovgivningen, GDPR eller Lov krever videre oppbevaring (f.eks. bokføringsloven).</p>
+  <p>Databehandler er kun ansvarlig for tap som skyldes egne feil eller forsømmelser. Databehandler holdes ikke ansvarlig for indirekte tap — tapt fortjeneste, følgeskader — med mindre tapet skyldes forsett eller grov uaktsomhet.</p>
+
+  <h2 id="lovvalg"><span class="num">/ 16</span>Lovvalg</h2>
+  <p>Avtalen er underlagt norsk rett. Partene vedtar <strong>Stavanger tingrett</strong> som verneting.</p>
+
+  <h2 id="vedlegg"><span class="num">/ 17</span>Vedlegg</h2>
+
+  <h3>Vedlegg 1 — Personopplysninger og formål</h3>
+  <p>Behandlingen omfatter personopplysninger knyttet til Behandlingsansvarliges brukere og kunder:</p>
+  <ul>
+    <li><strong>Identifikasjon:</strong> navn, e-post, telefon, brukernavn</li>
+    <li><strong>Kontoinformasjon:</strong> hashede passord, sesjonsdata, brukerpreferanser</li>
+    <li><strong>Teknisk metadata:</strong> IP-adresse, enhet, tidsstempel, nettleser</li>
+    <li><strong>Brukergenerert innhold:</strong> data, bilder, tekst, dokumenter som brukere laster opp eller oppretter</li>
+    <li><strong>Kommunikasjon:</strong> innhold i meldinger, supporthenvendelser, e-post</li>
+  </ul>
+  <p>Enkelte tjenester kan omfatte sensitive personopplysninger etter GDPR artikkel 9 dersom brukere selv velger å legge inn slikt innhold. Databehandler foretar ingen egen klassifisering av sensitive opplysninger utover det som følger av instruks.</p>
+  <p><strong>Formål:</strong> å levere avtalte tjenester — drift, support, feilsøking, sikkerhet, og AI-funksjonalitet der aktivert. Ingen opplysninger behandles til egne formål hos Databehandler.</p>
+
+  <h3>Vedlegg 2 — Tekniske og organisatoriske sikkerhetstiltak</h3>
+  <p>Sikkerhetstiltak i tråd med GDPR artikkel 32:</p>
+  <ul>
+    <li>Kryptering ved lagring (AES-256) og overføring (TLS 1.3)</li>
+    <li>Segmentert infrastruktur med nettverksisolasjon og brannmurer</li>
+    <li>Tilgangsstyring etter minste privilegium, rollebasert</li>
+    <li>Tofaktorautentisering for alle administrative tilganger</li>
+    <li>Kontinuerlig logging av relevante systemhendelser og tilgangsforsøk</li>
+    <li>Sikkerhetskopiering med testede gjenopprettingsrutiner</li>
+    <li>Pseudonymisering der det er hensiktsmessig</li>
+    <li>Beskyttelse mot ondsinnet programvare og DDoS-angrep</li>
+    <li>Regelmessig gjennomgang av tilgangsrettigheter</li>
+    <li>Opplæring av personell med tilgang til personopplysninger</li>
+    <li>Rutiner for avvikshåndtering og sikkerhetsvarsling</li>
+    <li>Leverandørkontroll ved bruk av underdatabehandlere</li>
+  </ul>
+  <p>Tiltakene vurderes og oppdateres kontinuerlig i tråd med teknologisk utvikling og trusselbildet.</p>
+
+  <h3>Vedlegg 3 — Underdatabehandlere</h3>
+  <p>Komplett og oppdatert oversikt — med tjenester og lokasjon — finnes på <a href="/legal/subprocessors">solidlab.ai/legal/subprocessors</a>.</p>
+  <p>Per signeringsdato omfatter listen blant annet Vercel, Supabase (EU), AWS Ireland, Stripe, Resend, Cloudflare, Anthropic, Google og Sentry.</p>
+
+</article>
+
+</div>
+</div>
+
+<footer>
+  <div class="container">
+    <div><span class="slash">/</span> © 2026 stå på pinne as · solidlab is a trading name</div>
+    <div>
+      <a href="/legal/privacy"><span class="slash">/</span> privacy</a>
+      <a href="/legal/dpa"><span class="slash">/</span> dpa</a>
+      <a href="/legal/terms"><span class="slash">/</span> terms</a>
+      <a href="/legal/subprocessors"><span class="slash">/</span> subprocessors</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('solidlab-theme', next); } catch (e) {}
+  }
+</script>
+</body>
+</html>
