@@ -213,7 +213,7 @@ function Hero({ onNav }) {
   return (
     <section className="sl-hero">
       <div className="shell">
-        <div className="sl-hero__eyebrow sl-slash">/ a nordic venture studio · for builders and backers</div>
+        <div className="sl-hero__eyebrow sl-slash">/ a nordic venture lab · for builders and backers</div>
         <h1 className="sl-hero__title sl-hero__title--stacked">
           <span><span className="sl-hero__light">We build </span><span className="sl-hero__bold">solid</span></span>
           <span className="sl-hero__light"><Typewriter words={SOLID_WORDS}/></span>
@@ -501,7 +501,7 @@ function About() {
       <div className="shell">
         <div className="sl-slash" style={{marginBottom:24}}>/ 04 — about</div>
         <div className="sl-about__inner">
-          <h2 className="sl-about__title">A studio anchored in Nordic craft — not aesthetic, commitment.</h2>
+          <h2 className="sl-about__title">A lab anchored in Nordic craft — not aesthetic, commitment.</h2>
           <div className="sl-about__body">
             <p>Rooted in the <strong>Nordic tradition</strong> of craft and quiet confidence, we work at the intersection of code and craft — where good engineering meets good design.</p>
             <p>Our identity is rooted in the <strong>Scandinavian tradition</strong> of quiet craftsmanship, material honesty, and quality that outlasts trends. The technology may be new, but the values are old.</p>
@@ -540,7 +540,7 @@ function Contact() {
               <a href="tel:+4740093494">+47 400 93 494</a>
             </div>
             <div>
-              <span className="sl-contact__label">/ studio</span>
+              <span className="sl-contact__label">/ lab</span>
               nordic / since 2026
             </div>
             <div>
@@ -586,7 +586,7 @@ function Detail({ item, onBack }) {
           <div><span>/ year</span><strong>{item.year}</strong></div>
           <div><span>/ kind</span><strong>{item.kind}</strong></div>
           <div><span>/ status</span><strong>{item.tag.replace('/ ','')}</strong></div>
-          <div><span>/ role</span><strong>Studio + partner</strong></div>
+          <div><span>/ role</span><strong>Lab + partner</strong></div>
         </div>
         <div className="sl-detail__body">
           <p><strong>{item.kicker}</strong></p>

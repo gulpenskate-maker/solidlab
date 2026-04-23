@@ -182,7 +182,7 @@ function ContactPage() {
               <a href="tel:+4740093494">+47 400 93 494</a>
             </div>
             <div className="sl-contact-meta__block">
-              <span className="sl-contact__label">/ studio</span>
+              <span className="sl-contact__label">/ lab</span>
               <span>Solidlab AS</span>
               <span>Nordic · Remote-first</span>
               <span style={{color:"var(--mist)"}}>Org.nr 933 xxx xxx</span>
@@ -219,7 +219,7 @@ function AboutPage() {
         <div className="shell">
           <div className="sl-slash" style={{marginBottom:24}}>/ 03 — about</div>
           <h1 className="sl-section__title" style={{fontSize:72, maxWidth:1100}}>
-            A studio anchored in Nordic craft — <em style={{fontStyle:"normal",color:"var(--oslo)"}}>not aesthetic, commitment.</em>
+            A lab anchored in Nordic craft — <em style={{fontStyle:"normal",color:"var(--oslo)"}}>not aesthetic, commitment.</em>
           </h1>
           <p className="sl-section__intro" style={{marginTop:40, maxWidth:680, fontSize:19}}>
             Rooted in the Nordic tradition of craft and quiet confidence. We build solid products for our own ventures — and for the clients who want us to build the same for them.
@@ -227,7 +227,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Studio approach (replaces founder section) */}
+      {/* Lab approach (replaces founder section) */}
       <section className="sl-section">
         <div className="shell">
           <div className="sl-slash" style={{marginBottom:24}}>/ how we work</div>
@@ -236,7 +236,7 @@ function AboutPage() {
               <h2 style={{fontSize:40, fontWeight:600, letterSpacing:"-0.01em", lineHeight:1.15, margin:0}}>
                 Small team. Long time horizons.
               </h2>
-              <div className="sl-slash" style={{marginTop:20, color:"var(--mist)"}}>/ studio model</div>
+              <div className="sl-slash" style={{marginTop:20, color:"var(--mist)"}}>/ lab model</div>
             </div>
             <div style={{display:"flex", flexDirection:"column", gap:24}}>
               <p style={{fontSize:19, lineHeight:1.65, color:"var(--fg-secondary)", margin:0}}>
@@ -270,7 +270,7 @@ function AboutPage() {
           {/* Meta strip */}
           <div className="sl-about-meta">
             <div><span>/ founded</span><strong>2026</strong></div>
-            <div><span>/ studio</span><strong>Nordic · Remote-first</strong></div>
+            <div><span>/ lab</span><strong>Nordic · Remote-first</strong></div>
             <div><span>/ team</span><strong>Small, intentionally</strong></div>
             <div><span>/ working</span><strong>Globally, remotely</strong></div>
           </div>
@@ -759,7 +759,7 @@ const SAMPLE_CASE = {
   kicker: "A real-time marine forecasting platform for Norwegian boaters — live, paying for itself.",
   client: "Bølgevarsel AS",
   year: "2026",
-  kind: "Product · Studio",
+  kind: "Product · Lab",
   outcome: "Live · profitable",
   problem: "Norwegian recreational boaters were stitching together three different weather services to plan a single trip — none of them tuned for fjord conditions, and none of them honest about uncertainty. People were making risk decisions on bad data.",
   approach: "We built a small team of two and shipped a v0 in six weeks: a purpose-built forecast model for the Norwegian coast, a map UI that shows confidence bands instead of false precision, and a boringly reliable subscription billing stack. AI where it served the work; not where it didn't.",
@@ -784,7 +784,7 @@ function InvestorsPage() {
             <span className="sl-investors-hero__accent">we build from the inside.</span>
           </h1>
           <p className="sl-hero__sub sl-investors-hero__sub">
-            Solidlab is a venture studio. We identify real problems, build products with care,
+            Solidlab is a venture lab. We identify real problems, build products with care,
             and invite capital in at the right stage — per project, not per fund.
           </p>
           <div className="sl-hero__cta">
@@ -799,7 +799,7 @@ function InvestorsPage() {
       <section className="sl-sect">
         <div className="shell">
           <div className="sl-sect__eyebrow">/ 01 — the model</div>
-          <h2 className="sl-sect__title">A venture studio, not a pitch deck.</h2>
+          <h2 className="sl-sect__title">A venture lab, not a pitch deck.</h2>
           <p className="sl-sect__sub">
             We operate. We ship. We invite capital in when a project is ready to move — not before.
             Each venture stands on its own: its own cap table, its own trajectory, its own investors.
@@ -912,7 +912,7 @@ function InvestorsPage() {
               <div className="sl-investors-fit__label">/ thesis</div>
               <div className="sl-investors-fit__text">
                 AI-era vertical SaaS, Nordic infrastructure, operator-led
-                venture studios, B2B products with recurring revenue.
+                venture labs, B2B products with recurring revenue.
               </div>
             </div>
             <div className="sl-investors-fit__item">

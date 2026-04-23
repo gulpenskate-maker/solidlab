@@ -1,6 +1,6 @@
 # solidlab
 
-Nordic technology studio — marketing site for **solidlab.ai**.
+Nordic technology lab — marketing site for **solidlab.ai**.
 
 ## Stack
 
