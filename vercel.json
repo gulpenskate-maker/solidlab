@@ -1,6 +1,38 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/qr/card-ulrik",
+      "destination": "https://solidlab.ai/",
+      "permanent": false
+    },
+    {
+      "source": "/qr/card-solidlab",
+      "destination": "https://solidlab.ai/",
+      "permanent": false
+    },
+    {
+      "source": "/qr/card-charlotte",
+      "destination": "https://solidlab.ai/",
+      "permanent": false
+    },
+    {
+      "source": "/qr/sticker",
+      "destination": "https://solidlab.ai/",
+      "permanent": false
+    },
+    {
+      "source": "/qr/hangtag",
+      "destination": "https://solidlab.ai/",
+      "permanent": false
+    },
+    {
+      "source": "/qr/merch",
+      "destination": "https://solidlab.ai/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/fonts/(.*)",
